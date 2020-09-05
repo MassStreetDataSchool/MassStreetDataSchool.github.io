@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!-- head definitions go here -->
-    </head>
-    <body>
-       <div w3-include-html="html/pandas_for_data_science.html"></div>
-    </body>
-</html>
