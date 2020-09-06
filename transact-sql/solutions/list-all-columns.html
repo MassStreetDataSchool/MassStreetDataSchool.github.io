@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>index</title>
+<title>list-all-columns</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11243,7 +11243,7 @@ div.output_unrecognized a:hover {
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
   padding: 0.5em 0.5em;
   line-height: normal;
@@ -13116,7 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a></p>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
 </div>
@@ -13124,91 +13125,81 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Transact SQL Tutorial</h1><p><strong>Primary Author: Bob Wakefield</strong></p>
-
+<h1>Listing All Columns In A SQL Server Database</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Transact SQL, often shortened to T-SQL, is Microsoft’s proprietary implementation of ANSI standard SQL. Transact SQL adds more power and programming functionality to ANSI SQL and is used exclusively with the SQL Server database management system.</p>
-<p>Basic T-SQL shares many elements with ANSI SQL and we do not make a distinction in this tutorial.</p>
-<p>One thing you need to understand is that SQL, especially Transact SQL, is a legit programming language. It is relatively simplistic compared to the likes of Python, but it is fairly powerful non the less, and you cannot afford to be a lazy programmer. Most of the concepts from computer science 101 will apply to white SQL with the notable exception that SQL is a procedural programming language unlike most popular languages which are object oriented.</p>
-<p>This tutorial is organized in three parts.</p>
-<p><strong>Language Basics</strong></p>
-<p>This section is takes you through foundational T-SQL and it is recommended that you go through the tutorial in the order of the lessons given. The next two sections are in no particular order.</p>
-<p><strong>Advanced Topics</strong></p>
-<p>This section takes you into the heavier programming aspects of T-SQL. Here you will start to dive into issues of writing high performance code.</p>
-<p><strong>Solutions To Real World Problems</strong></p>
-<p>This is a highly opinionated section where I share my solutions to recurring problems that I have tackled over the past 20 years. Fortunately, all this stuff was kept in various forums, emails, and Stack Overflow in addition to the stuff I keep at the top of my head.</p>
-<p>This section is basically me uploading two decades of coding experience to the internet. I am not saying the way I do things is the correct way. I am saying that this is what I did and feel free to steal and adapt to your use case.</p>
-<p><strong>Running The Examples</strong></p>
-<p>All code examples have been run on SQL Server 2016 against the 2016 backup of the AdventureWorks database. Instructions on how to download and install the database can be found <a href="https://github.com/MassStreetUniversity/sql-server-samples/tree/master/samples/databases/adventure-works">here</a>.</p>
-<p>To report an issue with an example you can:</p>
-<ol>
-<li>Report the issue at Support@MassStreetUniversity.com.</li>
-<li>Get help from the community on the school Discord server which can be found <a href="https://discord.gg/enfDGUH">here</a>.<hr></li>
-</ol>
+<p>The primary use of this script is to help in the creation of a data dictionary. It can be used to find a specific column by utilizing the where clause.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Solutions To Real World Problems<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top" align="left"><ul><li>Listing All Tables In A SQL Server Database</li></ul></td>
-      <td valign="top" align="left"><ul><li><a href="solutions/list-all-columns.html">Listing All Columns In A SQL Server Database</a></li>
-      </ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Pull Records From A Table At Random</li></ul></td>
-      <td valign="top" align="left"><ul><li>A Better Alternative To WITH (NOLOCK)</li></ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Boost Performance When Calling A Stored Proc From SSIS</li></ul></td>
-      <td valign="top" align="left"><ul><li>Setting Up Queries For Ablation Testing</li></ul> </td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Reduce Code And Save Time With Default Column Values</li></ul></td>
-      <td valign="top" align="left"><ul><li>Finding Duplicate Records In A Table</li></ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Why You Cannot Have More Than One Clustered Index On A Table</li></ul></td>
-      <td valign="top" align="left"><ul><li>Converting Dates To YYYYMMDD</li></ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Sending Notification Emails With T-SQL Without Using Hardcoded Email Addresses</li></ul></td>
-      <td valign="top" align="left"><ul><li>Troubleshooting Long Running Queries</li></ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Loading Large CSVs Into Data Warehouse Staging Tables</li></ul></td>
-      <td valign="top" align="left"><ul><li>The Only Bloody Good Reason To Use Cursors (AKA Moving Large Amounts Of Data Between Tables)</li></ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Loading A Type II Slowly Changing Dimension With SQL Merge</li></ul></td>
-      <td valign="top" align="left"><ul><li>A Clearer Explanation Of The Parameters Of The Numeric Data Type</li></ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Why You Cannot Join On Null Values</li></ul></td>
-      <td valign="top" align="left"><ul><li>A Deep Dive On How The Where Clause Functions</li></ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Using HASHBYTES() To Compare Character Strings</li></ul></td>
-      <td valign="top" align="left"><ul><li>Using Pipe To Hash Multiple Columns For Matching</li></ul></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left"><ul><li>Why People That Indent Code Drive Me Nuts (AKA A Recommended SQL Style Guide)</li></ul></td>
-      <td valign="top" align="left"><ul><li>How To Rapidly Stand Up A Data Warehouse From Scratch</li></ul></td>
-    </tr>
-  </tbody>
-</table>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td><pre style="margin: 0; line-height: 125%">USE [AdventureWorks2016]
+<span style="color: #008800; font-weight: bold">GO</span>
+
+<span style="color: #008800; font-weight: bold">SELECT</span> 
+<span style="color: #008800; font-weight: bold">SCHEMA_NAME</span>(t.schema_id) <span style="color: #008800; font-weight: bold">AS</span> [<span style="color: #008800; font-weight: bold">Schema</span>],
+t.name <span style="color: #008800; font-weight: bold">AS</span> [<span style="color: #008800; font-weight: bold">Table</span> Name],
+<span style="color: #008800; font-weight: bold">c</span>.name <span style="color: #008800; font-weight: bold">AS</span> [<span style="color: #008800; font-weight: bold">Column</span> Name],
+<span style="color: #008800; font-weight: bold">CASE</span>
+<span style="color: #008800; font-weight: bold">WHEN</span> ty.name <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;char&#39;</span> <span style="color: #008800; font-weight: bold">OR</span> ty.name <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;nvarchar&#39;</span> <span style="color: #008800; font-weight: bold">THEN</span> CONCAT(ty.name,<span style="background-color: #fff0f0">&#39;(&#39;</span>,ty.max_length,<span style="background-color: #fff0f0">&#39;)&#39;</span>)
+<span style="color: #008800; font-weight: bold">WHEN</span> ty.name <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;numeric&#39;</span> <span style="color: #008800; font-weight: bold">THEN</span> CONCAT(ty.name,<span style="background-color: #fff0f0">&#39;(&#39;</span>,ty.<span style="color: #008800; font-weight: bold">precision</span>,<span style="background-color: #fff0f0">&#39;,&#39;</span>,ty.<span style="color: #008800; font-weight: bold">scale</span>,<span style="background-color: #fff0f0">&#39;)&#39;</span>)
+<span style="color: #008800; font-weight: bold">ELSE</span> ty.name
+<span style="color: #008800; font-weight: bold">END</span> <span style="color: #008800; font-weight: bold">AS</span> [<span style="color: #008800; font-weight: bold">Data</span> <span style="color: #008800; font-weight: bold">Type</span>]
+<span style="color: #008800; font-weight: bold">FROM</span> sys.tables <span style="color: #008800; font-weight: bold">AS</span> t
+<span style="color: #008800; font-weight: bold">JOIN</span> sys.columns <span style="color: #008800; font-weight: bold">c</span> 
+<span style="color: #008800; font-weight: bold">ON</span> t.OBJECT_ID <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">c</span>.OBJECT_ID
+<span style="color: #008800; font-weight: bold">JOIN</span> sys.types ty 
+<span style="color: #008800; font-weight: bold">ON</span> <span style="color: #008800; font-weight: bold">c</span>.user_type_id <span style="color: #333333">=</span> ty.user_type_id
+<span style="color: #008800; font-weight: bold">LEFT</span> <span style="color: #008800; font-weight: bold">OUTER</span> <span style="color: #008800; font-weight: bold">JOIN</span> sys.index_columns ic 
+<span style="color: #008800; font-weight: bold">ON</span> ic.object_id <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">c</span>.object_id 
+<span style="color: #008800; font-weight: bold">AND</span> ic.column_id <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">c</span>.column_id
+<span style="color: #008800; font-weight: bold">LEFT</span> <span style="color: #008800; font-weight: bold">OUTER</span> <span style="color: #008800; font-weight: bold">JOIN</span> sys.indexes i 
+<span style="color: #008800; font-weight: bold">ON</span> ic.object_id <span style="color: #333333">=</span> i.object_id 
+<span style="color: #008800; font-weight: bold">AND</span> ic.index_id <span style="color: #333333">=</span> i.index_id
+<span style="color: #008800; font-weight: bold">WHERE</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+<span style="color: #888888">--AND c.name LIKE &#39;%YourColumnName%&#39;</span>
+<span style="color: #008800; font-weight: bold">ORDER</span> <span style="color: #008800; font-weight: bold">BY</span> [<span style="color: #008800; font-weight: bold">Table</span> Name], [<span style="color: #008800; font-weight: bold">Column</span> Name]
+</pre></td></tr></table></div>
+</div>
+
+    </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
