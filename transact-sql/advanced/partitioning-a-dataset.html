@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>black-belt-data-filtering</title>
+<title>partitioning-a-dataset</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13125,17 +13125,43 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Black Belt Data Filtering</h1>
+<h1>Partitioning A Dataset</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This was supposed to be a list of super wacky and totally not obvious things you can do to filter data. However, I realized that this page alone is a project unto itself so I am going to leave it for now and come back to it later.</p>
+<p>Sometimes it becomes necessary to discover duplicates in data and then rank order their appearance in the dataset. The specific use case is when you have duplicates in data, but you can delete duplicate records arbitrarily. In other words, it does not matter which record goes, as long as only one record stays.</p>
+<p>You can use SELECT OVER to partition your dataset.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Examples</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+
+<span class="n">SELECT</span> <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">CarrierTrackingNumber</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">CarrierTrackingNumber</span><span class="p">)</span> <span class="n">AS</span> <span class="n">RowNumber</span><span class="p">,</span> <span class="n">CarrierTrackingNumber</span>
+<span class="n">FROM</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span>
+<span class="n">WHERE</span> <span class="n">CarrierTrackingNumber</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">

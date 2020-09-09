@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>index</title>
+<title>cursors</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11102,10 +11102,10 @@ div.output_unrecognized a:hover {
   text-decoration: underline;
 }
 .rendered_html :link {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html :visited {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html h1 {
   font-size: 185.7%;
@@ -11243,14 +11243,13 @@ div.output_unrecognized a:hover {
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
   padding: 0.5em 0.5em;
   line-height: normal;
   white-space: normal;
   max-width: none;
   border: none;
-  font-size: 15px
 }
 .rendered_html th {
   font-weight: bold;
@@ -13117,7 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a></p>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,18 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Transact SQL Tutorial</h1><p><strong>Primary Author: Bob Wakefield</strong></p>
+<h1>Cursors</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Cursors are the devil and they should only be used in one scenario which I talk about in the lesson titled <a href="solutions/only-use-for-cursors.html">The Only Bloody Good Reason To Use Cursors (AKA Moving Large Amounts Of Data Between Tables)</a>.</p>
+<p>But I do talk about them, so I am going to show you how to create one here.</p>
+<p>Cursors are a really efficient way to loop so they should only be used in those cases where your process is so inefficient that a cursor is the only thing less efficient than your process. A good example of this is loading large amounts of data between tables.</p>
+<p>When you have this scenario, you can split the load into batches that can be committed to the server in smaller amounts. This takes the load off several elements of SQL Server internal mechanisms most notably the log. Every SQL Server operation is logged so, in the case of a rollback, things can be returned to the state they were in prior to your operation.</p>
+<p>When you create a cursor, you need to pick something to partition your dataset by. I usually use dates. Just the year will do, but in the case of extra-large amounts of data, I may have to partition by month as well. However, you have to be careful with this because partitioning by year AND month may actually make the load last longer than just using the year.</p>
 
 </div>
 </div>
@@ -13133,26 +13144,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Transact SQL, often shortened to T-SQL, is Microsoft’s proprietary implementation of ANSI standard SQL. Transact SQL adds more power and programming functionality to ANSI SQL and is used exclusively with the SQL Server database management system.</p>
-<p>Basic T-SQL shares many elements with ANSI SQL and we do not make a distinction in this tutorial.</p>
-<p>One thing you need to understand is that SQL, especially Transact SQL, is a legit programming language. It is relatively simplistic compared to the likes of Python, but it is fairly powerful none the less, and you cannot afford to be a lazy programmer. Most of the concepts from computer science 101 will apply to writing SQL with the notable exception that SQL is a procedural programming language unlike most popular languages which are object oriented.</p>
-<p>This tutorial is organized in three parts.</p>
-<p><strong>Language Basics</strong></p>
-<p>This section takes you through foundational T-SQL and it is recommended that you go through the tutorial in the order of the lessons given.</p>
-<p><strong>Advanced Topics</strong></p>
-<p>This section takes you into the heavier programming aspects of T-SQL. Here you will start to dive into issues of writing high performance code. This section also should be done in order.</p>
-<p><strong>Solutions To Real World Problems</strong></p>
-<p>This is a highly opinionated section where I share my solutions to recurring problems that I have tackled over the past 20 years. Fortunately, all this stuff was kept in various forums, emails, and Stack Overflow in addition to the stuff I keep at the top of my head.</p>
-<p>This section is basically me uploading two decades of coding experience to the internet. I am not saying the way I do things is the correct way. I am saying that this is what I did and feel free to steal and adapt to your use case.</p>
-<p>This section has no preferred order.</p>
-<p><strong>Running The Examples</strong></p>
-<p>All code examples have been run on SQL Server 2016 against the 2016 backup of the AdventureWorks database. You can download SQL Server Developer Edition for free from the Microsoft website. Instructions on how to download and install the database files can be found <a href="https://github.com/MassStreetUniversity/sql-server-samples/tree/master/samples/databases/adventure-works">here</a>.</p>
-<p>Once you have the database installed, create another database called demo. This database will be used when we need to create things and we do not want to mess up AdventureWorks.</p>
-<p>To report an issue with an example you can:</p>
-<ol>
-<li>Report the issue at Support@MassStreetUniversity.com.</li>
-<li>Get help from the community on the school Discord server which can be found <a href="https://discord.gg/enfDGUH">here</a>.<hr></li>
-</ol>
+<p><strong>Examples</strong></p>
 
 </div>
 </div>
@@ -13160,171 +13152,46 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Language Basics<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">1. <a href="basic/hello-world.html">Obligatory Hello World</a></td>
-      <td valign="top">2. <a href="basic/code-comments.html">Code Comments</a></td>
-    </tr>
-    <tr>
-      <td valign="top">3. <a href="basic/basic-syntax.html">Basic Syntax</a></td>
-      <td valign="top">4. <a href="basic/your-first-query.html">Your First Query</a></td>
-    </tr>
-    <tr>
-      <td valign="top">5. <a href="basic/filtering-data.html">Filtering Data</a></td>
-      <td valign="top">6. <a href="basic/sorting-data.html">Sorting Data</a></td>
-    </tr>
-    <tr>
-      <td valign="top">7. <a href="basic/complex-data-filtering.html">Complex Data Filtering</a></td>
-      <td valign="top">8. <a href="basic/aliases.html">Aliases</a></td>
-    </tr>
-    <tr>
-      <td valign="top">9. <a href="basic/string-functions.html">String Functions</a></td>
-      <td valign="top">10. <a href="basic/calculated-fields.html">Creating New Columns From Existing Data  (Calculated Fields)</a></td>
-    </tr>
-    <tr>
-      <td valign="top">11.<a href="basic/case-statement.html"> Displaying Data Based On Conditions (Case Statement)</a></td>
-      <td valign="top">12. <a href="basic/aggregate-functions.html">Aggregate Functions</a></td>
-    </tr>
-    <tr>
-      <td valign="top">13. <a href="basic/aggregating-data.html">Grouping And Summarizing Data</a></td>
-      <td valign="top">14.  <a href="basic/joining-tables.html">Querying  More Than One Table</a></td>
-    </tr>
-    <tr>
-      <td valign="top">15. <a href="basic/combining-queries.html">Combining Queries</a></td>
-      <td valign="top">16. <a href="basic/subqueries.html">Subqueries</a></td>
-    </tr>
-    <tr>
-      <td valign="top">17. <a href="basic/creating-data.html">Creating Data</a></td>
-      <td valign="top">18. <a href="basic/updating-data.html">Updating Data</a></td>
-    </tr>
-    <tr>
-      <td valign="top">19. <a href="basic/deleting-data.html">Deleting Data</a></td>
-      <td valign="top">20. <a href="basic/cte.html">Common Table Expressions (CTEs)</a></td>
-    </tr>
-    <tr>
-      <td valign="top">21. <a href="basic/derived-tables.html">Derived Tables</a></td>
-      <td valign="top">22. <a href="basic/putting-it-all-together.html">Putting It All Together</a></td>
-    </tr>
-    </tbody>
-</table>
+<p>The below example of creating a cursor is generic.</p>
+
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Advanced Topics<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">23. <a href="advanced/selecting-unique-values.html">Selecting Unique Values</a></td>
-      <td valign="top">24. <a href="advanced/update-with-join.html">Updating Data With A Join</a></td>
-    </tr>
-    <tr>
-      <td valign="top">25. <a href="advanced/data-types.html">Data Types</a></td>
-      <td valign="top">26. <a href="advanced/casting-data-types.html">Casting Data Types</a></td>
-    </tr>
-     <tr>
-      <td valign="top"> 27. <a href="advanced/creating-tables.html">Creating Tables</a></td>
-      <td valign="top">28. <a href="advanced/altering-tables.html">Altering Tables</a></td>
-    </tr>
-     <tr>
-      <td valign="top">29. <a href="advanced/dropping-tables.html">Dropping Tables</a></td>
-      <td valign="top">30. <a href="advanced/variables.html">Variables</a></td>
-    </tr>
-    <tr>
-      <td valign="top">31. <a href="advanced/controlling-flow.html">Controlling Flow</a></td>
-      <td valign="top">32. <a href="advanced/looping.html">Looping</a></td>
-    </tr>
-    <tr>
-      <td valign="top">33. <a href="advanced/error-processing.html">Error Processing</a></td>
-      <td valign="top">34. <a href="advanced/temp-tables.html">Temporary Tables</a></td>
-    </tr>
-    <tr>
-      <td valign="top">35. <a href="advanced/views.html">Views</a></td>
-      <td valign="top">36. <a href="advanced/indexed-views.html">Indexed Views</a></td>
-    </tr>
-    <tr>
-      <td valign="top">37. <a href="advanced/user-defined-functions.html">User Defined Functions</a></td>
-      <td valign="top">38. <a href="advanced/stored-procedures.html">Stored Procedures</a></td>
-    </tr>
-    <tr>
-      <td valign="top">39. <a href="advanced/bulk-insert.html">Bulk Insert</a></td>
-      <td valign="top">40. <a href="advanced/loading-tables-with-merge.html">Loading Tables With MERGE</a></td>
-    </tr>
-    <tr>
-      <td valign="top">41. <a href="advanced/partitioning-a-dataset.html">Partitioning A Dataset</a></td>
-      <td valign="top">42. <a href="advanced/pivoting-data.html">Pivoting Data</a></td>
-    </tr>
-    <tr>
-      <td valign="top">43. <a href="advanced/dynamic-sql.html">Dynamic SQL</a></td>
-      <td valign="top">44. <a href="advanced/cursors.html">Cursors</a></td>
-    </tr>
-    </tbody>
-</table>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DECLARE</span> <span class="nd">@Year</span> <span class="n">INT</span>
+<span class="n">DECLARE</span> <span class="nd">@Month</span> <span class="n">INT</span>
+
+<span class="n">DECLARE</span> <span class="n">BatchingCursor</span> <span class="n">CURSOR</span> <span class="n">FOR</span>
+<span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">YEAR</span><span class="p">([</span><span class="n">SomeDateField</span><span class="p">]),</span><span class="n">MONTH</span><span class="p">([</span><span class="n">SomeDateField</span><span class="p">])</span>
+<span class="n">FROM</span> <span class="p">[</span><span class="n">Sometable</span><span class="p">];</span>
+
+
+<span class="n">OPEN</span> <span class="n">BatchingCursor</span><span class="p">;</span>
+<span class="n">FETCH</span> <span class="n">NEXT</span> <span class="n">FROM</span> <span class="n">BatchingCursor</span> <span class="n">INTO</span> <span class="nd">@Year</span><span class="p">,</span> <span class="nd">@Month</span><span class="p">;</span>
+<span class="n">WHILE</span> <span class="o">@</span><span class="nd">@FETCH_STATUS</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">BEGIN</span>
+
+<span class="n">BEGIN</span> <span class="n">TRANSACTION</span>
+<span class="o">--</span><span class="n">All</span> <span class="n">logic</span> <span class="n">goes</span> <span class="ow">in</span> <span class="n">here</span>
+<span class="o">--</span><span class="n">Any</span> <span class="n">select</span> <span class="n">statements</span> <span class="kn">from</span> <span class="p">[</span><span class="n">Sometable</span><span class="p">]</span> <span class="n">need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">suffixed</span> <span class="k">with</span><span class="p">:</span>
+<span class="o">--</span><span class="n">WHERE</span> <span class="n">Year</span><span class="p">([</span><span class="n">SomeDateField</span><span class="p">])</span><span class="o">=</span><span class="nd">@Year</span> <span class="n">AND</span> <span class="n">Month</span><span class="p">([</span><span class="n">SomeDateField</span><span class="p">])</span><span class="o">=</span><span class="nd">@Month</span>   
+<span class="n">COMMIT</span> <span class="n">TRANSACTION</span>
+
+<span class="n">FETCH</span> <span class="n">NEXT</span> <span class="n">FROM</span> <span class="n">BatchingCursor</span> <span class="n">INTO</span> <span class="nd">@Year</span><span class="p">,</span> <span class="nd">@Month</span><span class="p">;</span>
+<span class="n">END</span><span class="p">;</span>
+<span class="n">CLOSE</span> <span class="n">BatchingCursor</span><span class="p">;</span>
+<span class="n">DEALLOCATE</span> <span class="n">BatchingCursor</span><span class="p">;</span>
+<span class="n">GO</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Solutions To Real World Problems<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top" align="left">45. <a href="solutions/list-all-tables.html">Listing All Tables In A SQL Server Database</a></td>
-      <td valign="top" align="left">46. <a href="solutions/list-all-columns.html">Listing All Columns In A SQL Server Database</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">47. <a href="solutions/pull-random-records.html">Pull Records From A Table At Random</a></td>
-      <td valign="top" align="left">48. <a href="solutions/with-nolock-alternative.html">A Better Alternative To WITH (NOLOCK)</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">49. <a href="solutions/boost-performance.html">Boost Performance When Calling A Stored Proc From SSIS</a></td>
-      <td valign="top" align="left">50. <a href="solutions/ablation-testing.html">Setting Up Queries For Ablation Testing</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">51. <a href="solutions/default-column-values.html">Reduce Code And Save Time With Default Column Values</a></td>
-      <td valign="top" align="left">52. <a href="solutions/removing-dups.html">Finding Duplicate Records In A Table</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">53. <a href="solutions/clustered-index.html">Why You Cannot Have More Than One Clustered Index On A Table</a></td>
-      <td valign="top" align="left">54. <a href="solutions/convert-dates.html">Converting Dates To YYYYMMDD</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">55. <a href="solutions/notification-emails.html">Sending Notification Emails With T-SQL Without Using Hardcoded Email Addresses</a></td>
-      <td valign="top" align="left">56. <a href="solutions/troubleshoot-queries.html">Troubleshooting Long Running Queries</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">57. <a href="solutions/load-large-files.html">Loading Large CSVs Into Data Warehouse Staging Tables</a></td>
-      <td valign="top" align="left">58. <a href="solutions/only-use-for-cursors.html">The Only Bloody Good Reason To Use Cursors (AKA Moving Large Amounts Of Data Between Tables)</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">59. <a href="solutions/load-typeII-dimension.html">Loading A Type II Slowly Changing Dimension With SQL Merge</a></td>
-      <td valign="top" align="left">60. <a href="solutions/numeric-parameters.html">A Clearer Explanation Of The Parameters Of The Numeric Data Type</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">61. <a href="solutions/cant-join-on-null.html">Why You Cannot Join On Null Values</a></td>
-      <td valign="top" align="left">62. <a href="solutions/where-clause-deep-dive.html">A Deep Dive On How The Where Clause Functions</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">63. <a href="solutions/hashbytes-for-string-comparison.html">Using HASHBYTES() To Compare Character Strings</a></td>
-      <td valign="top" align="left">64. <a href="solutions/hashing-multiple-columns.html">Using Pipe To Hash Multiple Columns For Matching</a></td>
-    </tr>
-    <tr>
-      <td valign="top" align="left">65. <a href="solutions/sql-style-guide.html">Why People That Indent Code Drive Me Nuts (AKA A Recommended SQL Style Guide)</a></td>
-      <td valign="top" align="left">66. <a href="solutions/data-warehouse-standup.html">How To Rapidly Stand Up A Data Warehouse From Scratch</a></td>
-    </tr>
-     <tr>
-      <td valign="top" align="left">67. <a href="solutions/how-to-pivot-an-unknown-number-of-columns.html">How To Pivot Data With T-SQL When Columns Are Not Predefined</a></td>
-      <td valign="top" align="left">68. <a href="solutions/prepopulating-a-junk-dimension.html">Prepopulating A Junk Dimension</a></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
