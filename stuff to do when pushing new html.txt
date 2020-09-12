@@ -1,0 +1,22 @@
+For index file
+To fix table align issue, look for .rendered_html td in html output.
+1. change text-align to left
+2. Add font-size: 15px;
+
+Find .rendered_html :link and .rendered_html :visited and 
+1. set text-decoration: none
+
+For files with tables
+To fix table align issue, look for .rendered_html td in html output.
+1. change text-align to left
+2. Add font-size: 15px;
+
+sections with tables.
+Basic - Complex Data Filtering
+Basic - String Functions
+Basic - Aggregate Functions
+Advanced - Error Processing
+Solutions - prepopulating a junk dimension
+
+
+change the img src tag on the school logo so it's https
