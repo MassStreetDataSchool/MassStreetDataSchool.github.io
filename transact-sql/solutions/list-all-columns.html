@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13137,64 +13137,53 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>List All Columns</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26</pre></td><td><pre style="margin: 0; line-height: 125%">USE [AdventureWorks2016]
-<span style="color: #008800; font-weight: bold">GO</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="p">[</span><span class="n">AdventureWorks2016</span><span class="p">]</span>
+<span class="n">GO</span>
 
-<span style="color: #008800; font-weight: bold">SELECT</span> 
-<span style="color: #008800; font-weight: bold">SCHEMA_NAME</span>(t.schema_id) <span style="color: #008800; font-weight: bold">AS</span> [<span style="color: #008800; font-weight: bold">Schema</span>],
-t.name <span style="color: #008800; font-weight: bold">AS</span> [<span style="color: #008800; font-weight: bold">Table</span> Name],
-<span style="color: #008800; font-weight: bold">c</span>.name <span style="color: #008800; font-weight: bold">AS</span> [<span style="color: #008800; font-weight: bold">Column</span> Name],
-<span style="color: #008800; font-weight: bold">CASE</span>
-<span style="color: #008800; font-weight: bold">WHEN</span> ty.name <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;char&#39;</span> <span style="color: #008800; font-weight: bold">OR</span> ty.name <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;nvarchar&#39;</span> <span style="color: #008800; font-weight: bold">THEN</span> CONCAT(ty.name,<span style="background-color: #fff0f0">&#39;(&#39;</span>,ty.max_length,<span style="background-color: #fff0f0">&#39;)&#39;</span>)
-<span style="color: #008800; font-weight: bold">WHEN</span> ty.name <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;numeric&#39;</span> <span style="color: #008800; font-weight: bold">THEN</span> CONCAT(ty.name,<span style="background-color: #fff0f0">&#39;(&#39;</span>,ty.<span style="color: #008800; font-weight: bold">precision</span>,<span style="background-color: #fff0f0">&#39;,&#39;</span>,ty.<span style="color: #008800; font-weight: bold">scale</span>,<span style="background-color: #fff0f0">&#39;)&#39;</span>)
-<span style="color: #008800; font-weight: bold">ELSE</span> ty.name
-<span style="color: #008800; font-weight: bold">END</span> <span style="color: #008800; font-weight: bold">AS</span> [<span style="color: #008800; font-weight: bold">Data</span> <span style="color: #008800; font-weight: bold">Type</span>]
-<span style="color: #008800; font-weight: bold">FROM</span> sys.tables <span style="color: #008800; font-weight: bold">AS</span> t
-<span style="color: #008800; font-weight: bold">JOIN</span> sys.columns <span style="color: #008800; font-weight: bold">c</span> 
-<span style="color: #008800; font-weight: bold">ON</span> t.OBJECT_ID <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">c</span>.OBJECT_ID
-<span style="color: #008800; font-weight: bold">JOIN</span> sys.types ty 
-<span style="color: #008800; font-weight: bold">ON</span> <span style="color: #008800; font-weight: bold">c</span>.user_type_id <span style="color: #333333">=</span> ty.user_type_id
-<span style="color: #008800; font-weight: bold">LEFT</span> <span style="color: #008800; font-weight: bold">OUTER</span> <span style="color: #008800; font-weight: bold">JOIN</span> sys.index_columns ic 
-<span style="color: #008800; font-weight: bold">ON</span> ic.object_id <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">c</span>.object_id 
-<span style="color: #008800; font-weight: bold">AND</span> ic.column_id <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">c</span>.column_id
-<span style="color: #008800; font-weight: bold">LEFT</span> <span style="color: #008800; font-weight: bold">OUTER</span> <span style="color: #008800; font-weight: bold">JOIN</span> sys.indexes i 
-<span style="color: #008800; font-weight: bold">ON</span> ic.object_id <span style="color: #333333">=</span> i.object_id 
-<span style="color: #008800; font-weight: bold">AND</span> ic.index_id <span style="color: #333333">=</span> i.index_id
-<span style="color: #008800; font-weight: bold">WHERE</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>
-<span style="color: #888888">--AND c.name LIKE &#39;%YourColumnName%&#39;</span>
-<span style="color: #008800; font-weight: bold">ORDER</span> <span style="color: #008800; font-weight: bold">BY</span> [<span style="color: #008800; font-weight: bold">Table</span> Name], [<span style="color: #008800; font-weight: bold">Column</span> Name]
-</pre></td></tr></table></div>
-</div>
+<span class="n">SELECT</span> 
+<span class="n">SCHEMA_NAME</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">schema_id</span><span class="p">)</span> <span class="n">AS</span> <span class="p">[</span><span class="n">Schema</span><span class="p">],</span>
+<span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="n">AS</span> <span class="p">[</span><span class="n">Table</span> <span class="n">Name</span><span class="p">],</span>
+<span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="n">AS</span> <span class="p">[</span><span class="n">Column</span> <span class="n">Name</span><span class="p">],</span>
+<span class="n">CASE</span>
+<span class="n">WHEN</span> <span class="n">ty</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;char&#39;</span> <span class="n">OR</span> <span class="n">ty</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;nvarchar&#39;</span> <span class="n">THEN</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">ty</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span><span class="n">ty</span><span class="o">.</span><span class="n">max_length</span><span class="p">,</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="n">WHEN</span> <span class="n">ty</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;numeric&#39;</span> <span class="n">THEN</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">ty</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;(&#39;</span><span class="p">,</span><span class="n">ty</span><span class="o">.</span><span class="n">precision</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">ty</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="n">ELSE</span> <span class="n">ty</span><span class="o">.</span><span class="n">name</span>
+<span class="n">END</span> <span class="n">AS</span> <span class="p">[</span><span class="n">Data</span> <span class="n">Type</span><span class="p">]</span>
+<span class="n">FROM</span> <span class="n">sys</span><span class="o">.</span><span class="n">tables</span> <span class="n">AS</span> <span class="n">t</span>
+<span class="n">JOIN</span> <span class="n">sys</span><span class="o">.</span><span class="n">columns</span> <span class="n">c</span> 
+<span class="n">ON</span> <span class="n">t</span><span class="o">.</span><span class="n">OBJECT_ID</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">OBJECT_ID</span>
+<span class="n">JOIN</span> <span class="n">sys</span><span class="o">.</span><span class="n">types</span> <span class="n">ty</span> 
+<span class="n">ON</span> <span class="n">c</span><span class="o">.</span><span class="n">user_type_id</span> <span class="o">=</span> <span class="n">ty</span><span class="o">.</span><span class="n">user_type_id</span>
+<span class="n">LEFT</span> <span class="n">OUTER</span> <span class="n">JOIN</span> <span class="n">sys</span><span class="o">.</span><span class="n">index_columns</span> <span class="n">ic</span> 
+<span class="n">ON</span> <span class="n">ic</span><span class="o">.</span><span class="n">object_id</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">object_id</span> 
+<span class="n">AND</span> <span class="n">ic</span><span class="o">.</span><span class="n">column_id</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">column_id</span>
+<span class="n">LEFT</span> <span class="n">OUTER</span> <span class="n">JOIN</span> <span class="n">sys</span><span class="o">.</span><span class="n">indexes</span> <span class="n">i</span> 
+<span class="n">ON</span> <span class="n">ic</span><span class="o">.</span><span class="n">object_id</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">object_id</span> 
+<span class="n">AND</span> <span class="n">ic</span><span class="o">.</span><span class="n">index_id</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">index_id</span>
+<span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">--</span><span class="n">AND</span> <span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="n">LIKE</span> <span class="s1">&#39;%YourColumnName%&#39;</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="p">[</span><span class="n">Table</span> <span class="n">Name</span><span class="p">],</span> <span class="p">[</span><span class="n">Column</span> <span class="n">Name</span><span class="p">]</span>
+</pre></div>
 
     </div>
 </div>

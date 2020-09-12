@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13141,6 +13141,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>A Walk Through Of The Problem And Solution</strong></p>
 <p>Here is a demonstration that shows no matter how big the string is, HASHBYTES() algos always resolve to the same number of characters.</p>
 
 </div>
@@ -13151,39 +13159,23 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></td><td><pre style="margin: 0; line-height: 125%">Use AdventureWorks2016
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Use</span> <span class="n">AdventureWorks2016</span>
 
-<span style="color: #008800; font-weight: bold">DECLARE</span> <span style="color: #333333">@</span>Statement1 NVARCHAR(<span style="color: #0000DD; font-weight: bold">255</span>)
-<span style="color: #008800; font-weight: bold">DECLARE</span> <span style="color: #333333">@</span>Statement2 NVARCHAR(<span style="color: #0000DD; font-weight: bold">255</span>)
+<span class="n">DECLARE</span> <span class="nd">@Statement1</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">DECLARE</span> <span class="nd">@Statement2</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
 
-<span style="color: #008800; font-weight: bold">SET</span> <span style="color: #333333">@</span>Statement1 <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;Army And Navy Play For Second &#39;</span>
-<span style="color: #008800; font-weight: bold">SET</span> <span style="color: #333333">@</span>Statement2 <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;Rock Chalk Jayhawk&#39;</span>
+<span class="n">SET</span> <span class="nd">@Statement1</span> <span class="o">=</span> <span class="s1">&#39;Army And Navy Play For Second &#39;</span>
+<span class="n">SET</span> <span class="nd">@Statement2</span> <span class="o">=</span> <span class="s1">&#39;Rock Chalk Jayhawk&#39;</span>
 
-PRINT LEN(<span style="color: #333333">@</span>Statement1)
-PRINT LEN(<span style="color: #333333">@</span>Statement2)
+<span class="n">PRINT</span> <span class="n">LEN</span><span class="p">(</span><span class="nd">@Statement1</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">LEN</span><span class="p">(</span><span class="nd">@Statement2</span><span class="p">)</span>
 
-PRINT HASHBYTES(<span style="background-color: #fff0f0">&#39;MD5&#39;</span>, <span style="color: #333333">@</span>Statement1)
-PRINT HASHBYTES(<span style="background-color: #fff0f0">&#39;MD5&#39;</span>, <span style="color: #333333">@</span>Statement2)
+<span class="n">PRINT</span> <span class="n">HASHBYTES</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span> <span class="nd">@Statement1</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">HASHBYTES</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span> <span class="nd">@Statement2</span><span class="p">)</span>
 
-PRINT LEN(HASHBYTES(<span style="background-color: #fff0f0">&#39;MD5&#39;</span>, <span style="color: #333333">@</span>Statement1))
-PRINT LEN(HASHBYTES(<span style="background-color: #fff0f0">&#39;MD5&#39;</span>, <span style="color: #333333">@</span>Statement2))
-</pre></td></tr></table></div>
-</div>
+<span class="n">PRINT</span> <span class="n">LEN</span><span class="p">(</span><span class="n">HASHBYTES</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span> <span class="nd">@Statement1</span><span class="p">))</span>
+<span class="n">PRINT</span> <span class="n">LEN</span><span class="p">(</span><span class="n">HASHBYTES</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span> <span class="nd">@Statement2</span><span class="p">))</span>
+</pre></div>
 
     </div>
 </div>
@@ -13203,29 +13195,18 @@ PRINT LEN(HASHBYTES(<span style="background-color: #fff0f0">&#39;MD5&#39;</span>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></td><td><pre style="margin: 0; line-height: 125%">Use AdventureWorks2016
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Use</span> <span class="n">AdventureWorks2016</span>
 
-<span style="color: #008800; font-weight: bold">DECLARE</span> <span style="color: #333333">@</span>Statement1 NVARCHAR(<span style="color: #0000DD; font-weight: bold">255</span>)
-<span style="color: #008800; font-weight: bold">DECLARE</span> <span style="color: #333333">@</span>Statement2 NVARCHAR(<span style="color: #0000DD; font-weight: bold">255</span>)
+<span class="n">DECLARE</span> <span class="nd">@Statement1</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">DECLARE</span> <span class="nd">@Statement2</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
 
-<span style="color: #008800; font-weight: bold">SET</span> <span style="color: #333333">@</span>Statement1 <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;WalMart&#39;</span>
-<span style="color: #008800; font-weight: bold">SET</span> <span style="color: #333333">@</span>Statement2 <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;walmart&#39;</span>
+<span class="n">SET</span> <span class="nd">@Statement1</span> <span class="o">=</span> <span class="s1">&#39;WalMart&#39;</span>
+<span class="n">SET</span> <span class="nd">@Statement2</span> <span class="o">=</span> <span class="s1">&#39;walmart&#39;</span>
 
 
-PRINT HASHBYTES(<span style="background-color: #fff0f0">&#39;MD5&#39;</span>, <span style="color: #333333">@</span>Statement1)
-PRINT HASHBYTES(<span style="background-color: #fff0f0">&#39;MD5&#39;</span>, <span style="color: #333333">@</span>Statement2)
-</pre></td></tr></table></div>
-</div>
+<span class="n">PRINT</span> <span class="n">HASHBYTES</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span> <span class="nd">@Statement1</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">HASHBYTES</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span> <span class="nd">@Statement2</span><span class="p">)</span>
+</pre></div>
 
     </div>
 </div>

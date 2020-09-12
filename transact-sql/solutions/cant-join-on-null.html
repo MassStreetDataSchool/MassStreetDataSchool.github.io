@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13133,8 +13133,8 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is a fairly common and insidious error because you might not catch the problem if you are working with a large amount of data. Basically, NULL means unknown and unknown cannot equal unknown, so you cannot join records on null values. The best thing to do is not have NULLs in candidate key fields.</p>
-<p>When I was working this problem, leading SQL expert Joe Celko chimed in and this is what he had to say.</p>
-<p>"No, it is not weird. It actually follows from the definitions in the ANSI/ISO standards. If you really want to understand how it works, I have got some details in "SQL for smarties" about the history of the outer joins. The in fixed notation that we use now, was actually a result of an article published by Chris Date in one of the database newsstand magazines of the time (he and I had columns in DBMS and Database Programming and Design, and they were both owned by the same publisher at one point).</p>
+<p>When I was working this problem and mentioned this was weird, another data engineer had this to say,</p>
+<p>"No, it is not weird. It actually follows from the definitions in the ANSI/ISO standards. The in fixed notation that we use now, was actually a result of an article published by Chris Date in one of the database newsstand magazines of the time (he and I had columns in DBMS and Database Programming and Design, and they were both owned by the same publisher at one point).</p>
 <p>The actual syntax was not proposed by Date, by one of the ANSI X3H2 committee members. The rule is that infixed joins are evaluated strictly left to right, and the ON clause associates with the nearest join. If I have a really complicated set of inner joins, I prefer to use the original set-oriented notation (no infixed operators). People that use infixed inner join have a mindset locked into + versus "big Sigma" from mathematics."</p>
 
 </div>
@@ -13143,6 +13143,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>A Walk Through Of The Problem And Solution</strong></p>
 <p>My expectation here would be to get back results such that I get all the genders and only matching records for toys. However, when I apply a filter on toys, the dataset has a null value for gender ID in the toys table. My left outer join now behaves as an inner join.</p>
 
 </div>

@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13134,6 +13134,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We are now at the point where you understand how to pull data from tables. It is time to start learning how to actually program SQL server so you can do things like write processes that pull, manipulate, and load data.</p>
 <p>Variables only live as long as the script executes. When the script is done, the variable is wiped from memory.</p>
+<p>The first step is learning how to create variables and assign them values. You create variables with with DECLARE and set their value with SET. When setting your variable, string values have to be enclosed in quotes just like when you were writing WHERE clauses.</p>
 
 </div>
 </div>
@@ -13141,16 +13142,55 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Examples</strong></p>
+<h1>DECLARE Syntax</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DECLARE</span> <span class="o">@</span><span class="p">[</span><span class="n">VariableName</span><span class="p">]</span> <span class="p">[</span><span class="n">DataType</span><span class="p">]</span>
+<span class="n">DECLARE</span> <span class="o">@</span><span class="p">[</span><span class="n">VariableName2</span><span class="p">]</span> <span class="p">[</span><span class="n">DataType</span><span class="p">]</span> <span class="o">=</span>  <span class="p">[</span><span class="n">YourValue</span><span class="p">]</span>
+</pre></div>
 
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>SET Syntax</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SET</span> <span class="o">@</span><span class="p">[</span><span class="n">VariableName</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">YourValue</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first step is learning how to create variables and assign them values.</p>
-<p>DECLARE @[variable name] [data type]</p>
+<p><strong>Declaring A Variable</strong></p>
 
 </div>
 </div>
@@ -13177,8 +13217,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When setting your variable, string values have to be enclosed in quotes just like when you were writing WHERE clauses. You set values like this:</p>
-<p>SET @[variable name] = [your value]</p>
+<p><strong>Setting A Variable Value</strong></p>
 
 </div>
 </div>
@@ -13203,8 +13242,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can DECLARE and SET variables in one line of code like this:</p>
-<p>DECLARE @[variable name] [date type] =  [your value]</p>
+<p><strong>Declaring A Variable And Setting Its Value In One Line Of Code</strong></p>
 
 </div>
 </div>
@@ -13227,7 +13265,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can see the value of the variable like this:</p>
+<p><strong>Viewing The Value Of A Variable</strong></p>
 
 </div>
 </div>
@@ -13254,7 +13292,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can also set the value of variables with the output of SQL statement. The key is the SQL statement has to return a single atomic value.</p>
+<p><strong>Set The Value Of Variables With The Output Of A SQL Statement</strong></p>
+<p>The key is the SQL statement has to return a single atomic value.</p>
 
 </div>
 </div>
@@ -13285,6 +13324,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Variable Usage</strong></p>
 <p>Variables can be used in various ways. You can use them for output in SELECT statements and in WHERE clauses to create dynamic filter criteria.</p>
 
 </div>

@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13148,6 +13148,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Old Man Yells At Cloud</strong></p>
 <p>Left justify your code. Every character of every line should start at column 1 in the editor. Go back and look! This entire tutorial follows that standard.</p>
 
 </div>
@@ -13158,53 +13166,30 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></td><td><pre style="margin: 0; line-height: 125%">USE AdventureWorks2016
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
-<span style="color: #008800; font-weight: bold">DECLARE</span> <span style="color: #333333">@</span>genders <span style="color: #008800; font-weight: bold">TABLE</span>(gender_id <span style="color: #007020">INT</span>, gender <span style="color: #007020">VARCHAR</span>(<span style="color: #0000DD; font-weight: bold">20</span>))
-<span style="color: #008800; font-weight: bold">DECLARE</span> <span style="color: #333333">@</span>toys <span style="color: #008800; font-weight: bold">TABLE</span>(toy_id <span style="color: #007020">INT</span>, gender_id <span style="color: #007020">INT</span>, toy_name <span style="color: #007020">VARCHAR</span>(<span style="color: #0000DD; font-weight: bold">20</span>))
+<span class="n">DECLARE</span> <span class="nd">@genders</span> <span class="n">TABLE</span><span class="p">(</span><span class="n">gender_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">gender</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">DECLARE</span> <span class="nd">@toys</span> <span class="n">TABLE</span><span class="p">(</span><span class="n">toy_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">gender_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">toy_name</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 
-<span style="color: #008800; font-weight: bold">INSERT</span> <span style="color: #008800; font-weight: bold">INTO</span> <span style="color: #333333">@</span>genders(gender_id, gender)
-<span style="color: #008800; font-weight: bold">SELECT</span> <span style="color: #0000DD; font-weight: bold">1</span>, <span style="background-color: #fff0f0">&#39;boy&#39;</span>
-<span style="color: #008800; font-weight: bold">UNION</span> <span style="color: #008800; font-weight: bold">ALL</span>
-<span style="color: #008800; font-weight: bold">SELECT</span> <span style="color: #0000DD; font-weight: bold">2</span>, <span style="background-color: #fff0f0">&#39;girl&#39;</span>
-<span style="color: #008800; font-weight: bold">UNION</span> <span style="color: #008800; font-weight: bold">ALL</span>
-<span style="color: #008800; font-weight: bold">SELECT</span> <span style="color: #0000DD; font-weight: bold">3</span>, <span style="background-color: #fff0f0">&#39;both&#39;</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="nd">@genders</span><span class="p">(</span><span class="n">gender_id</span><span class="p">,</span> <span class="n">gender</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;boy&#39;</span>
+<span class="n">UNION</span> <span class="n">ALL</span>
+<span class="n">SELECT</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;girl&#39;</span>
+<span class="n">UNION</span> <span class="n">ALL</span>
+<span class="n">SELECT</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;both&#39;</span>
 
-<span style="color: #008800; font-weight: bold">INSERT</span> <span style="color: #008800; font-weight: bold">INTO</span> <span style="color: #333333">@</span>toys(toy_id, gender_id, toy_name)
-<span style="color: #008800; font-weight: bold">SELECT</span> <span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0000DD; font-weight: bold">1</span>, <span style="background-color: #fff0f0">&#39;GI JOE&#39;</span>
-<span style="color: #008800; font-weight: bold">UNION</span> <span style="color: #008800; font-weight: bold">ALL</span>
-<span style="color: #008800; font-weight: bold">SELECT</span> <span style="color: #0000DD; font-weight: bold">2</span>,<span style="color: #0000DD; font-weight: bold">2</span>, <span style="background-color: #fff0f0">&#39;My Little Pony&#39;</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="nd">@toys</span><span class="p">(</span><span class="n">toy_id</span><span class="p">,</span> <span class="n">gender_id</span><span class="p">,</span> <span class="n">toy_name</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;GI JOE&#39;</span>
+<span class="n">UNION</span> <span class="n">ALL</span>
+<span class="n">SELECT</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;My Little Pony&#39;</span>
 
 
-<span style="color: #008800; font-weight: bold">SELECT</span> <span style="color: #008800; font-weight: bold">g</span>.<span style="color: #333333">*</span>,t.toy_name
-<span style="color: #008800; font-weight: bold">FROM</span> <span style="color: #333333">@</span>genders <span style="color: #008800; font-weight: bold">g</span>
-<span style="color: #008800; font-weight: bold">LEFT</span> <span style="color: #008800; font-weight: bold">OUTER</span> <span style="color: #008800; font-weight: bold">JOIN</span> <span style="color: #333333">@</span>toys t
-<span style="color: #008800; font-weight: bold">ON</span> <span style="color: #008800; font-weight: bold">g</span>.gender_id <span style="color: #333333">=</span> t.gender_id <span style="color: #008800; font-weight: bold">and</span> t.toy_name <span style="color: #008800; font-weight: bold">NOT</span> <span style="color: #008800; font-weight: bold">IN</span>
-(<span style="background-color: #fff0f0">&#39;My Little Pony&#39;</span>) 
-</pre></td></tr></table></div>
-</div>
+<span class="n">SELECT</span> <span class="n">g</span><span class="o">.*</span><span class="p">,</span><span class="n">t</span><span class="o">.</span><span class="n">toy_name</span>
+<span class="n">FROM</span> <span class="nd">@genders</span> <span class="n">g</span>
+<span class="n">LEFT</span> <span class="n">OUTER</span> <span class="n">JOIN</span> <span class="nd">@toys</span> <span class="n">t</span>
+<span class="n">ON</span> <span class="n">g</span><span class="o">.</span><span class="n">gender_id</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">gender_id</span> <span class="ow">and</span> <span class="n">t</span><span class="o">.</span><span class="n">toy_name</span> <span class="n">NOT</span> <span class="n">IN</span>
+<span class="p">(</span><span class="s1">&#39;My Little Pony&#39;</span><span class="p">)</span> 
+</pre></div>
 
     </div>
 </div>
@@ -13224,21 +13209,14 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
-2
-3
-4
-5
-6
-7</pre></td><td><pre style="margin: 0; line-height: 125%">USE AdventureWorks2016
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
-<span style="color: #008800; font-weight: bold">SELECT</span> PurchaseOrderID, <span style="color: #008800; font-weight: bold">SUM</span>(LineTotal) <span style="color: #008800; font-weight: bold">AS</span> LineTotalSum
-<span style="color: #008800; font-weight: bold">FROM</span> [Purchasing].[PurchaseOrderDetail]
-<span style="color: #008800; font-weight: bold">WHERE</span> OrderQty <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">100</span>
-<span style="color: #008800; font-weight: bold">GROUP</span> <span style="color: #008800; font-weight: bold">BY</span> PurchaseOrderID
-<span style="color: #008800; font-weight: bold">ORDER</span> <span style="color: #008800; font-weight: bold">BY</span> PurchaseOrderID
-</pre></td></tr></table></div>
-</div>
+<span class="n">SELECT</span> <span class="n">PurchaseOrderID</span><span class="p">,</span> <span class="n">SUM</span><span class="p">(</span><span class="n">LineTotal</span><span class="p">)</span> <span class="n">AS</span> <span class="n">LineTotalSum</span>
+<span class="n">FROM</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetail</span><span class="p">]</span>
+<span class="n">WHERE</span> <span class="n">OrderQty</span> <span class="o">&gt;</span> <span class="mi">100</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">PurchaseOrderID</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">PurchaseOrderID</span>
+</pre></div>
 
     </div>
 </div>
@@ -13259,27 +13237,13 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me -->
-  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-    <table>
-      <tr>
-        <td><pre style="margin: 0; line-height: 125%">1
-2
-3
-4
-5
-6</pre></td>
-        <td><pre style="margin: 0; line-height: 125%">USE AdventureWorks2016
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
-<span style="color: #008800; font-weight: bold">SELECT</span> pod.[PurchaseOrderID], pod.[PurchaseOrderDetailID], pod.[DueDate], pod.[OrderQty], pod.[ProductID], pod.[UnitPrice], pod.[LineTotal], pod.[ReceivedQty], pod.[RejectedQty], pod.[StockedQty], pod.[ModifiedDate], poh.[PurchaseOrderID], poh.[RevisionNumber], poh.[Status], poh.[EmployeeID], poh.[VendorID], poh.[ShipMethodID], poh.[OrderDate], poh.[ShipDate], poh.[SubTotal], poh.[TaxAmt], poh.[Freight], poh.[TotalDue], poh.[ModifiedDate]
-<span style="color: #008800; font-weight: bold">FROM</span> [Purchasing].[PurchaseOrderHeader] poh
-<span style="color: #008800; font-weight: bold">JOIN</span> [Purchasing].[PurchaseOrderDetail] pod
-<span style="color: #008800; font-weight: bold">ON</span> poh.PurchaseOrderID <span style="color: #333333">=</span> pod.PurchaseOrderID
-  </pre></td>
-      </tr>
-    </table>
-  </div>
-</div>
+<span class="n">SELECT</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderID</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetailID</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">DueDate</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">OrderQty</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ProductID</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">UnitPrice</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">LineTotal</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ReceivedQty</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">RejectedQty</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">StockedQty</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ModifiedDate</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderID</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">RevisionNumber</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">Status</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">EmployeeID</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">VendorID</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ShipMethodID</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">OrderDate</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ShipDate</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">SubTotal</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">TaxAmt</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">Freight</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">TotalDue</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ModifiedDate</span><span class="p">]</span>
+<span class="n">FROM</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderHeader</span><span class="p">]</span> <span class="n">poh</span>
+<span class="n">JOIN</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetail</span><span class="p">]</span> <span class="n">pod</span>
+<span class="n">ON</span> <span class="n">poh</span><span class="o">.</span><span class="n">PurchaseOrderID</span> <span class="o">=</span> <span class="n">pod</span><span class="o">.</span><span class="n">PurchaseOrderID</span>
+</pre></div>
 
     </div>
 </div>
@@ -13299,67 +13263,37 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30</pre></td><td><pre style="margin: 0; line-height: 125%">USE AdventureWorks2016
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
-<span style="color: #008800; font-weight: bold">SELECT</span> 
-pod.[PurchaseOrderID], 
-pod.[PurchaseOrderDetailID], 
-pod.[DueDate], 
-pod.[OrderQty], 
-pod.[ProductID], 
-pod.[UnitPrice], 
-pod.[LineTotal], 
-pod.[ReceivedQty], 
-pod.[RejectedQty], 
-pod.[StockedQty], 
-pod.[ModifiedDate], 
-poh.[PurchaseOrderID], 
-poh.[RevisionNumber], 
-poh.[Status], 
-poh.[EmployeeID], 
-poh.[VendorID], 
-poh.[ShipMethodID], 
-poh.[OrderDate], 
-poh.[ShipDate], 
-poh.[SubTotal], 
-poh.[TaxAmt], 
-poh.[Freight], 
-poh.[TotalDue], 
-poh.[ModifiedDate]
-<span style="color: #008800; font-weight: bold">FROM</span> [Purchasing].[PurchaseOrderHeader] poh
-<span style="color: #008800; font-weight: bold">JOIN</span> [Purchasing].[PurchaseOrderDetail] pod
-<span style="color: #008800; font-weight: bold">ON</span> poh.PurchaseOrderID <span style="color: #333333">=</span> pod.PurchaseOrderID
-</pre></td></tr></table></div>
-</div>
+<span class="n">SELECT</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderID</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetailID</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">DueDate</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">OrderQty</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ProductID</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">UnitPrice</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">LineTotal</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ReceivedQty</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">RejectedQty</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">StockedQty</span><span class="p">],</span> 
+<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ModifiedDate</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderID</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">RevisionNumber</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">Status</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">EmployeeID</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">VendorID</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ShipMethodID</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">OrderDate</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ShipDate</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">SubTotal</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">TaxAmt</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">Freight</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">TotalDue</span><span class="p">],</span> 
+<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ModifiedDate</span><span class="p">]</span>
+<span class="n">FROM</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderHeader</span><span class="p">]</span> <span class="n">poh</span>
+<span class="n">JOIN</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetail</span><span class="p">]</span> <span class="n">pod</span>
+<span class="n">ON</span> <span class="n">poh</span><span class="o">.</span><span class="n">PurchaseOrderID</span> <span class="o">=</span> <span class="n">pod</span><span class="o">.</span><span class="n">PurchaseOrderID</span>
+</pre></div>
 
     </div>
 </div>
@@ -13379,47 +13313,27 @@ poh.[ModifiedDate]
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre></td><td><pre style="margin: 0; line-height: 125%">USE AdventureWorks2016
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
-<span style="color: #008800; font-weight: bold">DROP</span> <span style="color: #008800; font-weight: bold">PROCEDURE</span> IF <span style="color: #008800; font-weight: bold">EXISTS</span> [dbo].[usp_NoCountExample]
-<span style="color: #008800; font-weight: bold">GO</span>
+<span class="n">DROP</span> <span class="n">PROCEDURE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="p">[</span><span class="n">dbo</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">usp_NoCountExample</span><span class="p">]</span>
+<span class="n">GO</span>
 
-<span style="color: #008800; font-weight: bold">CREATE</span> <span style="color: #008800; font-weight: bold">PROCEDURE</span> [dbo].[usp_NoCountExample]
+<span class="n">CREATE</span> <span class="n">PROCEDURE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">usp_NoCountExample</span><span class="p">]</span>
 
-<span style="color: #008800; font-weight: bold">AS</span>
-<span style="color: #008800; font-weight: bold">BEGIN</span>
+<span class="n">AS</span>
+<span class="n">BEGIN</span>
 
-<span style="color: #008800; font-weight: bold">SET</span> NOCOUNT <span style="color: #008800; font-weight: bold">ON</span>;
+<span class="n">SET</span> <span class="n">NOCOUNT</span> <span class="n">ON</span><span class="p">;</span>
 
-<span style="color: #008800; font-weight: bold">SELECT</span> <span style="color: #333333">*</span>
-<span style="color: #008800; font-weight: bold">FROM</span> [Sales].[SalesOrderHeader] soh
-<span style="color: #008800; font-weight: bold">JOIN</span> [Sales].[SalesOrderDetail] sod
-<span style="color: #008800; font-weight: bold">ON</span> soh.SalesOrderID <span style="color: #333333">=</span> sod.SalesOrderID
-<span style="color: #008800; font-weight: bold">WHERE</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+<span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderHeader</span><span class="p">]</span> <span class="n">soh</span>
+<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderDetail</span><span class="p">]</span> <span class="n">sod</span>
+<span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderID</span>
+<span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span style="color: #008800; font-weight: bold">END</span>;
-<span style="color: #008800; font-weight: bold">GO</span>
-</pre></td></tr></table></div>
-</div>
+<span class="n">END</span><span class="p">;</span>
+<span class="n">GO</span>
+</pre></div>
 
     </div>
 </div>

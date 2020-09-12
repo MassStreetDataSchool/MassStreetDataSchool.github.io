@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13151,7 +13151,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Tom Coooper</strong></p>
+<p><strong>Person 1</strong></p>
 <p>There is a definition of the order of the process of JOINs and the WHERE clause.  Then there is what SQL actually does.  These may be different.</p>
 <p>But the definition is the FROM clause including any JOINs is done first.  In general, if you have multiple JOINs, they are done left to right in the order of the ON clauses.  So if you have</p>
 <p>FROM A LEFT JOIN B INNER JOIN C ON B.ID = C.ID ON A.ID + B.ID</p>
@@ -13167,7 +13167,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>David Baxter Brown</strong></p>
+<p><strong>Person 2</strong></p>
 <p>The important concept here is that in SQL you specify the result you want, not the algorithm to create that result.  It's helpful to think about the FROM clause executing first, followed by the WHERE clause in order to reason about the results and the correctness of your query.  But that's not how SQL Server actually runs the query.</p>
 <p>The Query Optimizer looks as the query, the join criteria and the where clauses and considers several different algorithms (query plans) to get the specified result.  It assigns a "cost" to each potential plan and then executes whichever plan has the lowest cost.</p>
 <p>So here it might start with a where clause, or it might start by joining tables and apply the where clause criteria later.</p>
@@ -13178,7 +13178,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Joe Celko</strong></p>
+<p><strong>Person 3</strong></p>
 <p>Here is how a SELECT works in SQL ... at least in theory.  Real products will optimize things, but the code has to produce the same results.</p>
 <p>a) Effectively materialize the CTEs in the optional WITH clause. CTE's come into existence in the order they are declared so only backward references are alllowed. A CTE can be recursive. Think of them as VIEWs that exist only in the scope of the query. In practice, if they are used once then they are implemented as an in-line macro.</p>
 <p>b) Start in the FROM clause and build a working table from all of the joins, unions, intersections, and whatever other table constructors are there.  The <table expression> AS <correlation name> option allows you give a name to this working table which you then have to use for the rest of the containing query.  Ther are UNIONB, INTERSECT and EXCEPT set construtors, LATERAL tables, table-valued funcitosn and all kinds of things happening in here.</p>
@@ -13218,7 +13218,7 @@ SELECT c, a, b FROM Table_X;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Tom Cooper</strong></p>
+<p><strong>Person 1</strong></p>
 <p>With regard to:</p>
 <ol>
 <li>I would say it CAN work like you expect and a where clause CAN limit the number of rows it attempts to join.  But SQL also might do the join first and only then apply the where clause.  Whatever way SQL thinks is more efficient as long as that way generates the correct result.</li><br>

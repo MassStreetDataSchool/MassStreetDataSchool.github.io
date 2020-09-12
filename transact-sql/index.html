@@ -11250,7 +11250,7 @@ div.output_unrecognized a:hover {
   white-space: normal;
   max-width: none;
   border: none;
-  font-size: 15px
+	font-size: 15px;
 }
 .rendered_html th {
   font-weight: bold;
@@ -13117,7 +13117,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../images/logo.png" alt="School Logo"></a></p>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a></p>
 
 </div>
 </div>
@@ -13135,7 +13135,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Transact SQL, often shortened to T-SQL, is Microsoft’s proprietary implementation of ANSI standard SQL. Transact SQL adds more power and programming functionality to ANSI SQL and is used exclusively with the SQL Server database management system.</p>
 <p>Basic T-SQL shares many elements with ANSI SQL and we do not make a distinction in this tutorial.</p>
-<p>One thing you need to understand is that SQL, especially Transact SQL, is a legit programming language. It is relatively simplistic compared to the likes of Python, but it is fairly powerful none the less, and you cannot afford to be a lazy programmer. Most of the concepts from computer science 101 will apply to writing SQL with the notable exception that SQL is a procedural programming language unlike most popular languages which are object oriented.</p>
+<p>One thing you need to understand is that SQL, especially Transact SQL, is a legit programming language. It is relatively simplistic compared to the likes of Python, but it is fairly powerful none the less, and you cannot afford to be a lazy programmer. Most of the concepts from computer science 101 will apply.</p>
 <p>This tutorial is organized in three parts.</p>
 <p><strong>Language Basics</strong></p>
 <p>This section takes you through foundational T-SQL and it is recommended that you go through the tutorial in the order of the lessons given.</p>
@@ -13143,12 +13143,18 @@ div#notebook {
 <p>This section takes you into the heavier programming aspects of T-SQL. Here you will start to dive into issues of writing high performance code. This section also should be done in order.</p>
 <p><strong>Solutions To Real World Problems</strong></p>
 <p>This is a highly opinionated section where I share my solutions to recurring problems that I have tackled over the past 20 years. Fortunately, all this stuff was kept in various forums, emails, and Stack Overflow in addition to the stuff I keep at the top of my head.</p>
+<p>If you are brand new to T-SQL and SQL Server, much of this section may go over your head. That is ok. File it away for later.</p>
 <p>This section is basically me uploading two decades of coding experience to the internet. I am not saying the way I do things is the correct way. I am saying that this is what I did and feel free to steal and adapt to your use case.</p>
-<p>This section has no preferred order.</p>
 <p><strong>Running The Examples</strong></p>
-<p>All code examples have been run on SQL Server 2016 against the 2016 backup of the AdventureWorks database. You can download SQL Server Developer Edition for free from the Microsoft website. Instructions on how to download and install the database files can be found <a href="https://github.com/MassStreetUniversity/sql-server-samples/tree/master/samples/databases/adventure-works">here</a>.</p>
-<p>Once you have the database installed, create another database called demo. This database will be used when we need to create things and we do not want to mess up AdventureWorks.</p>
-<p>To report an issue with an example you can:</p>
+<p>All code examples have been run on SQL Server 2016 against the 2016 backup of the AdventureWorks database.</p>
+<p>You need five things to run these examples.</p>
+<ol>
+<li>A copy of SQL Server Developer Edition which can be downloaded for free from the Microsoft website.</li><br>
+<li>A copy of the 2016 version of the AdventureWorks database. Instructions on how to download and install the database files can be found <a href="https://github.com/MassStreetUniversity/sql-server-samples/tree/master/samples/databases/adventure-works">here</a>.</li><br>
+<li>Once you have the database installed, you need to create another database called "demo". This database will be used when we need to create things and we do not want to mess up AdventureWorks.</li><br>
+<li>The last thing you need is the code. You can cut and paste code right from the screen, or you can download it from the GitHub repo <a href="https://github.com/MassStreetUniversity/tutorial-transact-sql">here</a>.</li><br>
+<li>Some of the examples use example datasets. Those can be downloaded from the MSU website <a href="https://massstreetuniversity.com/practice-datasets/">here</a>.</li><br>
+</ol><p>To report an issue with an example you can:</p>
 <ol>
 <li>Report the issue at Support@MassStreetUniversity.com.</li>
 <li>Get help from the community on the school Discord server which can be found <a href="https://discord.gg/enfDGUH">here</a>.<hr></li>
@@ -13251,7 +13257,7 @@ div#notebook {
       <td valign="top">38. <a href="advanced/stored-procedures.html">Stored Procedures</a></td>
     </tr>
     <tr>
-      <td valign="top">39. <a href="advanced/bulk-insert.html">Bulk Insert</a></td>
+      <td valign="top">39. <a href="advanced/bulk-insert.html">BULK INSERT</a></td>
       <td valign="top">40. <a href="advanced/loading-tables-with-merge.html">Loading Tables With MERGE</a></td>
     </tr>
     <tr>

@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13140,15 +13140,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Examples</strong></p>
-
+<h1>Examples</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Joining more than two tables</p>
+<p><strong> Joining More Than Two Tables</strong></p>
 
 </div>
 </div>
@@ -13158,18 +13157,171 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SELECT</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+
+<span class="n">SELECT</span>
 <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span>
 <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span>
 <span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">,</span>
 <span class="n">sod</span><span class="o">.</span><span class="n">LineTotal</span>
 <span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span> <span class="n">p</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesPerson</span><span class="p">]</span> <span class="n">sp</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesPerson</span> <span class="n">sp</span>
 <span class="n">ON</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderHeader</span><span class="p">]</span> <span class="n">soh</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
 <span class="n">ON</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesPersonID</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderDetail</span><span class="p">]</span> <span class="n">sod</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
 <span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderDetailID</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> String Functions And Aliases</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+
+<span class="n">SELECT</span>
+<span class="n">CONCAT</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">)</span> <span class="n">AS</span> <span class="n">SalesPerson</span><span class="p">,</span>
+<span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="n">AS</span> <span class="n">MonthOfSale</span><span class="p">,</span>
+<span class="n">sod</span><span class="o">.</span><span class="n">LineTotal</span> <span class="n">AS</span> <span class="n">TotalSales</span>
+<span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span> <span class="n">p</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesPerson</span> <span class="n">sp</span>
+<span class="n">ON</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
+<span class="n">ON</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesPersonID</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
+<span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderDetailID</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Grouping, Summarizing, And Ordering</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+
+<span class="n">SELECT</span>
+<span class="n">CONCAT</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">)</span> <span class="n">AS</span> <span class="n">SalesPerson</span><span class="p">,</span>
+<span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="n">AS</span> <span class="n">MonthOfSale</span><span class="p">,</span>
+<span class="n">SUM</span><span class="p">(</span><span class="n">sod</span><span class="o">.</span><span class="n">LineTotal</span><span class="p">)</span> <span class="n">AS</span> <span class="n">TotalSales</span>
+<span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span> <span class="n">p</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesPerson</span> <span class="n">sp</span>
+<span class="n">ON</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
+<span class="n">ON</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesPersonID</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
+<span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderDetailID</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Subquery</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+
+<span class="n">SELECT</span>
+<span class="n">CONCAT</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">)</span> <span class="n">AS</span> <span class="n">SalesPerson</span><span class="p">,</span>
+<span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="n">AS</span> <span class="n">MonthOfSale</span><span class="p">,</span>
+<span class="n">SUM</span><span class="p">(</span><span class="n">sod</span><span class="o">.</span><span class="n">LineTotal</span><span class="p">)</span> <span class="n">AS</span> <span class="n">TotalSales</span>
+<span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span> <span class="n">p</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesPerson</span> <span class="n">sp</span>
+<span class="n">ON</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
+<span class="n">ON</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesPersonID</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
+<span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderDetailID</span>
+<span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AND</span> <span class="n">sod</span><span class="o">.</span><span class="n">CarrierTrackingNumber</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">CarrierTrackingNumber</span> <span class="n">FROM</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">WHERE</span> <span class="n">CarrierTrackingNumber</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">)</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> CTEs</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+
+<span class="p">;</span>
+<span class="n">WITH</span> <span class="n">PersonWithNoMiddleName</span><span class="p">(</span><span class="n">BusinessEntityID</span><span class="p">,</span> <span class="n">FirstName</span><span class="p">,</span> <span class="n">LastName</span><span class="p">)</span>
+<span class="n">AS</span><span class="p">(</span>
+<span class="n">SELECT</span> <span class="n">BusinessEntityID</span><span class="p">,</span> <span class="n">FirstName</span><span class="p">,</span> <span class="n">LastName</span>
+<span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span>
+<span class="n">WHERE</span> <span class="n">MiddleName</span> <span class="n">IS</span> <span class="n">NULL</span>
+<span class="p">)</span>
+<span class="n">SELECT</span>
+<span class="n">CONCAT</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">)</span> <span class="n">AS</span> <span class="n">SalesPerson</span><span class="p">,</span>
+<span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="n">AS</span> <span class="n">MonthOfSale</span><span class="p">,</span>
+<span class="n">SUM</span><span class="p">(</span><span class="n">sod</span><span class="o">.</span><span class="n">LineTotal</span><span class="p">)</span> <span class="n">AS</span> <span class="n">TotalSales</span>
+<span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span> <span class="n">p</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesPerson</span> <span class="n">sp</span>
+<span class="n">ON</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
+<span class="n">ON</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesPersonID</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
+<span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderDetailID</span>
+<span class="n">JOIN</span> <span class="n">PersonWithNoMiddleName</span> <span class="n">pwnmn</span>
+<span class="n">ON</span> <span class="n">pwnmn</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span>
+<span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AND</span> <span class="n">sod</span><span class="o">.</span><span class="n">CarrierTrackingNumber</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">CarrierTrackingNumber</span> <span class="n">FROM</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">WHERE</span> <span class="n">CarrierTrackingNumber</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">)</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
 </pre></div>
 
     </div>

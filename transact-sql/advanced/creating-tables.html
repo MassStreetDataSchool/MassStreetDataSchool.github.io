@@ -13134,12 +13134,6 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can use SSMS to create, modify, and drop tables. However, after a while, you will discover that SSMS can be kind of clunky to deal with and writing code for these tasks is much faster.</p>
 <p>I use a combination of both. I use T-SQL to do basic table creation. Then I will use SSMS to do things like adding keys, indexes, and relationships.</p>
-<p>Here is the simplified syntax for creating a table.</p>
-<p>CREATE TABLE [table name](<br>
-[column 1] [data type] [NULL|NOT Null],<br>
-[column 2] [data type] [NULL|NOT Null],<br>
-[column 3] [data type] [NULL|NOT Null]<br>
-)</p>
 
 </div>
 </div>
@@ -13147,7 +13141,38 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Examples</strong></p>
+<h1>CREATE TABLE Syntax</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">table</span> <span class="n">name</span><span class="p">]</span>
+<span class="p">[</span><span class="n">column</span> <span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="n">data</span> <span class="nb">type</span><span class="p">]</span> <span class="p">[</span><span class="n">NULL</span><span class="o">|</span><span class="n">NOT</span> <span class="n">Null</span><span class="p">],</span>
+<span class="p">[</span><span class="n">column</span> <span class="mi">2</span><span class="p">]</span> <span class="p">[</span><span class="n">data</span> <span class="nb">type</span><span class="p">]</span> <span class="p">[</span><span class="n">NULL</span><span class="o">|</span><span class="n">NOT</span> <span class="n">Null</span><span class="p">],</span>
+<span class="p">[</span><span class="n">column</span> <span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="n">data</span> <span class="nb">type</span><span class="p">]</span> <span class="p">[</span><span class="n">NULL</span><span class="o">|</span><span class="n">NOT</span> <span class="n">Null</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>A Simple Table Creation Example</strong></p>
 
 </div>
 </div>

@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13136,9 +13136,7 @@ div#notebook {
 <p>Values in a table often repeat. This is especially true of data warehouse dimension tables because they are what is called denormalized. They are flat representations of relationships, so column values often repeat.</p>
 <p>Sometimes whole records will repeat. Sometimes you need to perform an analysis on what makes a record unique.</p>
 <p>The bottom line is, sometimes you just want to look at unique values. You can do that with the DISTINCT function.</p>
-<p>DISTINCT is used in conjunction with the SELECT clause. Here is a syntax example.</p>
-<p>SELECT DISTINCT [column1], ….[columnN]<br>
-FROM TableName</p>
+<p>DISTINCT is used in conjunction with the SELECT clause.</p>
 <p>When you use DISTINCT, SQL Server will only retrieve unique values from the table. If you use more than one column, the result set will be the unique combination of all those columns.</p>
 
 </div>
@@ -13147,15 +13145,35 @@ FROM TableName</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Examples</strong></p>
+<h1>DISTINCT Syntax</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="p">[</span><span class="n">column1</span><span class="p">],</span> <span class="o">...</span><span class="p">[</span><span class="n">columnN</span><span class="p">]</span>
+<span class="n">FROM</span> <span class="n">TableName</span>
+</pre></div>
 
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>DISTINCT with one column</p>
+<p><strong> DISTINCT With One Column</strong></p>
 
 </div>
 </div>
@@ -13179,7 +13197,7 @@ FROM TableName</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>DISTINCT with more than one column</p>
+<p><strong> DISTINCT With More Than One Column</strong></p>
 
 </div>
 </div>

@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13134,8 +13134,15 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Sometimes the data you want to output will depend on data in other columns. You can do that with a CASE statement in your SELECT clause.</p>
 <p>The CASE statement comes in two flavors, but my personal preference is to always use what is called the searched CASE expression.</p>
-<p>The syntax of the CASE statement looks like this.</p>
+<p>SQL Server evaluates the CASE statement in a lazy way. It does not check all conditions. It starts from the first condition and works its way down until a condition evaluates to true.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>CASE Syntax</h1>
 </div>
 </div>
 </div>
@@ -13145,8 +13152,8 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">CASE</span>
-    <span class="n">WHEN</span> <span class="p">[</span><span class="n">boolean</span> <span class="n">expression</span><span class="p">]</span> <span class="n">THEN</span> <span class="p">[</span><span class="n">display</span> <span class="n">this</span><span class="p">]</span> <span class="o">--</span><span class="n">you</span> <span class="n">can</span> <span class="n">have</span> <span class="k">as</span> <span class="n">many</span> <span class="n">of</span> <span class="n">these</span> <span class="k">as</span> <span class="n">necessary</span>
-    <span class="n">ELSE</span>  <span class="p">[</span><span class="n">display</span> <span class="n">this</span><span class="p">]</span> <span class="o">--</span><span class="n">when</span> <span class="n">no</span> <span class="n">conditions</span> <span class="n">are</span> <span class="n">met</span><span class="p">,</span> <span class="n">display</span> <span class="n">this</span>
+<span class="n">WHEN</span> <span class="p">[</span><span class="n">boolean</span> <span class="n">expression</span><span class="p">]</span> <span class="n">THEN</span> <span class="p">[</span><span class="n">display</span> <span class="n">this</span><span class="p">]</span> <span class="o">--</span><span class="n">you</span> <span class="n">can</span> <span class="n">have</span> <span class="k">as</span> <span class="n">many</span> <span class="n">of</span> <span class="n">these</span> <span class="k">as</span> <span class="n">necessary</span>
+<span class="n">ELSE</span> <span class="p">[</span><span class="n">display</span> <span class="n">this</span><span class="p">]</span> <span class="o">--</span><span class="n">when</span> <span class="n">no</span> <span class="n">conditions</span> <span class="n">are</span> <span class="n">met</span><span class="p">,</span> <span class="n">display</span> <span class="n">this</span>
 <span class="n">END</span>
 </pre></div>
 
@@ -13158,15 +13165,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>SQL Server evaluates the CASE statement in a lazy way. It does not check all conditions. It starts from the first condition and works its way down until a condition evaluates to true.</p>
-
+<h1>Examples</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Examples</strong></p>
+<p><strong>Two Examples Of CASE Statements</strong></p>
 
 </div>
 </div>
