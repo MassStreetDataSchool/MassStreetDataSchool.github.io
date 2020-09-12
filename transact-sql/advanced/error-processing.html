@@ -11102,10 +11102,10 @@ div.output_unrecognized a:hover {
   text-decoration: underline;
 }
 .rendered_html :link {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .rendered_html :visited {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .rendered_html h1 {
   font-size: 185.7%;
@@ -11243,13 +11243,14 @@ div.output_unrecognized a:hover {
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  text-align: right;
+  text-align: left;
   vertical-align: middle;
   padding: 0.5em 0.5em;
   line-height: normal;
   white-space: normal;
   max-width: none;
   border: none;
+  font-size: 15px
 }
 .rendered_html th {
   font-weight: bold;
@@ -13116,7 +13117,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13132,7 +13133,56 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Just like any other programming language, T-SQL has a way to trap errors with the standard TRY CATCH blocks.</p>
+<p>Error processing is important in any programming language. Weird things will happen, and your code has to be ready to handle weirdness. Sometimes you know what weirdness to expect like a variable value being NULL and you have to program what to do in that instance. Other times, the user will do something unexpected and you have to write a general error handler.</p>
+<p>In any case, the point of error processing is to keep the program going when an error happens. The general process is:</p>
+<ol>
+<li>Trap the error.</li><br>
+<li>Perform alternative task.</li><br>
+<li>Report the error.</li><br>
+</ol><p>T-SQL has a way to trap errors with the standard TRY CATCH approach that you will find in most major
+programming languages. The general syntax of a TRY CATCH block is:<br>
+<br>
+BEGIN TRY<br>
+--Process that may create an error<br>
+END TRY<br>
+BEGIN CATCH<br>
+--Process to handle error<br>
+END CATCH<br></p>
+<p>T-SQL has a handful of functions that help with error reporting.</p>
+<table width="50%" border="1" align="center">
+  <tbody>
+    <tr>
+      <th scope="col">Function Name</th>
+      <th scope="col">Function Defintion</th>
+    </tr>
+       <tr>
+      <td valign="top">ERROR_LINE </td>
+      <td valign="top"><p>The line number the error occurred on.</p></td>
+    </tr>
+        <tr>
+      <td valign="top">ERROR_MESSAGE </td>
+      <td valign="top"><p>Plain language description of the error.</p></td>
+    </tr>
+         <tr>
+      <td valign="top">ERROR_NUMBER </td>
+      <td valign="top"><p>The number of the error.</p></td>
+    </tr>
+         <tr>
+      <td valign="top">ERROR_PROCEDURE </td>
+      <td valign="top">The  name of the function or stored procedure that produced the error.</td>
+    </tr>
+         <tr>
+      <td valign="top">ERROR_SEVERITY </td>
+      <td valign="top"><p>The severity value of the error.</p></td>
+    </tr>
+         <tr>
+      <td valign="top">ERROR_STATE </td>
+      <td valign="top"><p>The state number of the error.</p></td>
+    </tr>
+    </tbody>
+</table><p>The error number, state, and severity are particularly useful. There is a long list of database engine errors that correspond to a number. You can check for that value in an equality when building your error handling logic.</p>
+<p>It is rare when I do error processing. When I build data warehouse load processes, each stored procedure I write performs a single task. An example would be a stored procedure that does nothing but load a single dimension table. The entire load process is engineered so that an error brings the entire thing to a halt. I do this to prevent train wrecks. Load processing is a series of events that have to happen in order. When a load processes in any other way than intended, then the train wreck metaphor becomes readily apparent.</p>
+<p>Since my processes run in SQL Server Agent, any errors are logged without me having to write code. However, from time to time, I do have to write errors. Recently, I had to write code that was going to be leveraged by an application written in .NET. In this case, reporting errors was necessary so they could be reported to the user.</p>
 
 </div>
 </div>
@@ -13140,7 +13190,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Examples</strong></p>
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Trapping Divide By Zero</strong></p>
 
 </div>
 </div>
@@ -13150,11 +13207,43 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BEGIN</span> <span class="n">TRY</span>
-<span class="o">--</span><span class="n">Process</span> <span class="n">that</span> <span class="n">may</span> <span class="n">create</span> <span class="n">an</span> <span class="n">error</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">demo</span>
+
+<span class="n">BEGIN</span> <span class="n">TRY</span>
+<span class="n">Print</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
 <span class="n">END</span> <span class="n">TRY</span>
 <span class="n">BEGIN</span> <span class="n">CATCH</span>
-<span class="n">PRINT</span> <span class="s1">&#39;Error &#39;</span><span class="o">+</span><span class="n">CAST</span><span class="p">(</span><span class="n">ERROR_NUMBER</span><span class="p">()</span><span class="n">AS</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">ERROR_MESSAGE</span><span class="p">()</span>
+<span class="n">PRINT</span> <span class="s1">&#39;Error &#39;</span><span class="o">+</span><span class="n">CAST</span><span class="p">(</span><span class="n">ERROR_NUMBER</span><span class="p">()</span><span class="n">AS</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">ERROR_MESSAGE</span><span class="p">()</span>
+<span class="n">END</span> <span class="n">CATCH</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Creating A Custom Error Message</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">demo</span>
+
+<span class="n">DECLARE</span> <span class="nd">@UserInput</span> <span class="n">INT</span>
+
+<span class="n">BEGIN</span> <span class="n">TRY</span>
+<span class="n">SET</span> <span class="nd">@UserInput</span> <span class="o">=</span> <span class="s1">&#39;Wakefield&#39;</span>
+<span class="n">END</span> <span class="n">TRY</span>
+<span class="n">BEGIN</span> <span class="n">CATCH</span>
+<span class="n">PRINT</span> <span class="s1">&#39;Please input an integer value.&#39;</span>
 <span class="n">END</span> <span class="n">CATCH</span>
 </pre></div>
 
