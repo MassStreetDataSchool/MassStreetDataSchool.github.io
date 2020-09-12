@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="../../images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="http://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
 
 </div>
@@ -13140,6 +13140,21 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Basic Setup</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -13152,6 +13167,47 @@ div#notebook {
 <span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderDetail</span><span class="p">]</span> <span class="n">sod</span>
 <span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderID</span>
 <span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>An Example Of Ablation Testing</strong></p>
+<p>Here we suspect that two lines in the WHERE clause are causing our query to act up.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+
+<span class="n">SELECT</span>
+<span class="n">CONCAT</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">)</span> <span class="n">AS</span> <span class="n">SalesPerson</span><span class="p">,</span>
+<span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="n">AS</span> <span class="n">MonthOfSale</span><span class="p">,</span>
+<span class="n">SUM</span><span class="p">(</span><span class="n">sod</span><span class="o">.</span><span class="n">LineTotal</span><span class="p">)</span> <span class="n">AS</span> <span class="n">TotalSales</span>
+<span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span> <span class="n">p</span>
+<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesPerson</span><span class="p">]</span> <span class="n">sp</span>
+<span class="n">ON</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span>
+<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderHeader</span><span class="p">]</span> <span class="n">soh</span>
+<span class="n">ON</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesPersonID</span>
+<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderDetail</span><span class="p">]</span> <span class="n">sod</span>
+<span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderDetailID</span>
+<span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AND</span> <span class="n">sp</span><span class="o">.</span><span class="n">Bonus</span> <span class="n">BETWEEN</span> <span class="mf">3000.00</span> <span class="n">AND</span> <span class="mf">6000.00</span>
+<span class="o">--</span><span class="n">AND</span> <span class="n">sp</span><span class="o">.</span><span class="n">SalesYTD</span> <span class="o">&gt;=</span> <span class="mf">2000000.00</span>
+<span class="o">--</span><span class="n">AND</span> <span class="n">sod</span><span class="o">.</span><span class="n">UnitPrice</span> <span class="o">&lt;</span> <span class="mi">2000</span>
+<span class="n">AND</span> <span class="p">(</span><span class="n">YEAR</span><span class="p">(</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="n">BETWEEN</span> <span class="mi">2014</span> <span class="n">AND</span> <span class="mi">2013</span> <span class="n">OR</span> <span class="n">YEAR</span><span class="p">(</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2011</span><span class="p">)</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
 </pre></div>
 
     </div>
