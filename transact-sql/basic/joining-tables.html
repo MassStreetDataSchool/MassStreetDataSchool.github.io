@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/basic/aggregating-data.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/basic/combining-queries.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Querying More Than One Table</h1>
+<h1>Lesson 14. Querying More Than One Table</h1>
 </div>
 </div>
 </div>
@@ -13137,8 +13137,8 @@ div#notebook {
 <p>There are many kinds of relationships in a database. Talking about them all is beyond the scope of this tutorial. We will talk about how to identify relationships so you can figure out how to query a table.</p>
 <p>Table relationships are set up as parent child. In the most common example, the records in a parent table have one to many related records in a child table.</p>
 <p>Relationships are defined by keys. In SSMS, you can expand the columns of a table and see that there will be a key icon denoting that column as a key of some sort. There are two kinds of keys you need to be aware of.</p>
-<p>Primary keys. Denoted in SSMS by the PK indicator in the column display. These keys are unique identifiers of tables.
-Foreign Keys. Denoted in SSMS by the FK indicator in the column display. These keys are the primary keys of a child table’s parent table. If the database is designed properly, the column will be the same name in both tables.</p>
+<p>Primary keys. Denoted in SSMS by the PK indicator in the column display. These keys are unique identifiers of tables.</p>
+<p>Foreign keys. Denoted in SSMS by the FK indicator in the column display. These keys are the primary keys of a child table’s parent table. If the database is designed properly, the column will be the same name in both tables.</p>
 <p>You join tables by connecting them by their keys using the JOIN ON clause.</p>
 <ol>
 <li>JOIN the table you would like to add to the query.</li><br>
@@ -13183,7 +13183,7 @@ Foreign Keys. Denoted in SSMS by the FK indicator in the column display. These k
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Inner Join</strong></p>
-<p>Returns only matching records between the parent and child. I write my statements so the parent table is above the child. That way I can quickly see what the relationshp is.</p>
+<p>Returns only matching records between the parent and child. I write my statements so the parent table is above the child. That way I can quickly see what the relationship is.</p>
 
 </div>
 </div>
@@ -13212,8 +13212,8 @@ Foreign Keys. Denoted in SSMS by the FK indicator in the column display. These k
 <p><strong>Left And Right Outer Join</strong></p>
 <p>The next two examples will demonstrate how to get all of the records from one table and only matching records from the other. This comes in handy when you want to see where there are records with no match or when the join between two tables is interesting but not necessarily an absolute reporting requirement.</p>
 <p>The left and right notation refers to which table you want to return all records from. If you want all records from the left table, then you write the query so that table is on the left side of the equality in the ON clause and vice versa.</p>
-<p>In the example below, you can see how the JOIN clause is modified. Technically, the word OUTER is not mandatory, but I write it anyway because on the job it really helps the JOIN clause stick out in a 1000 line stored procedure.</p>
-<p>Here I only show a LEFT OUTER JOIN becuase the way I write SQL statements, makes writing a RIGHT OUTER JOIN a rare occurance. Rare as in I cannot even think of a time when I did it.</p>
+<p>In the example below, you can see how the JOIN clause is modified. Technically, the word OUTER is not mandatory, but I write it anyway because on the job it really helps the JOIN clause stick out in a 1,000 line stored procedure.</p>
+<p>Here I only show a LEFT OUTER JOIN because the way I write SQL statements makes writing a RIGHT OUTER JOIN a rare occurrence. Rare as in I cannot even think of a time when I did it.</p>
 
 </div>
 </div>

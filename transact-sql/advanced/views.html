@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/temp-tables.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/indexed-views.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Views</h1>
+<h1>Lesson 35. Views</h1>
 </div>
 </div>
 </div>
@@ -13175,11 +13175,11 @@ div#notebook {
 <span class="n">DATEPART</span><span class="p">(</span><span class="n">YEAR</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="n">AS</span> <span class="n">YearOfSale</span><span class="p">,</span>
 <span class="n">SUM</span><span class="p">(</span><span class="n">sod</span><span class="o">.</span><span class="n">LineTotal</span><span class="p">)</span> <span class="n">AS</span> <span class="n">TotalSales</span>
 <span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span> <span class="n">p</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesPerson</span><span class="p">]</span> <span class="n">sp</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesPerson</span> <span class="n">sp</span>
 <span class="n">ON</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderHeader</span><span class="p">]</span> <span class="n">soh</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
 <span class="n">ON</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesPersonID</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderDetail</span><span class="p">]</span> <span class="n">sod</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
 <span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderDetailID</span>
 <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">p</span><span class="o">.</span><span class="n">LastName</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">DATENAME</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">),</span> <span class="n">DATEPART</span><span class="p">(</span><span class="n">YEAR</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span>
 </pre></div>

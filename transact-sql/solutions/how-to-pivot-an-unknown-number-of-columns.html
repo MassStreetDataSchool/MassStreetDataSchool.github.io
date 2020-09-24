@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/data-warehouse-standup.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/prepopulating-a-junk-dimension.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>How To Pivot Data With T-SQL When Columns Are Not Predefined</h1>
+<h1>Lesson 67. How To Pivot Data With T-SQL When Columns Are Not Predefined</h1>
 </div>
 </div>
 </div>
@@ -13136,7 +13136,7 @@ div#notebook {
 <p>WACK! That's wack.</p>
 <p>When does that even happen in the real world?! Never. That's not how this works. That's not how any of this works.</p>
 <p>Fortunately, there is a solution that utilizes some dynamic SQL and the deep magic.</p>
-<p>So picture this exchange.</p>
+<p>So, picture this exchange.</p>
 <p>Accountant: Hey Bob, I need some data.</p>
 <p>Me: Yo dawg! I'm your hook up! I'm about to HOOK you UP! What you want what you need dawg?</p>
 <p>Accountant: I need to see the sales of all salespeople by month from the beginning of time.</p>
@@ -13144,8 +13144,8 @@ div#notebook {
 <p>Accountant: Ok but I need to see it with people in rows and months as column headers.</p>
 <p>Me: .....For real dawg?!</p>
 <p>Unfortunately, this story is only partially made up. I don't really talk like this, but the request for the shape of his data totally happened.</p>
-<p>But hey. This is business analytics. We're ALL about some customer service. So we gives the people what they wants!</p>
-<p>Some of this code is magic that I can't explain and that’s fine. I can use it that’s what matters. I just keep this query handy and alter it every time I need to do this. 
+<p>But hey. This is business analytics. We're ALL about some customer service. So, we gives the people what they wants!</p>
+<p>Some of this code is magic that I can't explain and that’s fine. I can use it, that’s what matters. I just keep this query handy and alter it every time I need to do this. 
 Most of it is straight forward SQL. It’s the end that gets weird. We’re going to take all the possible columns and STUFF them into a variable using XML PATH. Then we are going to build our dynamic statement. Most of the code there should be familiar from the standard PIVOT example. The only difference is the columns variable is providing the columns instead of a hard coded value.</p>
 
 </div>

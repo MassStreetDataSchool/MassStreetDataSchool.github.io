@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/data-types.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/creating-tables.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,15 +13125,15 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Casting Data Types</h1>
+<h1>Lesson 26. Casting Data Types</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When you are throwing around string values, SQL Server does its best to try to determine what the actual data type is. The software is really good at identifying dates, integers, and floats when they are stored as NVARCHAR. When you do basic arithmatic, you can implicity cast data types.</p>
-<p>However, sometimes its best is not good enough and you have to step in and specify what data type a value should be or perhaps you have to change the data type of an existing data type. Sometimes, if you are REALLY lucky you will be dealing with a data type that blows up a deterministic process because it makes the process non-deterministic in which case you have to cast the data to a type that is more friendly to deterministic processes.</p>
+<p>When you are throwing around string values, SQL Server does its best to try to determine what the actual data type is. The software is really good at identifying dates, integers, and floats when they are stored as NVARCHAR. When you do basic arithmetic, you can implicitly cast data types.</p>
+<p>However, sometimes its best is not good enough and you have to step in and specify what data type a value should be, or perhaps you have to change the data type of an existing data type. Sometimes, if you are REALLY lucky you will be dealing with a data type that blows up a deterministic process because it makes the process non-deterministic, in which case you have to cast the data to a type that is more friendly to deterministic processes.</p>
 <p>This is where the functions CAST and CONVERT come in handy. They both do the same thing, but I VASTLY prefer the CAST syntax. However, if you want to format data, you will have to use the CONVERT syntax.</p>
 
 </div>

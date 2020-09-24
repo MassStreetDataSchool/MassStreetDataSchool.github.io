@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/basic/creating-data.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/basic/deleting-data.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,14 +13125,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Updating Data</h1>
+<h1>Lesson 18. Updating Data</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You update data with the SQL UPDATE statement. When you update data and you only want to update a single row, make sure you have a filter on your query of exactly what you are updating otherwise you are going to wind up updating the entire table.</p>
+<p>You update data with the SQL UPDATE statement. When you update data and you only want to update a single row, make sure you have a filter on your query of exactly what you are updating, otherwise you are going to wind up updating the entire table.</p>
 
 </div>
 </div>
@@ -13181,7 +13181,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DECLARE</span> <span class="nd">@Person</span> <span class="n">AS</span> <span class="n">TABLE</span> <span class="p">(</span><span class="n">ID</span> <span class="n">INT</span><span class="p">,</span> <span class="n">FName</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">LNAME</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">Demo</span>
+
+<span class="n">DECLARE</span> <span class="nd">@Person</span> <span class="n">AS</span> <span class="n">TABLE</span> <span class="p">(</span><span class="n">ID</span> <span class="n">INT</span><span class="p">,</span> <span class="n">FName</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">LNAME</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
 
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="nd">@Person</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="n">FName</span><span class="p">,</span> <span class="n">LNAME</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Wakefield&#39;</span>

@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/numeric-parameters.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/where-clause-deep-dive.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Why You Cannot Join On Null Values</h1>
+<h1>Lesson 61. Why You Cannot Join On Null Values</h1>
 </div>
 </div>
 </div>
@@ -13133,9 +13133,9 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is a fairly common and insidious error because you might not catch the problem if you are working with a large amount of data. Basically, NULL means unknown and unknown cannot equal unknown, so you cannot join records on null values. The best thing to do is not have NULLs in candidate key fields.</p>
-<p>When I was working this problem and mentioned this was weird, another data engineer had this to say,</p>
-<p>"No, it is not weird. It actually follows from the definitions in the ANSI/ISO standards. The in fixed notation that we use now, was actually a result of an article published by Chris Date in one of the database newsstand magazines of the time (he and I had columns in DBMS and Database Programming and Design, and they were both owned by the same publisher at one point).</p>
-<p>The actual syntax was not proposed by Date, by one of the ANSI X3H2 committee members. The rule is that infixed joins are evaluated strictly left to right, and the ON clause associates with the nearest join. If I have a really complicated set of inner joins, I prefer to use the original set-oriented notation (no infixed operators). People that use infixed inner join have a mindset locked into + versus "big Sigma" from mathematics."</p>
+<p>When I was working this problem and mentioned this was weird, another data engineer had this to say:</p>
+<p>No, it is not weird. It actually follows from the definitions in the ANSI/ISO standards. The in fixed notation that we use now, was actually a result of an article published by Chris Date in one of the database newsstand magazines of the time (he and I had columns in DBMS and Database Programming and Design, and they were both owned by the same publisher at one point).</p>
+<p>The actual syntax was not proposed by Date, by one of the ANSI X3H2 committee members. The rule is that infixed joins are evaluated strictly left to right, and the ON clause associates with the nearest join. If I have a really complicated set of inner joins, I prefer to use the original set-oriented notation (no infixed operators). People that use infixed inner join have a mindset locked into + versus "big Sigma" from mathematics.</p>
 
 </div>
 </div>
@@ -13161,7 +13161,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">demo</span>
 
 <span class="n">DECLARE</span> <span class="nd">@genders</span> <span class="n">TABLE</span><span class="p">(</span><span class="n">gender_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">gender</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="n">DECLARE</span> <span class="nd">@toys</span> <span class="n">TABLE</span><span class="p">(</span><span class="n">toy_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">gender_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">toy_name</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
@@ -13206,7 +13206,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">demo</span>
 
 <span class="n">DECLARE</span> <span class="nd">@genders</span> <span class="n">TABLE</span><span class="p">(</span><span class="n">gender_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">gender</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="n">DECLARE</span> <span class="nd">@toys</span> <span class="n">TABLE</span><span class="p">(</span><span class="n">toy_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">gender_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">toy_name</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
@@ -13249,7 +13249,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">;</span><span class="k">with</span> <span class="n">mycte</span> <span class="k">as</span> <span class="p">(</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">demo</span>
+
+<span class="p">;</span><span class="k">with</span> <span class="n">mycte</span> <span class="k">as</span> <span class="p">(</span>
 <span class="n">select</span> <span class="o">*</span> <span class="kn">from</span>  <span class="nd">@toys</span> <span class="n">WHERE</span> <span class="n">toy_name</span> <span class="n">NOT</span> <span class="n">IN</span><span class="p">(</span><span class="s1">&#39;My Little Pony&#39;</span><span class="p">))</span> 
 
 <span class="n">SELECT</span> <span class="n">g</span><span class="o">.*</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">toy_name</span>

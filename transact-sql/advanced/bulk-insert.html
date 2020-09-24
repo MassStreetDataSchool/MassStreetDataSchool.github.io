@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/stored-procedures.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/loading-tables-with-merge.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,15 +13125,15 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>BULK INSERT</h1>
+<h1>Lesson 39. BULK INSERT</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There are numerous ways to get data into SQL Server. One of the fastest and least clunky to set up ways is by using the BULK INSERT statement to ingest large CSVs.</p>
-<p>When you use BULK INSERT, the table that you are importing data into, has to match the schema of the file you are importing. I teach you how to work around this limitation in the lesson titled <a href="../solutions/load-large-files.html">Large CSVs Into Data Warehouse Staging Tables</a>.</p>
+<p>There are numerous ways to get data into SQL Server. One of the fastest and least clunky-to-set-up ways is by using the BULK INSERT statement to ingest large CSVs.</p>
+<p>When you use BULK INSERT, the table that you are importing data into has to match the schema of the file you are importing. I teach you how to work around this limitation in the lesson titled <a href="../solutions/load-large-files.html">Large CSVs Into Data Warehouse Staging Tables</a>.</p>
 
 </div>
 </div>
@@ -13150,7 +13150,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BULK</span> <span class="n">INSERT</span> <span class="n">YourSchema</span><span class="o">.</span><span class="n">YourTable</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BULK</span> <span class="n">INSERT</span> <span class="n">YourSchema</span><span class="o">.</span><span class="n">YourTable</span>
 <span class="n">FROM</span> <span class="s1">&#39;FullyQualifiedFilePath\YourFile.csv&#39;</span>
 </pre></div>
 
@@ -13170,7 +13170,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Basic Bulk Insert Example</strong></p>
-<p>In this example, we will use the "Customer Signature for Churn Analysis" dataset. Not every dataset you import is going to be clean and perfect. Sometimes you have to give instructions to BULK INSERT. In this case, we have to specify how the columns are seperated in the file, and we need to tell it to skip the header row.</p>
+<p>In this example, we will use the "Customer Signature for Churn Analysis" dataset. Not every dataset you import is going to be clean and perfect. Sometimes you have to give instructions to BULK INSERT. In this case, we have to specify how the columns are separated in the file, and we need to tell it to skip the header row.</p>
 
 </div>
 </div>

@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/only-use-for-cursors.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/numeric-parameters.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Loading A Type II Slowly Changing Dimension With SQL Merge</h1>
+<h1>Lesson 59. Loading A Type II Slowly Changing Dimension With SQL Merge</h1>
 </div>
 </div>
 </div>
@@ -13193,81 +13193,81 @@ div#notebook {
 
 <span class="o">--</span><span class="n">Now</span> <span class="n">create</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">tables</span> <span class="n">we</span> <span class="n">will</span> <span class="n">need</span><span class="o">.</span>
 <span class="o">--</span><span class="n">Create</span> <span class="n">our</span> <span class="n">stage</span> <span class="n">table</span>
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">TickersStage</span><span class="p">](</span>
-<span class="p">[</span><span class="n">ETLKey</span><span class="p">]</span> <span class="p">[</span><span class="n">uniqueidentifier</span><span class="p">]</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UniqueDims</span><span class="p">]</span> <span class="p">[</span><span class="n">varbinary</span><span class="p">](</span><span class="mi">35</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UniqueRows</span><span class="p">]</span> <span class="p">[</span><span class="n">varbinary</span><span class="p">](</span><span class="mi">16</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">ErrorRecord</span><span class="p">]</span> <span class="p">[</span><span class="n">bit</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">Processed</span><span class="p">]</span> <span class="p">[</span><span class="n">bit</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">RunDate</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">RowHash</span><span class="p">]</span>  <span class="n">AS</span> <span class="p">(</span><span class="n">CONVERT</span><span class="p">([</span><span class="n">binary</span><span class="p">](</span><span class="mi">16</span><span class="p">),</span><span class="n">hashbytes</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,[</span><span class="n">CompanyName</span><span class="p">]),</span><span class="mi">0</span><span class="p">))</span> <span class="n">PERSISTED</span><span class="p">,</span>
- <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">PK_DimTickersCM</span><span class="p">]</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="n">CLUSTERED</span> 
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">TickersStage</span><span class="p">(</span>
+<span class="n">ETLKey</span> <span class="n">uniqueidentifier</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">Symbol</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CompanyName</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UniqueDims</span> <span class="n">varbinary</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UniqueRows</span> <span class="n">varbinary</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">SourceSystem</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">ErrorRecord</span> <span class="n">bit</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">Processed</span> <span class="n">bit</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">RunDate</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">RowHash</span>  <span class="n">AS</span> <span class="p">(</span><span class="n">CONVERT</span><span class="p">(</span><span class="n">binary</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="n">hashbytes</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span><span class="n">CompanyName</span><span class="p">),</span><span class="mi">0</span><span class="p">))</span> <span class="n">PERSISTED</span><span class="p">,</span>
+ <span class="n">CONSTRAINT</span> <span class="n">PK_DimTickersCM</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="n">CLUSTERED</span> 
 <span class="p">(</span>
-<span class="p">[</span><span class="n">ETLKey</span><span class="p">]</span> <span class="n">ASC</span>
+<span class="n">ETLKey</span> <span class="n">ASC</span>
 <span class="p">)</span><span class="n">WITH</span> <span class="p">(</span><span class="n">PAD_INDEX</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">STATISTICS_NORECOMPUTE</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">IGNORE_DUP_KEY</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">ALLOW_ROW_LOCKS</span> <span class="o">=</span> <span class="n">ON</span><span class="p">,</span> <span class="n">ALLOW_PAGE_LOCKS</span> <span class="o">=</span> <span class="n">ON</span><span class="p">)</span> <span class="n">ON</span> <span class="p">[</span><span class="n">PRIMARY</span><span class="p">]</span>
 <span class="p">)</span> <span class="n">ON</span> <span class="p">[</span><span class="n">PRIMARY</span><span class="p">]</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">TickersStage</span><span class="p">]</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">DF_DimTickersCM_ETLKey</span><span class="p">]</span>  <span class="n">DEFAULT</span> <span class="p">(</span><span class="n">newid</span><span class="p">())</span> <span class="n">FOR</span> <span class="p">[</span><span class="n">ETLKey</span><span class="p">]</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">TickersStage</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="n">DF_DimTickersCM_ETLKey</span>  <span class="n">DEFAULT</span> <span class="p">(</span><span class="n">newid</span><span class="p">())</span> <span class="n">FOR</span> <span class="n">ETLKey</span>
 
 <span class="o">--</span><span class="n">Let</span><span class="s1">&#39;s create our warehouse table.</span>
 <span class="o">--</span><span class="n">In</span> <span class="n">the</span> <span class="n">real</span> <span class="n">world</span><span class="p">,</span> <span class="n">this</span> <span class="n">table</span> <span class="n">would</span> <span class="n">have</span> <span class="n">a</span> <span class="n">FK</span> <span class="n">constraint</span>
 <span class="o">--</span><span class="k">as</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">parent</span> <span class="n">to</span> <span class="n">a</span> <span class="n">fact</span> <span class="n">table</span><span class="o">.</span>
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">DimTickers</span><span class="p">](</span>
-<span class="p">[</span><span class="n">TickersCK</span><span class="p">]</span> <span class="p">[</span><span class="n">bigint</span><span class="p">]</span> <span class="n">IDENTITY</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CreatedBy</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CreatedOn</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UpdatedBy</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UpdatedOn</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">EffectiveFrom</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">EffectiveTo</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">IsMostRecentRecord</span><span class="p">]</span> <span class="p">[</span><span class="n">bit</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">RowHash</span><span class="p">]</span>  <span class="n">AS</span> <span class="p">(</span><span class="n">CONVERT</span><span class="p">([</span><span class="n">binary</span><span class="p">](</span><span class="mi">16</span><span class="p">),</span><span class="n">hashbytes</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,[</span><span class="n">CompanyName</span><span class="p">]),</span><span class="mi">0</span><span class="p">))</span> <span class="n">PERSISTED</span><span class="p">,</span>
- <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">PK_tickers</span><span class="p">]</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="n">CLUSTERED</span> 
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">DimTickers</span><span class="p">(</span>
+<span class="n">TickersCK</span> <span class="n">bigint</span> <span class="n">IDENTITY</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">Symbol</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CompanyName</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CreatedBy</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CreatedOn</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UpdatedBy</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UpdatedOn</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">SourceSystem</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">EffectiveFrom</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">EffectiveTo</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">IsMostRecentRecord</span> <span class="n">bit</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">RowHash</span>  <span class="n">AS</span> <span class="p">(</span><span class="n">CONVERT</span><span class="p">(</span><span class="n">binary</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="n">hashbytes</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span><span class="n">CompanyName</span><span class="p">),</span><span class="mi">0</span><span class="p">))</span> <span class="n">PERSISTED</span><span class="p">,</span>
+ <span class="n">CONSTRAINT</span> <span class="n">PK_tickers</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="n">CLUSTERED</span> 
 <span class="p">(</span>
-<span class="p">[</span><span class="n">TickersCK</span><span class="p">]</span> <span class="n">ASC</span>
+<span class="n">TickersCK</span> <span class="n">ASC</span>
 <span class="p">)</span><span class="n">WITH</span> <span class="p">(</span><span class="n">PAD_INDEX</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">STATISTICS_NORECOMPUTE</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">IGNORE_DUP_KEY</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">ALLOW_ROW_LOCKS</span> <span class="o">=</span> <span class="n">ON</span><span class="p">,</span> <span class="n">ALLOW_PAGE_LOCKS</span> <span class="o">=</span> <span class="n">ON</span><span class="p">)</span> <span class="n">ON</span> <span class="p">[</span><span class="n">PRIMARY</span><span class="p">]</span>
 <span class="p">)</span> <span class="n">ON</span> <span class="p">[</span><span class="n">PRIMARY</span><span class="p">]</span>
 
 
 <span class="o">--</span><span class="n">Let</span><span class="s1">&#39;s create our common model table</span>
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">DimTickersCM</span><span class="p">](</span>
-<span class="p">[</span><span class="n">TickersCK</span><span class="p">]</span> <span class="p">[</span><span class="n">bigint</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CreatedBy</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CreatedOn</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UpdatedBy</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UpdatedOn</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">EffectiveFrom</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">EffectiveTo</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">IsMostRecentRecord</span><span class="p">]</span> <span class="p">[</span><span class="n">bit</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">RowHash</span><span class="p">]</span>  <span class="n">AS</span> <span class="p">(</span><span class="n">CONVERT</span><span class="p">([</span><span class="n">binary</span><span class="p">](</span><span class="mi">16</span><span class="p">),</span><span class="n">hashbytes</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,[</span><span class="n">CompanyName</span><span class="p">]),</span><span class="mi">0</span><span class="p">))</span> <span class="n">PERSISTED</span><span class="p">,</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">DimTickersCM</span><span class="p">(</span>
+<span class="n">TickersCK</span> <span class="n">bigint</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">Symbol</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CompanyName</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CreatedBy</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CreatedOn</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UpdatedBy</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UpdatedOn</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">SourceSystem</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">EffectiveFrom</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">EffectiveTo</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">IsMostRecentRecord</span> <span class="n">bit</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">RowHash</span>  <span class="n">AS</span> <span class="p">(</span><span class="n">CONVERT</span><span class="p">(</span><span class="n">binary</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="n">hashbytes</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span><span class="n">CompanyName</span><span class="p">),</span><span class="mi">0</span><span class="p">))</span> <span class="n">PERSISTED</span><span class="p">,</span>
 <span class="p">)</span>
 
 
 <span class="o">--</span><span class="n">Lets</span> <span class="n">create</span> <span class="n">our</span> <span class="n">mirror</span> <span class="n">temp</span> <span class="n">table</span>
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="c1">#DimTickers(</span>
-<span class="p">[</span><span class="n">TickersCK</span><span class="p">]</span> <span class="p">[</span><span class="n">bigint</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CreatedBy</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">CreatedOn</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UpdatedBy</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UpdatedOn</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">EffectiveFrom</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">EffectiveTo</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">IsMostRecentRecord</span><span class="p">]</span> <span class="p">[</span><span class="n">bit</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">RowHash</span><span class="p">]</span>  <span class="n">AS</span> <span class="p">(</span><span class="n">CONVERT</span><span class="p">([</span><span class="n">binary</span><span class="p">](</span><span class="mi">16</span><span class="p">),</span><span class="n">hashbytes</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,[</span><span class="n">CompanyName</span><span class="p">]),</span><span class="mi">0</span><span class="p">))</span> <span class="n">PERSISTED</span>
+<span class="n">TickersCK</span> <span class="n">bigint</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">Symbol</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CompanyName</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CreatedBy</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CreatedOn</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UpdatedBy</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UpdatedOn</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">SourceSystem</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">EffectiveFrom</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">EffectiveTo</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">IsMostRecentRecord</span> <span class="n">bit</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">RowHash</span>  <span class="n">AS</span> <span class="p">(</span><span class="n">CONVERT</span><span class="p">(</span><span class="n">binary</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="n">hashbytes</span><span class="p">(</span><span class="s1">&#39;MD5&#39;</span><span class="p">,</span><span class="n">CompanyName</span><span class="p">),</span><span class="mi">0</span><span class="p">))</span> <span class="n">PERSISTED</span>
 <span class="p">)</span>
 
 
@@ -13275,7 +13275,7 @@ div#notebook {
 <span class="o">--</span><span class="n">Now</span> <span class="n">we</span> <span class="n">will</span> <span class="n">insert</span> <span class="n">our</span> <span class="n">initial</span> <span class="n">load</span><span class="o">.</span> 
 <span class="o">--</span><span class="n">Funny</span> <span class="n">enough</span><span class="p">,</span> <span class="n">I</span> <span class="n">actually</span> <span class="n">did</span> <span class="n">find</span> <span class="n">an</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">my</span> <span class="n">production</span> <span class="n">data</span><span class="o">.</span> 
 <span class="o">--</span><span class="n">We</span> <span class="n">will</span> <span class="n">use</span> <span class="n">that</span> <span class="k">as</span> <span class="n">an</span> <span class="n">example</span> <span class="n">of</span> <span class="n">something</span> <span class="n">messed</span> <span class="n">up</span><span class="o">.</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">TickersStage</span><span class="p">([</span><span class="n">Symbol</span><span class="p">],[</span><span class="n">CompanyName</span><span class="p">],[</span><span class="n">SourceSystem</span><span class="p">],[</span><span class="n">ErrorRecord</span><span class="p">],[</span><span class="n">Processed</span><span class="p">],[</span><span class="n">RunDate</span><span class="p">])</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">TickersStage</span><span class="p">(</span><span class="n">Symbol</span><span class="p">,</span><span class="n">CompanyName</span><span class="p">,</span><span class="n">SourceSystem</span><span class="p">,</span><span class="n">ErrorRecord</span><span class="p">,</span><span class="n">Processed</span><span class="p">,</span><span class="n">RunDate</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="s1">&#39;Apple Inc&#39;</span><span class="p">,</span><span class="s1">&#39;Yahoo&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">CURRENT_TIMESTAMP</span>
 <span class="n">UNION</span>
 <span class="n">SELECT</span> <span class="s1">&#39;UMBF&#39;</span><span class="p">,</span><span class="s1">&#39;Ump Financial Corp&#39;</span><span class="p">,</span><span class="s1">&#39;Yahoo&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">CURRENT_TIMESTAMP</span> <span class="o">--</span><span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">actual</span> <span class="n">error</span> <span class="n">I</span> <span class="n">pulled</span> <span class="kn">from</span> <span class="nn">prod</span><span class="err">!</span>
@@ -13288,16 +13288,16 @@ div#notebook {
 <span class="n">TRUNCATE</span> <span class="n">TABLE</span> <span class="n">DimTickersCM</span>
 
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">DimTickersCM</span><span class="p">(</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span>
 <span class="p">)</span>
 <span class="n">SELECT</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="n">AS</span> <span class="n">SourceSystemKey</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">Symbol</span> <span class="n">AS</span> <span class="n">SourceSystemKey</span>
 <span class="n">FROM</span> <span class="n">TickersStage</span>
 <span class="n">WHERE</span> <span class="n">Processed</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">AND</span> <span class="n">ErrorRecord</span> <span class="o">=</span> <span class="mi">0</span>
@@ -13307,20 +13307,20 @@ div#notebook {
 <span class="n">MERGE</span> <span class="n">DimTickers</span> <span class="n">AS</span> <span class="n">target</span>
 <span class="n">USING</span> <span class="p">(</span>
 <span class="n">SELECT</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="n">AS</span> <span class="n">SourceSystemKey</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">Symbol</span> <span class="n">AS</span> <span class="n">SourceSystemKey</span>
 <span class="n">FROM</span> <span class="n">DimTickersCM</span>
 <span class="p">)</span> <span class="n">AS</span> <span class="n">source</span>
-<span class="n">ON</span> <span class="n">target</span><span class="o">.</span><span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span>
+<span class="n">ON</span> <span class="n">target</span><span class="o">.</span><span class="n">SourceSystemKey</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">SourceSystemKey</span>
 
 <span class="n">WHEN</span> <span class="n">NOT</span> <span class="n">MATCHED</span> <span class="n">THEN</span>
 <span class="n">INSERT</span> <span class="p">(</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">],</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span><span class="p">,</span>
 <span class="n">EffectiveFrom</span><span class="p">,</span>
 <span class="n">EffectiveTo</span><span class="p">,</span>
 <span class="n">IsMostRecentRecord</span><span class="p">,</span>
@@ -13328,10 +13328,10 @@ div#notebook {
 <span class="n">CreatedOn</span>
 <span class="p">)</span>
 <span class="n">VALUES</span> <span class="p">(</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">],</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span><span class="p">,</span>
 <span class="nd">@LowDate</span><span class="p">,</span>
 <span class="nd">@HighDate</span><span class="p">,</span>
 <span class="mi">1</span><span class="p">,</span>
@@ -13347,23 +13347,23 @@ div#notebook {
 <span class="o">--</span><span class="n">embarrassing</span> <span class="n">data</span> <span class="n">entry</span> <span class="n">error</span> <span class="k">for</span> <span class="n">UMB</span><span class="err">!</span>
 <span class="n">TRUNCATE</span> <span class="n">TABLE</span> <span class="n">TickersStage</span>
 
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">TickersStage</span><span class="p">([</span><span class="n">Symbol</span><span class="p">],[</span><span class="n">CompanyName</span><span class="p">],[</span><span class="n">SourceSystem</span><span class="p">],[</span><span class="n">ErrorRecord</span><span class="p">],[</span><span class="n">Processed</span><span class="p">],[</span><span class="n">RunDate</span><span class="p">])</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">TickersStage</span><span class="p">(</span><span class="n">Symbol</span><span class="p">,</span><span class="n">CompanyName</span><span class="p">,</span><span class="n">SourceSystem</span><span class="p">,</span><span class="n">ErrorRecord</span><span class="p">,</span><span class="n">Processed</span><span class="p">,</span><span class="n">RunDate</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="s1">&#39;UMBF&#39;</span><span class="p">,</span><span class="s1">&#39;UMB Financial Corp&#39;</span><span class="p">,</span><span class="s1">&#39;Yahoo&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">CURRENT_TIMESTAMP</span> <span class="o">--</span><span class="n">Let</span><span class="s1">&#39;s fix the company name so it&#39;</span><span class="n">s</span> <span class="n">correct</span>
 
 <span class="o">--</span><span class="n">Now</span> <span class="n">to</span> <span class="n">fix</span> <span class="n">things</span><span class="o">.</span>
 <span class="n">TRUNCATE</span> <span class="n">TABLE</span> <span class="n">DimTickersCM</span>
 
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">DimTickersCM</span><span class="p">(</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span>
 <span class="p">)</span>
 <span class="n">SELECT</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="n">AS</span> <span class="n">SourceSystemKey</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">Symbol</span> <span class="n">AS</span> <span class="n">SourceSystemKey</span>
 <span class="n">FROM</span> <span class="n">TickersStage</span>
 <span class="n">WHERE</span> <span class="n">Processed</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">AND</span> <span class="n">ErrorRecord</span> <span class="o">=</span> <span class="mi">0</span>
@@ -13379,10 +13379,10 @@ div#notebook {
 <span class="o">--</span><span class="n">that</span> <span class="n">has</span> <span class="n">no</span> <span class="n">foreign</span> <span class="n">key</span> <span class="n">constraint</span>
 <span class="o">--</span><span class="n">which</span> <span class="n">we</span><span class="s1">&#39;ll later flush to prod.</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="c1">#DimTickers(</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">],</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span><span class="p">,</span>
 <span class="n">EffectiveFrom</span><span class="p">,</span>
 <span class="n">EffectiveTo</span><span class="p">,</span>
 <span class="n">IsMostRecentRecord</span><span class="p">,</span>
@@ -13390,10 +13390,10 @@ div#notebook {
 <span class="n">CreatedOn</span>
 <span class="p">)</span>
 <span class="n">SELECT</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">],</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span><span class="p">,</span>
 <span class="n">EffectiveFrom</span><span class="p">,</span>
 <span class="n">EffectiveTo</span><span class="p">,</span>
 <span class="n">IsMostRecentRecord</span><span class="p">,</span>
@@ -13403,30 +13403,30 @@ div#notebook {
 <span class="n">MERGE</span> <span class="n">DimTickers</span> <span class="n">AS</span> <span class="n">target</span>
 <span class="n">USING</span> <span class="p">(</span>
 <span class="n">SELECT</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="n">AS</span> <span class="n">SourceSystemKey</span><span class="p">,</span> 
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">Symbol</span> <span class="n">AS</span> <span class="n">SourceSystemKey</span><span class="p">,</span> 
 <span class="n">RowHash</span>
 <span class="n">FROM</span> <span class="n">DimTickersCM</span>
 <span class="p">)</span> <span class="n">AS</span> <span class="n">source</span>
-<span class="n">ON</span> <span class="n">target</span><span class="o">.</span><span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span>  <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">]</span> 
+<span class="n">ON</span> <span class="n">target</span><span class="o">.</span><span class="n">SourceSystemKey</span>  <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">SourceSystemKey</span> 
 <span class="n">WHEN</span> <span class="n">MATCHED</span>
 <span class="n">AND</span> <span class="n">source</span><span class="o">.</span><span class="n">RowHash</span> <span class="o">&lt;&gt;</span> <span class="n">target</span><span class="o">.</span><span class="n">RowHash</span> <span class="o">--</span><span class="n">Look</span> <span class="k">for</span> <span class="n">changed</span> <span class="n">data</span>
 <span class="n">AND</span> <span class="n">target</span><span class="o">.</span><span class="n">IsMostRecentRecord</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">THEN</span>
 <span class="n">UPDATE</span>
 <span class="n">SET</span>
-<span class="p">[</span><span class="n">UpdatedBy</span><span class="p">]</span> <span class="o">=</span> <span class="n">SYSTEM_USER</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UpdatedOn</span><span class="p">]</span> <span class="o">=</span> <span class="n">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="n">UpdatedBy</span> <span class="o">=</span> <span class="n">SYSTEM_USER</span><span class="p">,</span>
+<span class="n">UpdatedOn</span> <span class="o">=</span> <span class="n">CURRENT_TIMESTAMP</span><span class="p">,</span>
 <span class="n">EffectiveTo</span> <span class="o">=</span> <span class="n">DATEADD</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">CURRENT_TIMESTAMP</span><span class="p">),</span> <span class="o">--</span> <span class="n">Make</span> <span class="n">sure</span> <span class="n">things</span> <span class="n">don</span><span class="s1">&#39;t overlap. There is some controversy doing it this way.</span>
 <span class="n">IsMostRecentRecord</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">OUTPUT</span> <span class="o">--</span><span class="n">Output</span> <span class="n">columns</span> <span class="n">need</span> <span class="n">to</span> <span class="n">match</span> <span class="n">your</span> <span class="n">select</span> <span class="n">statement</span>
 <span class="err">$</span><span class="n">action</span> <span class="n">Action_Out</span><span class="p">,</span>
-<span class="n">source</span><span class="o">.</span><span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="n">source</span><span class="o">.</span><span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="n">source</span><span class="o">.</span><span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="n">source</span><span class="o">.</span><span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">],</span>
+<span class="n">source</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span>
+<span class="n">source</span><span class="o">.</span><span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">source</span><span class="o">.</span><span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">source</span><span class="o">.</span><span class="n">SourceSystemKey</span><span class="p">,</span>
 <span class="n">CURRENT_TIMESTAMP</span> <span class="n">AS</span> <span class="n">EffectiveFrom</span><span class="p">,</span>
 <span class="nd">@HighDate</span> <span class="n">AS</span> <span class="n">EffectiveTo</span><span class="p">,</span>
 <span class="mi">1</span> <span class="n">AS</span> <span class="n">IsMostRecentRecord</span><span class="p">,</span>
@@ -13438,10 +13438,10 @@ div#notebook {
 
 <span class="o">--</span><span class="n">Now</span> <span class="n">we</span> <span class="n">flush</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">temp</span> <span class="n">table</span> <span class="n">into</span> <span class="n">prod</span><span class="o">.</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">DimTickers</span><span class="p">(</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">],</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span><span class="p">,</span>
 <span class="n">EffectiveFrom</span><span class="p">,</span>
 <span class="n">EffectiveTo</span><span class="p">,</span>
 <span class="n">IsMostRecentRecord</span><span class="p">,</span>
@@ -13449,10 +13449,10 @@ div#notebook {
 <span class="n">CreatedOn</span>
 <span class="p">)</span>
 <span class="n">SELECT</span>
-<span class="p">[</span><span class="n">Symbol</span><span class="p">],</span>
-<span class="p">[</span><span class="n">CompanyName</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">],</span>
-<span class="p">[</span><span class="n">SourceSystemKey</span><span class="p">],</span>
+<span class="n">Symbol</span><span class="p">,</span>
+<span class="n">CompanyName</span><span class="p">,</span>
+<span class="n">SourceSystem</span><span class="p">,</span>
+<span class="n">SourceSystemKey</span><span class="p">,</span>
 <span class="n">EffectiveFrom</span><span class="p">,</span>
 <span class="n">EffectiveTo</span><span class="p">,</span>
 <span class="n">IsMostRecentRecord</span><span class="p">,</span>

@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/cant-join-on-null.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/hashbytes-for-string-comparison.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,14 +13125,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>A Deep Dive On How The Where Clause Functions</h1>
+<h1>Lesson 62. A Deep Dive On How The Where Clause Functions</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Below is the transcript of a fascinating discussion I had on how the WHERE clause actually functions. The following took place on 6May13.</p>
+<p>Below is the transcript of a fascinating discussion I had on how the WHERE clause actually functions.</p>
 
 </div>
 </div>
@@ -13140,7 +13140,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bob Wakefield</strong></p>
+<p><strong>Bob</strong></p>
 <p>I’ve been out in industry for over 10 years now doing DB work most of that time. Lately I’ve been doing some work that is starting to challenge my long held assumptions about the internal workings of SQL Server, specifically what exactly is happening when I do joins and where clauses.</p>
 <p>I was explaining to someone that when doing a join putting in a where clause limits the amount of records that are available to do the join on thereby making the query faster. My thought was if a table has 100MM records but only 50MM of those meet the WHERE criteria then the JOIN clause wouldn’t try matching the 50MM records that don’t meet the WHERE clause.</p>
 <p>I did some work that afternoon and the empirical results didn’t match the expected outcome of a query I had written in terms of execution time. I don’t think my understanding of what goes on during a JOIN is correct. Can someone educate me?</p>
@@ -13152,14 +13152,22 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Person 1</strong></p>
-<p>There is a definition of the order of the process of JOINs and the WHERE clause.  Then there is what SQL actually does.  These may be different.</p>
-<p>But the definition is the FROM clause including any JOINs is done first.  In general, if you have multiple JOINs, they are done left to right in the order of the ON clauses.  So if you have</p>
-<p>FROM A LEFT JOIN B INNER JOIN C ON B.ID = C.ID ON A.ID + B.ID</p>
-<p>then first B is joined to C and then that result is joined to A.  Of course, in most cases people write the ON clause immediately after the JOIN so you will see something like</p>
-<p>FROM A LEFT JOIN B ON A.ID = B.ID LEFT JOIN C ON A.ID = C.ID</p>
+<p>There is a definition of the order of the process of JOINs and the WHERE clause. Then there is what SQL actually does. These may be different.</p>
+<p>But the definition is the FROM clause including any JOINs is done first. In general, if you have multiple JOINs, they are done left to right in the order of the ON clauses. So, if you have</p>
+<p>FROM A<br>
+LEFT JOIN B<br>
+INNER JOIN C<br>
+ON B.ID = C.ID<br>
+ON A.ID + B.ID<br></p>
+<p>then first B is joined to C and then that result is joined to A. Of course, in most cases people write the ON clause immediately after the JOIN, so you will see something like</p>
+<p>FROM A<br>
+LEFT JOIN B<br>
+ON A.ID = B.ID<br>
+LEFT JOIN C<br>
+ON A.ID = C.ID<br></p>
 <p>And, the rules of which join is done first can become complex if you are mixing both OUTER JOINs and CROSS JOINs.</p>
 <p>But the WHERE is done after all of the JOINs have been processed.</p>
-<p>But that's only the definition of what is theoretically done.  When the query is actuality done, SQL can (and does) process the query in any manner it thinks is most efficient as long as the result is the same as if it had followed the above definition.  In particular, if your query has only INNER JOINs and CROSS JOINs and a WHERE clause, then the order things are done will make no difference in the result.  So in that case, SQL will do the joins and where in any order it thinks is fastest.  So that could mean doing the joins first, or doing the where first, or doing part of the where first, followed by some of the joins followed by the rest of the where clause followed by the rest of the joins or whatever SQL thinks will be fastest given the available indexes and statistics.</p>
+<p>But that's only the definition of what is theoretically done. When the query is actuality done, SQL can (and does) process the query in any manner it thinks is most efficient as long as the result is the same as if it had followed the above definition. In particular, if your query has only INNER JOINs and CROSS JOINs and a WHERE clause, then the order things are done will make no difference in the result. So in that case, SQL will do the joins and where in any order it thinks is fastest. So that could mean doing the joins first, or doing the where first, or doing part of the where first, followed by some of the joins followed by the rest of the where clause followed by the rest of the joins or whatever SQL thinks will be fastest given the available indexes and statistics.</p>
 
 </div>
 </div>
@@ -13168,8 +13176,8 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Person 2</strong></p>
-<p>The important concept here is that in SQL you specify the result you want, not the algorithm to create that result.  It's helpful to think about the FROM clause executing first, followed by the WHERE clause in order to reason about the results and the correctness of your query.  But that's not how SQL Server actually runs the query.</p>
-<p>The Query Optimizer looks as the query, the join criteria and the where clauses and considers several different algorithms (query plans) to get the specified result.  It assigns a "cost" to each potential plan and then executes whichever plan has the lowest cost.</p>
+<p>The important concept here is that in SQL you specify the result you want, not the algorithm to create that result. It's helpful to think about the FROM clause executing first, followed by the WHERE clause in order to reason about the results and the correctness of your query. But that's not how SQL Server actually runs the query.</p>
+<p>The Query Optimizer looks as the query, the join criteria and the where clauses and considers several different algorithms (query plans) to get the specified result. It assigns a "cost" to each potential plan and then executes whichever plan has the lowest cost.</p>
 <p>So here it might start with a where clause, or it might start by joining tables and apply the where clause criteria later.</p>
 
 </div>
@@ -13179,24 +13187,38 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Person 3</strong></p>
-<p>Here is how a SELECT works in SQL ... at least in theory.  Real products will optimize things, but the code has to produce the same results.</p>
-<p>a) Effectively materialize the CTEs in the optional WITH clause. CTE's come into existence in the order they are declared so only backward references are alllowed. A CTE can be recursive. Think of them as VIEWs that exist only in the scope of the query. In practice, if they are used once then they are implemented as an in-line macro.</p>
-<p>b) Start in the FROM clause and build a working table from all of the joins, unions, intersections, and whatever other table constructors are there.  The <table expression> AS <correlation name> option allows you give a name to this working table which you then have to use for the rest of the containing query.  Ther are UNIONB, INTERSECT and EXCEPT set construtors, LATERAL tables, table-valued funcitosn and all kinds of things happening in here.</p>
-<p>c) Go to the WHERE clause and remove rows that do not pass criteria; that is, that do not test to TRUE (i.e. reject UNKNOWN and FALSE).  The WHERE clause is applied to the working set in the FROM clause.</p>
-<p>d) Go to the optional GROUP BY clause, partiton the original table into groups and reduce each grouping to a <em>single</em> row, replacing the original working table with the new grouped table. The rows of a grouped table must be only group characteristics: (1) a grouping column (2) a statistic about the group (i.e. aggregate functions) (3) a function or constant(4) an expression made up of only those three items.  The original table no longer exists and you cannot reference anything in it (this was an error in early Sybase products).</p>
-<p>e) Go to the optional HAVING clause and apply it against the grouped working table; if there was no GROUP BY clause, treat the entire table as one group.</p>
-<p>f) Go to the SELECT clause and construct the expressions in the list. This means that the scalar subqueries, function calls and expressions in the SELECT are done after all the other clauses are done.  The AS operator can also give names to expressions in the SELECT list.  These new names come into existence all at once, but after the WHERE clause, GROUP BY clause and HAVING clause have been executed; you cannot use them in the SELECT list or the WHERE clause for that reason.</p>
-<p>If there is a SELECT DISTINCT, then redundant duplicate rows are removed.  For purposes of defining a duplicate row, NULLs are treated as matching (just like in the GROUP BY).</p>
-<p>g) Nested query expressions follow the usual scoping rules you would expect from a block structured language like C, Pascal, Algol, etc.  Namely, the innermost queries can reference columns and tables in the queries in which they are contained.</p>
-<p>h) The ORDER BY clause is part of a cursor, not a query. The result set is passed to the cursor, which can only see the names in the SELECT clause list, and the sorting is done there.  The ORDER BY clause cannot have expression in it, or references to other columns because the result set has been converted into a sequential file structure and that is what is being sorted.</p>
-<p>As you can see, things happen "all at once" in SQL, not "from left to right" as they would in a sequential file/procedural language model. In those languages, these two statements produce different results:
-  READ (a, b, c) FROM File_X;
-  READ (c, a, b) FROM File_X;</p>
-<p>while these two statements return the same data:</p>
-<p>SELECT a, b, c FROM Table_X;
-SELECT c, a, b FROM Table_X;</p>
+<p>Here is how a SELECT works in SQL ... at least in theory. Real products will optimize things, but the code has to produce the same results.</p>
+<ol>
+<li>Effectively materialize the CTEs in the optional WITH clause. CTEs come into existence in the order they are declared so only backward references are allowed. A CTE can be recursive. Think of them as VIEWs that exist only in the scope of the query. In practice, if they are used once, then they are implemented as an in-line macro.</li><br>
+<li>Start in the FROM clause and build a working table from all of the joins, unions, intersections, and whatever other table constructors are there. The AS option allows you give a name to this working table which you then have to use for the rest of the containing query. There are UNION, INTERSECT and EXCEPT set constructors, LATERAL tables, table-valued functions and all kinds of things happening in here.</li><br>
+<li>Go to the WHERE clause and remove rows that do not pass criteria; that is, that do not test to TRUE (i.e. reject UNKNOWN and FALSE). The WHERE clause is applied to the working set in the FROM clause.</li><br>
+<li>
+Go to the optional GROUP BY clause, partition the original table into groups and reduce each grouping to a single row, replacing the original working table with the new grouped table. The rows of a grouped table must be only group characteristics:<br>
+<ul>
+<li>a grouping column</li><br>
+<li>a statistic about the group (i.e. aggregate functions)</li><br>
+<li>a function or constant</li><br>
+<li>an expression made up of only those three items</li><br>
+<li>The original table no longer exists and you cannot reference anything in it (this was an error in early Sybase products)</li><br>
+</ul>
+</li><br>
+<li>Go to the optional HAVING clause and apply it against the grouped working table; if there was no GROUP BY clause, treat the entire table as one group.</li><br>
+<li>Go to the SELECT clause and construct the expressions in the list. This means that the scalar subqueries, function calls and expressions in the SELECT are done after all the other clauses are done. The AS operator can also give names to expressions in the SELECT list. These new names come into existence all at once, but after the WHERE clause, GROUP BY clause and HAVING clause have been executed; you cannot use them in the SELECT list or the WHERE clause for that reason. If there is a SELECT DISTINCT, then redundant duplicate rows are removed. For purposes of defining a duplicate row, NULLs are treated as matching (just like in the GROUP BY).</li><br>
+<li>Nested query expressions follow the usual scoping rules you would expect from a block structured language like C, Pascal, Algol, etc. Namely, the innermost queries can reference columns and tables in the queries in which they are contained.</li><br>
+<li>The ORDER BY clause is part of a cursor, not a query. The result set is passed to the cursor, which can only see the names in the SELECT clause list, and the sorting is done there. The ORDER BY clause cannot have expression in it or references to other columns because the result set has been converted into a sequential file structure and that is what is being sorted.</li><br>
+</ol><p>As you can see, things happen "all at once" in SQL, not "from left to right" as they would in a sequential file/procedural language model. In those languages, these two statements produce different results:</p>
+<p>READ (a, b, c)<br>
+FROM File_X;</p>
+<p>READ (c, a, b)<br>
+FROM File_X;</p>
+<p>While these two statements return the same data:</p>
+<p>SELECT a, b, c<br>
+FROM Table_X;</p>
+<p>SELECT c, a, b<br>
+FROM Table_X;</p>
 <p>Think about what a confused mess this statement is in the SQL model.</p>
-<p>SELECT f(c2) AS c1, f(c1) AS c2 FROM Foobar;</p>
+<p>SELECT f(c2) AS c1, f(c1) AS c2<br>
+FROM Foobar;</p>
 <p>That is why such nonsense is illegal syntax.</p>
 
 </div>
@@ -13205,10 +13227,10 @@ SELECT c, a, b FROM Table_X;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bob Wakefield</strong></p>
+<p><strong>Bob</strong></p>
 <p>I have a ton of books on T-SQL but none of them go into the real details of how SQL Server does it's thing. If I take all of your comments this is my take away. Let me know if you agree.</p>
 <ol>
-<li>SQL Server DOES work like I expect. Using a where clause WILL limit the amount of records it attempts to join on. (Based on comment from Tom Cooper in another thread.)</li><br>
+<li>SQL Server DOES work like I expect. Using a where clause WILL limit the amount of records it attempts to join on. (Based on comment from Person 1 in another thread.)</li><br>
 
 <li>It does this by optimization not because of anything that I write. It will take a look at the query and then on it's own come up with the most effective way to execute.</li>
 </ol>
@@ -13219,11 +13241,10 @@ SELECT c, a, b FROM Table_X;</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Person 1</strong></p>
-<p>With regard to:</p>
 <ol>
 <li>I would say it CAN work like you expect and a where clause CAN limit the number of rows it attempts to join.  But SQL also might do the join first and only then apply the where clause.  Whatever way SQL thinks is more efficient as long as that way generates the correct result.</li><br>
 
-<li>is correct.  As David Brown noted, when you write a SQL statement, you should think of it as you are telling SQL the result you want and then SQL generates that result in the manner it believes to be most efficient.</li>
+<li>As previously noted, when you write a SQL statement, you should think of it as you are telling SQL the result you want and then SQL generates that result in the manner it believes to be most efficient.</li>
 </ol>
 </div>
 </div>

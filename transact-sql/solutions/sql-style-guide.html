@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/hashing-multiple-columns.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/data-warehouse-standup.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Why People That Indent Code Drive Me Nuts</h1><h1>(AKA A Recommended SQL Style Guide)</h1>
+<h1>Lesson 65. Why People That Indent Code Drive Me Nuts</h1><h1>(AKA A Recommended SQL Style Guide)</h1>
 </div>
 </div>
 </div>
@@ -13166,7 +13166,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">demo</span>
 
 <span class="n">DECLARE</span> <span class="nd">@genders</span> <span class="n">TABLE</span><span class="p">(</span><span class="n">gender_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">gender</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="n">DECLARE</span> <span class="nd">@toys</span> <span class="n">TABLE</span><span class="p">(</span><span class="n">toy_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">gender_id</span> <span class="n">INT</span><span class="p">,</span> <span class="n">toy_name</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
@@ -13212,7 +13212,7 @@ div#notebook {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
 <span class="n">SELECT</span> <span class="n">PurchaseOrderID</span><span class="p">,</span> <span class="n">SUM</span><span class="p">(</span><span class="n">LineTotal</span><span class="p">)</span> <span class="n">AS</span> <span class="n">LineTotalSum</span>
-<span class="n">FROM</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetail</span><span class="p">]</span>
+<span class="n">FROM</span> <span class="n">Purchasing</span><span class="o">.</span><span class="n">PurchaseOrderDetail</span>
 <span class="n">WHERE</span> <span class="n">OrderQty</span> <span class="o">&gt;</span> <span class="mi">100</span>
 <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">PurchaseOrderID</span>
 <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">PurchaseOrderID</span>
@@ -13239,9 +13239,9 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
-<span class="n">SELECT</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderID</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetailID</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">DueDate</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">OrderQty</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ProductID</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">UnitPrice</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">LineTotal</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ReceivedQty</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">RejectedQty</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">StockedQty</span><span class="p">],</span> <span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ModifiedDate</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderID</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">RevisionNumber</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">Status</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">EmployeeID</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">VendorID</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ShipMethodID</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">OrderDate</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ShipDate</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">SubTotal</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">TaxAmt</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">Freight</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">TotalDue</span><span class="p">],</span> <span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ModifiedDate</span><span class="p">]</span>
-<span class="n">FROM</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderHeader</span><span class="p">]</span> <span class="n">poh</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetail</span><span class="p">]</span> <span class="n">pod</span>
+<span class="n">SELECT</span> <span class="n">pod</span><span class="o">.</span><span class="n">PurchaseOrderID</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">PurchaseOrderDetailID</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">DueDate</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">OrderQty</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">ProductID</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">UnitPrice</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">LineTotal</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">ReceivedQty</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">RejectedQty</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">StockedQty</span><span class="p">,</span> <span class="n">pod</span><span class="o">.</span><span class="n">ModifiedDate</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">PurchaseOrderID</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">RevisionNumber</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">Status</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">EmployeeID</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">VendorID</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">ShipMethodID</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">ShipDate</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">SubTotal</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">TaxAmt</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">Freight</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">TotalDue</span><span class="p">,</span> <span class="n">poh</span><span class="o">.</span><span class="n">ModifiedDate</span>
+<span class="n">FROM</span> <span class="n">Purchasing</span><span class="o">.</span><span class="n">PurchaseOrderHeader</span> <span class="n">poh</span>
+<span class="n">JOIN</span> <span class="n">Purchasing</span><span class="o">.</span><span class="n">PurchaseOrderDetail</span> <span class="n">pod</span>
 <span class="n">ON</span> <span class="n">poh</span><span class="o">.</span><span class="n">PurchaseOrderID</span> <span class="o">=</span> <span class="n">pod</span><span class="o">.</span><span class="n">PurchaseOrderID</span>
 </pre></div>
 
@@ -13266,32 +13266,32 @@ div#notebook {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
 <span class="n">SELECT</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderID</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetailID</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">DueDate</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">OrderQty</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ProductID</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">UnitPrice</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">LineTotal</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ReceivedQty</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">RejectedQty</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">StockedQty</span><span class="p">],</span> 
-<span class="n">pod</span><span class="o">.</span><span class="p">[</span><span class="n">ModifiedDate</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderID</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">RevisionNumber</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">Status</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">EmployeeID</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">VendorID</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ShipMethodID</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">OrderDate</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ShipDate</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">SubTotal</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">TaxAmt</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">Freight</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">TotalDue</span><span class="p">],</span> 
-<span class="n">poh</span><span class="o">.</span><span class="p">[</span><span class="n">ModifiedDate</span><span class="p">]</span>
-<span class="n">FROM</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderHeader</span><span class="p">]</span> <span class="n">poh</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Purchasing</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">PurchaseOrderDetail</span><span class="p">]</span> <span class="n">pod</span>
+<span class="n">pod</span><span class="o">.</span><span class="n">PurchaseOrderID</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">PurchaseOrderDetailID</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">DueDate</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">OrderQty</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">ProductID</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">UnitPrice</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">LineTotal</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">ReceivedQty</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">RejectedQty</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">StockedQty</span><span class="p">,</span> 
+<span class="n">pod</span><span class="o">.</span><span class="n">ModifiedDate</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">PurchaseOrderID</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">RevisionNumber</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">Status</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">EmployeeID</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">VendorID</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">ShipMethodID</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">ShipDate</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">SubTotal</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">TaxAmt</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">Freight</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">TotalDue</span><span class="p">,</span> 
+<span class="n">poh</span><span class="o">.</span><span class="n">ModifiedDate</span>
+<span class="n">FROM</span> <span class="n">Purchasing</span><span class="o">.</span><span class="n">PurchaseOrderHeader</span> <span class="n">poh</span>
+<span class="n">JOIN</span> <span class="n">Purchasing</span><span class="o">.</span><span class="n">PurchaseOrderDetail</span> <span class="n">pod</span>
 <span class="n">ON</span> <span class="n">poh</span><span class="o">.</span><span class="n">PurchaseOrderID</span> <span class="o">=</span> <span class="n">pod</span><span class="o">.</span><span class="n">PurchaseOrderID</span>
 </pre></div>
 
@@ -13315,10 +13315,10 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
-<span class="n">DROP</span> <span class="n">PROCEDURE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="p">[</span><span class="n">dbo</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">usp_NoCountExample</span><span class="p">]</span>
+<span class="n">DROP</span> <span class="n">PROCEDURE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">dbo</span><span class="o">.</span><span class="n">usp_NoCountExample</span>
 <span class="n">GO</span>
 
-<span class="n">CREATE</span> <span class="n">PROCEDURE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">usp_NoCountExample</span><span class="p">]</span>
+<span class="n">CREATE</span> <span class="n">PROCEDURE</span> <span class="n">dbo</span><span class="o">.</span><span class="n">usp_NoCountExample</span>
 
 <span class="n">AS</span>
 <span class="n">BEGIN</span>
@@ -13326,10 +13326,12 @@ div#notebook {
 <span class="n">SET</span> <span class="n">NOCOUNT</span> <span class="n">ON</span><span class="p">;</span>
 
 <span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderHeader</span><span class="p">]</span> <span class="n">soh</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderDetail</span><span class="p">]</span> <span class="n">sod</span>
+<span class="n">FROM</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
 <span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderID</span>
 <span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">SET</span> <span class="n">NOCOUNT</span> <span class="n">OFF</span><span class="p">;</span>
 
 <span class="n">END</span><span class="p">;</span>
 <span class="n">GO</span>

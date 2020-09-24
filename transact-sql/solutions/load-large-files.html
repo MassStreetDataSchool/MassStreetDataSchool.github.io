@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/troubleshoot-queries.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/only-use-for-cursors.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Loading Large CSVs Into Data Warehouse Staging Tables</h1>
+<h1>Lesson 57. Loading Large CSVs Into Data Warehouse Staging Tables</h1>
 </div>
 </div>
 </div>
@@ -13173,8 +13173,10 @@ div#notebook {
 
 <span class="n">CREATE</span> <span class="n">SCHEMA</span> <span class="n">temp</span>
 
+
+
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span><span class="p">(</span>
-<span class="p">[</span><span class="n">ETLKey</span><span class="p">]</span> <span class="p">[</span><span class="n">uniqueidentifier</span><span class="p">]</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">ETLKey</span> <span class="n">uniqueidentifier</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
 <span class="n">year</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
 <span class="n">month</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
 <span class="n">day</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
@@ -13194,15 +13196,15 @@ div#notebook {
 <span class="n">hour</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
 <span class="n">minute</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
 <span class="n">time_hour</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UniqueDims</span><span class="p">]</span> <span class="p">[</span><span class="n">varbinary</span><span class="p">](</span><span class="mi">35</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">UniqueRows</span><span class="p">]</span> <span class="p">[</span><span class="n">varbinary</span><span class="p">](</span><span class="mi">16</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">SourceSystem</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">Cleansed</span><span class="p">]</span> <span class="p">[</span><span class="n">bit</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">ErrorRecord</span><span class="p">]</span> <span class="p">[</span><span class="n">bit</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">ErrorReason</span><span class="p">]</span> <span class="p">[</span><span class="n">nvarchar</span><span class="p">](</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">Processed</span><span class="p">]</span> <span class="p">[</span><span class="n">bit</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="p">[</span><span class="n">RunDate</span><span class="p">]</span> <span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="n">NULL</span><span class="p">,</span>
-<span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">PK_FlightsStaging</span><span class="p">]</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="n">CLUSTERED</span> 
+<span class="n">UniqueDims</span> <span class="n">varbinary</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">UniqueRows</span> <span class="n">varbinary</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">SourceSystem</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">Cleansed</span> <span class="n">bit</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">ErrorRecord</span> <span class="n">bit</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">ErrorReason</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">Processed</span> <span class="n">bit</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">RunDate</span> <span class="n">datetime</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">CONSTRAINT</span> <span class="n">PK_FlightsStaging</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="n">CLUSTERED</span> 
 <span class="p">(</span>
        <span class="p">[</span><span class="n">ETLKey</span><span class="p">]</span> <span class="n">ASC</span>
 <span class="p">)</span><span class="n">WITH</span> <span class="p">(</span><span class="n">PAD_INDEX</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">STATISTICS_NORECOMPUTE</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">IGNORE_DUP_KEY</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">ALLOW_ROW_LOCKS</span> <span class="o">=</span> <span class="n">ON</span><span class="p">,</span> <span class="n">ALLOW_PAGE_LOCKS</span> <span class="o">=</span> <span class="n">ON</span><span class="p">)</span> <span class="n">ON</span> <span class="p">[</span><span class="n">PRIMARY</span><span class="p">]</span>
@@ -13210,22 +13212,22 @@ div#notebook {
 
 <span class="n">GO</span>
 
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">DF_FlightsStaging_ETLKey</span><span class="p">]</span>  <span class="n">DEFAULT</span> <span class="p">(</span><span class="n">newid</span><span class="p">())</span> <span class="n">FOR</span> <span class="p">[</span><span class="n">ETLKey</span><span class="p">]</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="n">DF_FlightsStaging_ETLKey</span>  <span class="n">DEFAULT</span> <span class="p">(</span><span class="n">newid</span><span class="p">())</span> <span class="n">FOR</span> <span class="n">ETLKey</span>
 <span class="n">GO</span>
 
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">DF_FlightsStaging_SourceSystem</span><span class="p">]</span>  <span class="n">DEFAULT</span> <span class="p">(</span><span class="n">N</span><span class="s1">&#39;Flights System&#39;</span><span class="p">)</span> <span class="n">FOR</span> <span class="p">[</span><span class="n">SourceSystem</span><span class="p">]</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="n">DF_FlightsStaging_SourceSystem</span>  <span class="n">DEFAULT</span> <span class="p">(</span><span class="n">N</span><span class="s1">&#39;Flights System&#39;</span><span class="p">)</span> <span class="n">FOR</span> <span class="n">SourceSystem</span>
 <span class="n">GO</span>
 
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">DF_FlightsStaging_Cleansed</span><span class="p">]</span>  <span class="n">DEFAULT</span> <span class="p">((</span><span class="mi">0</span><span class="p">))</span> <span class="n">FOR</span> <span class="p">[</span><span class="n">Cleansed</span><span class="p">]</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="n">DF_FlightsStaging_Cleansed</span>  <span class="n">DEFAULT</span> <span class="p">((</span><span class="mi">0</span><span class="p">))</span> <span class="n">FOR</span> <span class="n">Cleansed</span>
 <span class="n">GO</span>
 
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">DF_FlightsStaging_ErrorRecord</span><span class="p">]</span>  <span class="n">DEFAULT</span> <span class="p">((</span><span class="mi">0</span><span class="p">))</span> <span class="n">FOR</span> <span class="p">[</span><span class="n">ErrorRecord</span><span class="p">]</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="n">DF_FlightsStaging_ErrorRecord</span>  <span class="n">DEFAULT</span> <span class="p">((</span><span class="mi">0</span><span class="p">))</span> <span class="n">FOR</span> <span class="n">ErrorRecord</span>
 <span class="n">GO</span>
 
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">DF_FlightsStaging_Processed</span><span class="p">]</span>  <span class="n">DEFAULT</span> <span class="p">((</span><span class="mi">0</span><span class="p">))</span> <span class="n">FOR</span> <span class="p">[</span><span class="n">Processed</span><span class="p">]</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="n">DF_FlightsStaging_Processed</span>  <span class="n">DEFAULT</span> <span class="p">((</span><span class="mi">0</span><span class="p">))</span> <span class="n">FOR</span> <span class="n">Processed</span>
 <span class="n">GO</span>
 
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">DF_FlightsStaging_RunDate</span><span class="p">]</span>  <span class="n">DEFAULT</span> <span class="p">(</span><span class="n">getdate</span><span class="p">())</span> <span class="n">FOR</span> <span class="p">[</span><span class="n">RunDate</span><span class="p">]</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="n">DF_FlightsStaging_RunDate</span>  <span class="n">DEFAULT</span> <span class="p">(</span><span class="n">getdate</span><span class="p">())</span> <span class="n">FOR</span> <span class="n">RunDate</span>
 <span class="n">GO</span>
 
 <span class="n">CREATE</span> <span class="n">VIEW</span> <span class="n">FlightsStaging</span>
@@ -13253,7 +13255,7 @@ div#notebook {
 <span class="n">FROM</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span>
 <span class="n">GO</span>
 <span class="o">--</span><span class="n">Begin</span> <span class="n">Load</span>
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">temp</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">FlightsStaging</span><span class="p">]</span> <span class="n">DROP</span> <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">PK_FlightsStaging</span><span class="p">]</span> <span class="n">WITH</span> <span class="p">(</span> <span class="n">ONLINE</span> <span class="o">=</span> <span class="n">OFF</span> <span class="p">)</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">DROP</span> <span class="n">CONSTRAINT</span> <span class="n">PK_FlightsStaging</span> <span class="n">WITH</span> <span class="p">(</span> <span class="n">ONLINE</span> <span class="o">=</span> <span class="n">OFF</span> <span class="p">)</span>
 <span class="n">GO</span>
 
 <span class="o">--</span><span class="n">Insert</span> <span class="n">into</span> <span class="n">the</span> <span class="n">view</span>
@@ -13265,9 +13267,9 @@ div#notebook {
 <span class="n">FIRSTROW</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="p">);</span>
 
-<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="p">[</span><span class="n">temp</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">FlightsStaging</span><span class="p">]</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="p">[</span><span class="n">PK_FlightsStaging</span><span class="p">]</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="n">CLUSTERED</span> 
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">temp</span><span class="o">.</span><span class="n">FlightsStaging</span> <span class="n">ADD</span>  <span class="n">CONSTRAINT</span> <span class="n">PK_FlightsStaging</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="n">CLUSTERED</span> 
 <span class="p">(</span>
-   <span class="p">[</span><span class="n">ETLKey</span><span class="p">]</span> <span class="n">ASC</span>
+   <span class="n">ETLKey</span> <span class="n">ASC</span>
 <span class="p">)</span><span class="n">WITH</span> <span class="p">(</span><span class="n">PAD_INDEX</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">STATISTICS_NORECOMPUTE</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">SORT_IN_TEMPDB</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">IGNORE_DUP_KEY</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">ONLINE</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">ALLOW_ROW_LOCKS</span> <span class="o">=</span> <span class="n">ON</span><span class="p">,</span> <span class="n">ALLOW_PAGE_LOCKS</span> <span class="o">=</span> <span class="n">ON</span><span class="p">)</span> <span class="n">ON</span> <span class="p">[</span><span class="n">PRIMARY</span><span class="p">]</span>
 <span class="n">GO</span>
 

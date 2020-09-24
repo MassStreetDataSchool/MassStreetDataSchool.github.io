@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/indexed-views.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/stored-procedures.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>User Defined Functions</h1>
+<h1>Lesson 37. User Defined Functions</h1>
 </div>
 </div>
 </div>
@@ -13138,7 +13138,7 @@ div#notebook {
 <li>Table valued – returns a table</li><br>
 <li>Scalar valued – returns a single value</li><br>
 </ol><p>To see your functions in SSMS object explorer, expand your database, then expand the Programmability folder, then expand Functions.</p>
-<p>UNIX timestamps are an efficient way to store date time information. However, SQL Server does not understand UNIX timestamps. None of the date functions will work on a UNIX timestamp so you have to create your own function for the conversion. This is a common issue so I use it as an example below.</p>
+<p>UNIX timestamps are an efficient way to store datetime information. However, SQL Server does not understand UNIX timestamps. None of the date functions will work on a UNIX timestamp so you have to create your own function for the conversion. This is a common issue, so I use it as an example below.</p>
 
 </div>
 </div>
@@ -13177,7 +13177,7 @@ div#notebook {
 <span class="n">DECLARE</span> <span class="nd">@LocalTimeOffset</span> <span class="n">BIGINT</span> <span class="o">=</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">SECOND</span><span class="p">,</span><span class="n">GETDATE</span><span class="p">(),</span><span class="n">GETUTCDATE</span><span class="p">())</span>
 <span class="n">DECLARE</span> <span class="nd">@AdjustedLocalDatetime</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">SET</span> <span class="nd">@AdjustedLocalDatetime</span> <span class="o">=</span> <span class="nd">@UnixTimeStamp</span> <span class="o">-</span> <span class="nd">@LocalTimeOffset</span>
-<span class="n">RETURN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">DATEADD</span><span class="p">(</span><span class="n">SECOND</span><span class="p">,</span><span class="nd">@AdjustedLocalDatetime</span><span class="p">,</span> <span class="n">CAST</span><span class="p">(</span><span class="s1">&#39;1970-01-01 00:00:00&#39;</span> <span class="n">AS</span> <span class="n">DATETIME</span><span class="p">)))</span>
+<span class="n">RETURN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">DATEADD</span><span class="p">(</span><span class="n">SECOND</span><span class="p">,</span> <span class="nd">@AdjustedLocalDatetime</span><span class="p">,</span> <span class="n">CAST</span><span class="p">(</span><span class="s1">&#39;1970-01-01 00:00:00&#39;</span> <span class="n">AS</span> <span class="n">DATETIME</span><span class="p">)))</span>
 <span class="n">END</span><span class="p">;</span>
 <span class="n">GO</span>
 </pre></div>

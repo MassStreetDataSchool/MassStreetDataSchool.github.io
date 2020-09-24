@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/boost-performance.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/default-column-values.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,14 +13125,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Setting Up Queries For Ablation Testing</h1>
+<h1>Lesson 50. Setting Up Queries For Ablation Testing</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Sometimes you write a complex SQL statement that does work, and you do not know why. The best way to figure out what is wrong is by ablation testing.</p>
+<p>Sometimes you write a complex SQL statement that doesn’t work, and you do not know why. The best way to figure out what is wrong is by ablation testing.</p>
 <p>Ablation testing is where you turn things off until you isolate the problem. In the case of SQL queries, this involves commenting out lines of a complex WHERE clause (or JOIN) until you find the thing that is not working as designed.</p>
 <p>However, if your WHERE clause starts with a filter, you have to move it so you can comment it out. If you start your WHERE clause with 1 = 1, which is always true, then you preserve syntax and can easily comment out your filters without having to rewrite your code.</p>
 <p>No matter how simple your SQL statement is, I recommend that you get in the habit of creating ablation testing ready SQL statements.</p>
@@ -13163,8 +13163,8 @@ div#notebook {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">AdventureWorks2016</span>
 
 <span class="n">SELECT</span> <span class="o">*</span>
-<span class="n">FROM</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderHeader</span><span class="p">]</span> <span class="n">soh</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderDetail</span><span class="p">]</span> <span class="n">sod</span>
+<span class="n">FROM</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
 <span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderID</span>
 <span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
@@ -13195,11 +13195,11 @@ div#notebook {
 <span class="n">DATEPART</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">soh</span><span class="o">.</span><span class="n">OrderDate</span><span class="p">)</span> <span class="n">AS</span> <span class="n">MonthOfSale</span><span class="p">,</span>
 <span class="n">SUM</span><span class="p">(</span><span class="n">sod</span><span class="o">.</span><span class="n">LineTotal</span><span class="p">)</span> <span class="n">AS</span> <span class="n">TotalSales</span>
 <span class="n">FROM</span> <span class="n">Person</span><span class="o">.</span><span class="n">Person</span> <span class="n">p</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesPerson</span><span class="p">]</span> <span class="n">sp</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesPerson</span> <span class="n">sp</span>
 <span class="n">ON</span> <span class="n">p</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderHeader</span><span class="p">]</span> <span class="n">soh</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderHeader</span> <span class="n">soh</span>
 <span class="n">ON</span> <span class="n">sp</span><span class="o">.</span><span class="n">BusinessEntityID</span> <span class="o">=</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesPersonID</span>
-<span class="n">JOIN</span> <span class="p">[</span><span class="n">Sales</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">SalesOrderDetail</span><span class="p">]</span> <span class="n">sod</span>
+<span class="n">JOIN</span> <span class="n">Sales</span><span class="o">.</span><span class="n">SalesOrderDetail</span> <span class="n">sod</span>
 <span class="n">ON</span> <span class="n">soh</span><span class="o">.</span><span class="n">SalesOrderID</span> <span class="o">=</span> <span class="n">sod</span><span class="o">.</span><span class="n">SalesOrderDetailID</span>
 <span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">AND</span> <span class="n">sp</span><span class="o">.</span><span class="n">Bonus</span> <span class="n">BETWEEN</span> <span class="mf">3000.00</span> <span class="n">AND</span> <span class="mf">6000.00</span>

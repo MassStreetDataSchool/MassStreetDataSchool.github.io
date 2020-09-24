@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/views.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/advanced/user-defined-functions.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Indexed Views</h1>
+<h1>Lesson 36. Indexed Views</h1>
 </div>
 </div>
 </div>
@@ -13134,7 +13134,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You create indexed views when you want a high performing view.</p>
 <p>An index is an object on a table that orders information on disk in a manner in which you define. Having an index drastically increases query performance. A primary key is a form of an index.</p>
-<p>As the name suggest, an indexed view is a view with an index. An index view is bound to the tables that the view is based on. This creates and important constraint.</p>
+<p>As the name suggest, an indexed view is a view with an index. An indexed view is bound to the tables that the view is based on. This creates and important constraint.</p>
 <p><strong>You cannot change a table a view is based on without first destroying the connection between the view and source tables.</strong></p>
 <p>This is where knowing T-SQL comes in handy. When I need to make a change to a table, I will do it programmatically. In the script prior to the alter statement, I will drop the view. After the alter statement, I will recreate the view.</p>
 <p>My primary use case for indexed views is using them to mirror data warehouse tables. I do not allow anybody that is not a data engineer access to the original tables. Not even on a read only basis. I create the index views for reports analyst. These are people that know SQL, but have no need to see the audit columns used to run the database.</p>

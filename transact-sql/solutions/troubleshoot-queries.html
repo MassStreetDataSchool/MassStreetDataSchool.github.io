@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a></p>
+<a href="http://tutorials.massstreetuniversity.com/transact-sql/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/notification-emails.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/load-large-files.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,14 +13125,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Troubleshooting Long Running Queries</h1>
+<h1>Lesson 56. Troubleshooting Long Running Queries</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If you have a process that you determine to be taking too long, the first troubleshooting step is to run DBCC OPENTRAN. This will give you information on currently running transactions. Take note of the process ID for anything sitting in a weird status or any process that you determine is running to long. You can also use sp_who2 to supplement DBCC OPENTRAN information. This will give you a list of processes and their status. Look for anything in rollback status.</p>
+<p>If you have a process that you determine to be taking too long, the first troubleshooting step is to run DBCC OPENTRAN. This will give you information on currently running transactions. Take note of the process ID for anything sitting in a weird status or any process that you determine is running too long. You can also use sp_who2 to supplement DBCC OPENTRAN information. This will give you a list of processes and their status. Look for anything in rollback status.</p>
 <p>Once you identify the problem process, you have to kill it using the KILL [process ID] command.</p>
 <p>If you have a long-running process that fails, the rollback can take just as long as it took to process to that point. If something is rolling back, you’ll know it by not being able to KILL the process. To get an estimate of how long the rollback will take use KILL [process ID] WITH STATUSONLY.</p>
 
