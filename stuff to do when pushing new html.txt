@@ -1,0 +1,77 @@
+For index file
+
+Change the title tag
+Add meta tags.
+
+find
+.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+
+replace
+.rendered_html td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+  font-size: 15px;
+}
+
+find
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+replace
+.rendered_html :link {
+  text-decoration: none;
+}
+.rendered_html :visited {
+  text-decoration: none;
+}
+
+
+sections with tables.
+TSQL
+Basic - Complex Data Filtering
+Basic - String Functions
+Basic - Aggregate Functions
+Advanced - Error Processing
+Solutions - prepopulating a junk dimension
+
+
+find
+.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+
+replace
+.rendered_html td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+  font-size: 15px;
+}
+
