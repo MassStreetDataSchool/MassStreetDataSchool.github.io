@@ -1,23 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<!--FACEBOOK-->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Python Tutorial">
-<meta property="og:description" content="Get the must have skill for anybody working in data!">
-<meta property="og:url" content="https://tutorials.massstreetuniversity.com/python/index.html">
-<meta property="og:image:type" content="image/jpg">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
-<meta property="og:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
 
-<!--TWITTER-->
-<meta name="twitter:title" content="Python Tutorial">
-<meta name="twitter:description" content="Get the must have skill for anybody working in data!">
-<meta name="twitter:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
-<title>Python Tutorial</title>
+<title>03-data-types</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11117,11 +11102,12 @@ div.output_unrecognized a:hover {
   text-decoration: underline;
 }
 .rendered_html :link {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html :visited {
-  text-decoration: none;
-}.rendered_html h1 {
+  text-decoration: underline;
+}
+.rendered_html h1 {
   font-size: 185.7%;
   margin: 1.08em 0 0 0;
   font-weight: bold;
@@ -11257,14 +11243,13 @@ div.output_unrecognized a:hover {
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
   padding: 0.5em 0.5em;
   line-height: normal;
   white-space: normal;
   max-width: none;
   border: none;
-  font-size: 15px;
 }
 .rendered_html th {
   font-weight: bold;
@@ -13131,7 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a></p>
+<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/02-code-comments.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/04-variables.html/">Next</a></p>
 
 </div>
 </div>
@@ -13139,7 +13125,27 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Python Tutorial</h1><p><strong>Primary Author: Bob Wakefield</strong></p>
+<h1>Lesson 3. Data Types</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python is different from practically every other programming language that I have worked with in that you do not explicitly define data types. When you create a variable, you have to assign it a value. How you assign it a value will define the data type of the variable.</p>
+<p>If you are coming from another programming language, or are familiar with OO programming in general, then you may be familiar with the idea that class and data type are synonymous. Classes are objects and everything in Python is an object. That makes discussions about data types in Python simpler than it would be in other languages.</p>
+<p>This lesson goes over what I like to call the fundamental data types. These are the data types that you would find in all programming languages. Data types unique to Python like list and tuples are discussed in their own lessons.</p>
+<p><strong>String</strong></p>
+<p>Python stores textual data using the str object. Python has a lot of power to manipulate strings which we will be learning about in later lessons. Once you figure out how easy it is to work with string data in Python, you probably won’t want to learn any other programming language ever again.</p>
+<p><strong>Boolean</strong></p>
+<p>Every computer language gives you the power to represent true and false values. Python does it with the keywords True and False. The T and the F are capitalized and yes it matters.</p>
+<p><strong>Integers</strong></p>
+<p>Technically, Python supports every integer value between positive and negative infinity. In practice, you will be limited by your machine’s memory.</p>
+<p><strong>Float</strong></p>
+<p>Floats are how Python represents decimal values in a non-precise way. What that means is, when you are working with floats, you have to look out for things like rounding errors.</p>
+<p>Floats have their place in computer science, but, if you are going to work in analytics precision will be required.</p>
+<p><strong>Decimal</strong></p>
+<p>This is my recommended way to deal with real numbers. You have to be careful when you create your decimal value by passing the constructor either a string or integer value. If you pass the constructor a float value, the result will still suffer from approximation issues.</p>
 
 </div>
 </div>
@@ -13147,40 +13153,239 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>This tutorial is currently an alpha release. New content is released daily.</strong><br></p>
-<p><strong>Release Number: 2</strong><br></p>
-<p><a href="release-history.html"><strong>Release History</strong></a><br><br></p>
-<p>To report an issue with an example you can:</p>
-<ol>
-<li>Report the issue at Support@MassStreetUniversity.com.</li>
-<li>Get help from the community on the school Discord server which can be found <a href="https://discord.gg/enfDGUH">here</a>.</li>
-</ol>
-<hr>
+<h1>Examples</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Language Basics<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">1. <a href="basics/01-hello-world.html">Obligatory Hello World</a></td>
-      <td valign="top">2. <a href="basics/02-code-comments.html">Code Comments</a></td>
-    </tr>
-    <tr>
-      <td valign="top">3. <a href="basics/03-variables.html">Variables</a></td>
-      <td valign="top">4. <a href="basics/04-data-types.html">Data Types</a></td>
-    </tr>
-    <tr>
-      <td valign="top">5. <a href="basics/05-string-concatenation.html">String Concatenation</a></td>
-      <td valign="top">6. <a href="basics/06-arithmetic-operators.html">Arithmetic Operators</a></td>
-    </tr>
-    </tbody>
-</table>
+<p><strong>Creating Strings</strong></p>
+<p>String variables are created by wrapping the value in quotes. You can use single or double quotes.</p>
+
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="s1">&#39;This is a string value.&#39;</span>
+<span class="n">foo2</span> <span class="o">=</span> <span class="s2">&quot;This is also a string value.&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">foo2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>This is a string value.
+This is also a string value.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Creating Booleans</strong></p>
+<p>Booleans are both a data type and a value, so you don't have to explicitly assign a variable as a Boolean. As you can see below, when we cast these values to integers, they come out 0 and 1 just like we would expect from basic computer science.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Creating Integers</strong></p>
+<p>Creating integers is straight forward. You assign a variable a value that is a number but not a decimal and do not surround the value with quotes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Creating Floats</strong></p>
+<p>You create floats by using floating point numbers when you assign a variable a value. Below are some examples. There is also an example of how the imprecision of float can cause problems.</p>
+<p>If you do the last calculation by hand, you should get an answer of 0. I even plugged it into my TI-84 and got 0. Because it is a float the value of b gets printed out as a non-zero number.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mf">10e-2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="o">.</span><span class="mi">3</span> <span class="o">-</span> <span class="p">(</span><span class="o">.</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">#What is this nonsense?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3.5
+0.1
+-5.551115123125783e-17
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Creating Decimals</strong></p>
+<p>An unfortunate thing about creating decimals is that you have to import a module. We will talk about modules in a later lesson, so I am going to hand wave them for now.</p>
+<p>We are going to fix the issue of the calculation of b from above by passing the Decimal constructor strings in place of float values.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">decimal</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;.3&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;.1&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">#That&#39;s more like it!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">

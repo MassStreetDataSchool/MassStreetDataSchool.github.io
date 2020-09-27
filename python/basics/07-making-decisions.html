@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>04-data-types</title>
+<title>07-making-decisions</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11243,13 +11243,14 @@ div.output_unrecognized a:hover {
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  text-align: right;
+  text-align: left;
   vertical-align: middle;
   padding: 0.5em 0.5em;
   line-height: normal;
   white-space: normal;
   max-width: none;
   border: none;
+  font-size: 15px;
 }
 .rendered_html th {
   font-weight: bold;
@@ -13117,7 +13118,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/03-variables.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/05-string-concatenation.html">Next</a></p>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/06-arithmetic-operators.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/08-control-flow-if-else.html/">Next</a></p>
 
 </div>
 </div>
@@ -13125,28 +13126,122 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Lesson 4. Data Types</h1>
+<h1>Lesson 7. Making Decisions</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Python is different from practically every other programming language that I have worked with in that you do not explicitly define data types. When you create a variable, you have to assign it a value. How you assign it a value will define the data type of the variable.</p>
-<p>If you are coming from another programming language, or are familiar with OO programming in general, then you may be familiar with the idea that class and data type are synonymous. Classes are objects and everything in Python is an object. That makes discussions about data types in Python simpler than it would be in other languages.</p>
-<p>This lesson goes over what I like to call the fundamental data types. These are the data types that you would find in all programming languages. Data types unique to Python like list and tuples are discussed in their own lessons.</p>
-<p><strong>String</strong></p>
-<p>Python stores textual data using the str object. Python has a lot of power to manipulate strings which we will be learning about in later lessons. Once you figure out how easy it is to work with string data in Python, you probably won’t want to learn any other programming language ever again.</p>
-<p><strong>Boolean</strong></p>
-<p>Every computer language gives you the power to represent true and false values. Python does it with the keywords True and False. The T and the F are capitalized and yes it matters.</p>
-<p><strong>Integers</strong></p>
-<p>Technically, Python supports every integer value between positive and negative infinity. In practice, you will be limited by your machine’s memory.</p>
-<p><strong>Float</strong></p>
-<p>Floats are how Python represents decimal values in a non-precise way. What that means is, when you are working with floats, you have to look out for things like rounding errors.</p>
-<p>Floats have their place in computer science, but, if you are going to work in analytics precision will be required.</p>
-<p><strong>Decimal</strong></p>
-<p>This is my recommended way to deal with real numbers. You have to be careful when you create your decimal value by passing the constructor either a string or integer value. If you pass the constructor a float value, the result will still suffer from approximation issues.</p>
+<p>When I worked at Accenture, I was embedded with another company's software engineering team. The team had a funny saying. "Put some smarts in it." That's a reference to creating business logic around whatever ever we were attempting to automate.</p>
+<p>The whole bloody point of writing software in the first place is to automate business processes. However, business is complex. If you have not started your professional career, you may not be aware just how complex business processes can be or how ridiculous they can get.</p>
+<p>Most business processes are filled with all kinds of exceptions to rules. As you are automating processes, you have to figure out what to do when your software has to do something different based different inputs into the software. You have to “put some smarts in it.”</p>
+<p>That is what we are going to do in this section. We are going to learn to write software that is flexible enough to perform different functions when the situation calls for it.</p>
+<p>Python has numerous tools that allow you to build flexible software. Most of those tools require you to use Boolean logic to test rather or not some condition is true.</p>
+<p><strong>Quick Overview Of Boolean Logic (Optional)</strong></p>
+<p>If you are transitioning to Python from another language, then you can skip this section.</p>
+<p>It occurred to me that we’re on lesson seven, and I have been using a lot of terms that you may or may not be familiar with. It is not practical to teach you basic computer science in a coding tutorial. However, I can spend a few minutes explaining Boolean logic because it is fundamental to developing business logic.</p>
+<p>The way computers currently work is that everything inside the box exist in one of two states. It is either on or it is off. Currently, there is no in between. Open up the case on your computer and all that whiz bang stuff that you are looking at breaks down to something being on or off.</p>
+<p>In the computer, this on or off state is represented by the numbers 1 and 0 with 1 representing on and 0 representing off. On and off can also be represented by the Boolean data type values of True and False. In the lecture on data types, I already showed you how if you cast the Boolean True to an integer value, it will evaluate to 1. The reason why is the binary nature of the current state of computer engineering.</p>
+<table width="100%" border="1" align="center">
+  <tbody>
+    <tr>
+      <th scope="col"><p>Synonyms for on</p></th>
+      <th scope="col"><p>Synonyms for off</p></th>
+    </tr>
+       <tr>
+      <td valign="top">True</td>
+      <td valign="top">False</td>
+    </tr>
+        <tr>
+      <td valign="top">1</td>
+      <td valign="top">0</td>
+    </tr>
+    </tbody>
+</table><p><strong>Comparison Operators</strong><br></p>
+<p>When you are testing values and conditions, you are testing rather or not the current state of the value or condition is either true or false. That is fairly straight forward.</p>
+<p>Five is greater than one. This is true.</p>
+<p>Five is less than one. This is false.</p>
+<p>When you are writing business logic, you can write instructions based on rather or not the result of the evaluation of a condition is true or not.</p>
+<p>If (some condition) is true<br>
+&emsp;Do a series of task.<br>
+If (some condition) is false<br>
+&emsp;Do a different series of task.<br></p>
+<p>You evaluate conditions using the comparison operators in the table below.<br></p>
+<table width="100%" border="1" align="center">
+  <tbody>
+    <tr>
+      <th scope="col">Operator</th>
+      <th scope="col">Description</th>
+    </tr>
+       <tr>
+      <td valign="top">==</td>
+      <td valign="top">Equal to</td>
+    </tr>
+        <tr>
+      <td valign="top">!=</td>
+      <td valign="top">Not equal to</td>
+    </tr>
+         <tr>
+      <td valign="top">&gt;</td>
+      <td valign="top">Greater than</td>
+    </tr>
+         <tr>
+      <td valign="top">&lt;</td>
+      <td valign="top">Less than</td>
+    </tr>
+         <tr>
+      <td valign="top">&gt;=</td>
+      <td valign="top">Greater that or equal to</td>
+    </tr>
+         <tr>
+      <td valign="top">&lt;=</td>
+      <td valign="top">less than or equal to</td>
+    </tr>
+    </tbody>
+</table><br>
 
+The real fun of Boolean logic begins when you have to start combining conditions or test. Now you have to decide how much or how little of the combined condition test has to be true in order for the entire thing to evaluate to true. 
+
+Five is greater than one AND ten is greater than five. This is true.
+
+Five is greater than one OR five is greater than ten. This is also true.
+
+The second statement is true because you told the computer that it was ok if only one statement was true by using the “or” keyword.
+
+When it comes to Boolean logic, your basic options are:
+<ul>
+<li>In order for the condition test to evaluate to true, the entire condition test has to be true.</li><br>
+<li>In order for the condition test to be true, at least one component has to be true.</li><br>
+<li>In order for the condition test to be true, the entire condition has to be false.</li><br>
+</ul>
+
+When I say these are your basic options, I am not kidding. Condition test can be incredibly complex. Complex enough that it can give you a headache trying to figure out if something should evaluate to true or false. In the strongest terms possible, I recommend that you do everything you can to keep your condition test simple and straight forward.
+
+You combine conditions by using the operators below.
+
+
+<strong>Logical Operators</strong><br>
+<table width="100%" border="1" align="center">
+  <tbody>
+    <tr>
+      <th scope="col">Operator</th>
+      <th scope="col">Description</th>
+    </tr>
+       <tr>
+      <td valign="top">and</td>
+      <td valign="top">Both values have to be true</td>
+    </tr>
+        <tr>
+      <td valign="top">or</td>
+      <td valign="top">At least one value has to be true</td>
+    </tr>
+         <tr>
+      <td valign="top">not</td>
+      <td valign="top">Inverts the retrned boolean value</td>
+    </tr>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -13160,22 +13255,18 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Creating Strings</strong></p>
-<p>String variables are created by wrapping the value in quotes. You can use single or double quotes.</p>
+<p><strong>Using Comparison And Logic Operators</strong></p>
+<p>Below we are going to do some condition test and then cast the results to the Boolean data type so you can see whether or not the condition evaluates to True or False. We will start simple then get increasingly ridiculous.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="s1">&#39;This is a string value.&#39;</span>
-<span class="n">foo2</span> <span class="o">=</span> <span class="s2">&quot;This is also a string value.&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">foo2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="mi">5</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13188,36 +13279,27 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>This is a string value.
-This is also a string value.
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Creating Booleans</strong></p>
-<p>Booleans are both a data type and a value, so you don't have to explicitly assign a variable as a Boolean. As you can see below, when we cast these values to integers, they come out 0 and 1 just like we would expect from basic computer science.</p>
 
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">bool</span><span class="p">((</span><span class="mi">5</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">10</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13230,38 +13312,27 @@ This is also a string value.
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1
-0
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Creating Integers</strong></p>
-<p>Creating integers is straight forward. You assign a variable a value that is a number but not a decimal and do not surround the value with quotes.</p>
 
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="ow">not</span><span class="p">((</span><span class="mi">5</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">10</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -13274,115 +13345,108 @@ This is also a string value.
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>3
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Creating Floats</strong></p>
-<p>You create floats by using floating point numbers when you assign a variable a value. Below are some examples. There is also an example of how the imprecision of float can cause problems.</p>
-<p>If you do the last calculation by hand, you should get an answer of 0. I even plugged it into my TI-84 and got 0. Because it is a float the value of b gets printed out as a non-zero number.</p>
 
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mf">2.5</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="mf">10e-2</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="n">b</span> <span class="o">=</span> <span class="o">.</span><span class="mi">3</span> <span class="o">-</span> <span class="p">(</span><span class="o">.</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">#What is this nonsense?</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>3.5
-0.1
--5.551115123125783e-17
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Creating Decimals</strong></p>
-<p>An unfortunate thing about creating decimals is that you have to import a module. We will talk about modules in a later lesson, so I am going to hand wave them for now.</p>
-<p>We are going to fix the issue of the calculation of b from above by passing the Decimal constructor strings in place of float values.</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">decimal</span> <span class="k">import</span> <span class="o">*</span>
-
-<span class="n">b</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;.3&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;.1&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">#That&#39;s more like it!</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
 
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0.0
-</pre>
+    </div>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
 </div>
 </div>
 
