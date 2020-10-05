@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>release-history</title>
+<title>09-control-flow-while</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/python/">Tutorial Home</a></p>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/08-control-flow-if-else.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/10-list.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,32 +13125,401 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Release History</h1>
+<h1>Lesson 9. Control Flow With while</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>5Oct20<br></p>
-<p><ol></p>
-<p><li>Published Lesson 8 and 9.</li></p>
-<p><li>Renamed tutorial to its official name.</li>
-&lt;/ol&gt;<br>
-27Sept20<br></p>
-<p><ol>
-    <li>Swapped the order of data types and variables lessons.</li>
-    <li>Created separate page specifically for release history.</li>
-    <li>Created Lesson 7.</li>
-</ol><br>
-26Sept20<br></p>
-<p><ol>
-    <li>First six lessons created.</li>
-    <li>Tutorial home page created.</li>
-</ol><br></p>
+<p>In your software engineering career, you will have occasion to repeatedly execute a block of code based on some condition. In every programming language, there are a couple of constructs that allow you to do this. In this lesson, I am going to introduce one of the Python looping methods.</p>
+<p>The while loop is not the best way to create loops in Python. However, it is a construct that exist that is fundamental to the language, so I am going to explain how it works now. In later lessons, we will learn a more efficient looping tool.</p>
+<p>The while loop is aptly named. Do something while some condition exists. The key thing to remember is that the condition is checked at the top of the loop. Not understanding that is how you wind up with code executing outside of the range that you intended.</p>
+<p>While loops are a huge source of bugs in your code. If you do not construct your loop properly you can wind up with code that performs outside of the bounds defined by your condition, or, you can wind up with the dreaded infinite loop.</p>
+<p>An infinite loop is exactly like it sounds. Your loop will go on forever until you either stop the interpreter, or you eat all the resources on your machine. Neither of these events are desirable. Put another way, you want to avoid those things happening at all cost.</p>
+<p><strong>break AND continue</strong></p>
+<p>While works with two other constructs: break and continue. You use these constructs when you need to get out of your loop or skip some code in your loop.</p>
+<p><ul></p>
+<p><li> <strong>break</strong>: Breaks you out of the loop. Control returns to the code block after the loop.</li><br></p>
+<p><li> <strong>continue</strong>: Skips the rest of the code in your loop and sends control back to the top of the loop for a condition check. </li><br>
+&lt;/ul&gt;
+That continue statement is clearly another opportunity for you to mess up and get fired. Make sure that, wherever you put your continue statement, it does not prevent any incrementors from executing, or, at the least, code for that scenario.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>while Syntax</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="c1">#do something</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Incrementing An Index Value</strong></p>
+<p>In other languages, you frequently have to loop through a data structure called an array. Array values are referenced by some index value. While loops are usually the construct that you use to increment the index value as you move through the array.</p>
+<p>In this example, I am going to introduce the concept of increment and decrement by one. Python does not have an increment/decrement operator, so we have to MacGyver a solution with what we have laying around. Here is how you increment and decrement in Python.</p>
+<p>Step 1. Find a paperclip.<br>
+Step 2. Find some chewing gum.<br>
+Step 3. Throw the paperclip away.<br>
+Step 4. Put the chewing gum in your mouth.<br>
+Step 5. Use the following syntax to increment and decrement values.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1">#If you are sharp, you will notice that you are not limited to incrementing or decrementing by just 1 as is the case in other languages.</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6
+4
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Watch what happens when we put the incrementor above the print statement. As you can see, i winds up being a value outside of the condition specified in i &lt; 10. Having your incrementor above your code block is not necessarily wrong or a bad thing. It is merely something to be aware of. The condition defines where you put the incrementor, but the reverse can also be true; the incrementor can help defined your condition.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since we do not want to process integer values greater than 9, we need to change our condition. This is technically correct, however, as you can see, it does not make a whole lot of sense. That is to say, it is not “readable”. You cannot look at the code and understand what is going on right away.</p>
+<p>Readability is a hallmark of Python code. In a later lesson, we are going to get into how to write things so they are considered “Pythonic”. For now, I’m not gonna lie. In the real world, I’ve written complex code blocks where I couldn’t understand why it was processing outside of the bounds of the condition. Instead of doing the hard work and correcting it, I’ll just find a value that for the condition, so the code won’t run out of bounds and leave that garbage for the next guy to deal with. Whatever bro. I get phat paid for code that WORKS, not code that looks pretty.</p>
+<p>(Ok, I’m just kidding. I’ll go back and fix it when I have time.)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Most people think in integer terms, but it is possible to increment by other values including real numbers. Obviously, incrementing by irrational numbers would be, uh, irrational and incrementing by imaginary numbers should only happen in your head. Otherwise, you are free to increment however you want.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+   <span class="n">i</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+4.5
+5.0
+5.5
+6.0
+6.5
+7.0
+7.5
+8.0
+8.5
+9.0
+9.5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Using break And continue To Find Prime Numbers</strong></p>
+<p>Below is a horribly inefficient algorithm* to find all the prime numbers between 2** and 50. I wrote this garbage for illustration purposes only. Never write anything like this in the real world.</p>
+<p>I have set the variable upward_bound to 50. Find a chart of prime numbers and play with the value of upward bound. See what the code produces and see if it matches your prime number chart.</p>
+<p>*For those new to computer science, an algorithm is a set of instructions that perform the same task over and over. In data science, you will hear the word algorithm a lot. When I create the course CSCI200 Fundamentals In Computer Science, we will talk more about algorithms. For now, all you need to know is that, contrary to what some folks in the c-suite think, algorithms do <strong>not</strong> cure cancer.</p>
+<p>**Fun math fact. I learned in grade school that a prime number is a number that is only divisible by itself and 1. Despite the fact that 1 seems to fit both of those conditions, 1 is <strong>not</strong> a prime number. I was today years old when I learned that.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">upward_bound</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Here are all prime numbers between 2 and &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">upward_bound</span><span class="p">))</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">upward_bound</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1">#print(&#39;x = &#39; + str(x))</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Here are all prime numbers between 2 and 50
+2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
