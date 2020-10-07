@@ -1,22 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<!--FACEBOOK-->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hands-On Python Tutorial For Real-World Business Analytics Problems">
-<meta property="og:description" content="Python has killed R! Employers now demand that their data professionals know Python. Get the skills you need to land a job in the world of analytics!">
-<meta property="og:url" content="https://tutorials.massstreetuniversity.com/python/index.html">
-<meta property="og:image:type" content="image/jpg">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
-<meta property="og:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
 
-<!--TWITTER-->
-<meta name="twitter:title" content="Hands-On Python Tutorial For Real-World Business Analytics Problems">
-<meta name="twitter:description" content="Python has killed R! Employers now demand that their data professionals know Python. Get the skills you need to land a job in the world of analytics!">
-<meta name="twitter:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<title>Hands-On Python Tutorial For Real-World Business Analytics Problems</title>
+<title>10-list</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11116,10 +11102,10 @@ div.output_unrecognized a:hover {
   text-decoration: underline;
 }
 .rendered_html :link {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html :visited {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html h1 {
   font-size: 185.7%;
@@ -11257,14 +11243,13 @@ div.output_unrecognized a:hover {
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
   padding: 0.5em 0.5em;
   line-height: normal;
   white-space: normal;
   max-width: none;
   border: none;
-  font-size: 15px;
 }
 .rendered_html th {
   font-weight: bold;
@@ -13131,7 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a></p>
+<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python//09-control-flow-while.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/11-tuples.html">Next</a></p>
 
 </div>
 </div>
@@ -13139,7 +13125,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Hands-On Python Tutorial For Real-World Business Analytics Problems</h1><p><strong>Primary Author: Bob Wakefield</strong></p>
+<h1>Lesson 10. Data Structures Part I: List</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Most programming languages have the concept of an array. Arrays are sequences of values usually all of the same data type.</p>
+<p>Python took the concept of an array and made it much more powerful by creating three different data structures. Each structure has it’s uses which we will explore in later lessons.</p>
+<p>In the next three lessons, we are going to talk about how to create these unique data structures and how to work with them. The first structure we are going to talk about is called a list.</p>
+<p>A list is the closest structure to a classic array. Arrays have methods that allow you to work with the data stored in them.</p>
 
 </div>
 </div>
@@ -13147,58 +13143,134 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>This tutorial is currently an alpha release. New content is released frequently.</strong><br></p>
-<p><strong>Release Number: 4</strong><br></p>
-<p><a href="release-history.html"><strong>Release History</strong></a><br><br></p>
-<p>To report an issue with an example you can:</p>
-<ol>
-<li>Report the issue at <a href="mailto:Support@MassStreetUniversity.com">Support@MassStreetUniversity.com</a>.</li>
-<li>Get help from the community on the school Discord server which can be found <a href="https://discord.gg/enfDGUH">here</a>.</li>
-</ol>
-<hr>
+<h1>Examples</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Language Basics<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">1. <a href="basics/01-hello-world.html">Obligatory Hello World</a></td>
-      <td valign="top">2. <a href="basics/02-code-comments.html">Code Comments</a></td>
-    </tr>
-    <tr>
-       <td valign="top">3. <a href="basics/03-data-types.html">Data Types</a></td>
-      <td valign="top">4. <a href="basics/04-variables.html">Variables</a></td>
-    </tr>
-    <tr>
-      <td valign="top">5. <a href="basics/05-string-concatenation.html">String Concatenation</a></td>
-      <td valign="top">6. <a href="basics/06-arithmetic-operators.html">Arithmetic Operators</a></td>
-    </tr>
-     <tr>
-      <td valign="top">7. <a href="basics/07-making-decisions.html">Making Decisions</a></td>
-      <td valign="top">8. <a href="basics/08-control-flow-if-else.html">Control Flow With if-elif-else</a></td>
-    </tr>
-    <tr>
-      <td valign="top">9. <a href="basics/09-control-flow-while.html">Control Flow With While</a></td>
-      <td valign="top">10.<a href="basics/10-list.html">Data Structures Part I: List</a></td>
-    </tr>
-     <tr>
-      <td valign="top">11. <a href="basics/11-tuples.html">Data Structures Part II: Tuples</a></td>
-      <td valign="top">12. <a href="basics/12-dictionaries.html">Data Structures Part III: Dictionaries</a></td>
-    </tr>
-    <!--
-    <tr>
-      <td valign="top">X. <a href="basics/HTMLFileName">Lesson Name</a></td>
-      <td valign="top">X. <a href="basics/HTMLFileName">Lesson Name</a></td>
-    </tr>
-    -->
-    </tbody>
-</table>
+<p><strong>Example #1 Creating List</strong></p>
+<p>Unlike simpler data types, list can be created without initial values.</p>
+
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">fighters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Eagle&#39;</span><span class="p">,</span> <span class="s1">&#39;Falcon&#39;</span><span class="p">,</span> <span class="s1">&#39;Tomcat&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fighters</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Eagle&#39;, &#39;Falcon&#39;, &#39;Tomcat&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #2 Adding Values To An Existing List</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fighters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Lightning II&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fighters</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Eagle&#39;, &#39;Falcon&#39;, &#39;Tomcat&#39;, &#39;Lightning II&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #3 Accessing Values In A List</strong></p>
+<p>List values are accessed using an index number that represents the position of a value in the list. The index starts at 0 and the last value can be accessed using an index value of -1.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fighters</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fighters</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tomcat
+Lightning II
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
