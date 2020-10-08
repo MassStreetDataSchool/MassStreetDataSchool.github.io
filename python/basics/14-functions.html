@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>release-history</title>
+<title>14-functions</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/python/">Tutorial Home</a></p>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/13-looping-with-for.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/15-importing-modules.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,43 +13125,192 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Release History</h1>
+<h1>Lesson 14. Functions</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>7Oct20<br></p>
-<p><ol>
-    <li>Fixed error in nav bar in lessons 10,11,12.</li>
-    <li>Rewrote lesson 11. </li>
-    <li>Rewrote lesson 3.</li>
-    <li>Published lesson 13,14,15, and 16.</li>
-</ol><br>
-6Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 10,11, and 12.</li>
-</ol><br>
-5Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 8 and 9.</li>
-    <li>Renamed tutorial to its official name.</li>
-</ol><br>
-27Sept20<br></p>
-<p><ol>
-    <li>Swapped the order of data types and variables lessons.</li>
-    <li>Created separate page specifically for release history.</li>
-    <li>Created Lesson 7.</li>
-</ol><br>
-26Sept20<br></p>
-<p><ol>
-    <li>First six lessons created.</li>
-    <li>Tutorial home page created.</li>
-</ol><br></p>
+<p>In this tutorial, we are not going to get into object-oriented programming. It is a complex topic that deserves a tutorial dedicated to that subject.</p>
+<p>When you are learning business analytics you can get pretty far just writing functions without having to go full blown objected oriented, so let’s focus on that.</p>
+<p>After a while, you will start to notice that you write the same block of code over and over. It might be the case that other blocks of code use this code, so you cut and paste the lines into other blocks. This is a classic example of code that needs to be turned into a function.</p>
+<p>In software engineering, we have a concept called DRY. Don’t repeat yourself. In other words, do not do the thing I just described.</p>
+<p>Modern programming languages have all kinds of tools and techniques that you can use to follow the DRY principle. The function is the most common and easiest to implement.</p>
+<p>Any block of code that you can write that is valid Python syntax can be placed inside of a function. There are practical limitations here, but, again, we will cover that in a more advanced tutorial.</p>
+<p>You can design your function in a manner such that it just does stuff without any outside input and the function does not produce any output. However, most likely, your function needs to do different things based on information passed to it by the line of code that activated it.</p>
+<p>You pass in information to functions through function parameters which are frequently referred to as arguments. You can send back output using the return keyword.</p>
+<p>When you are writing Python as a series of scripts and not as an object-oriented program, the code executes from top to bottom. That means functions HAVE to be defined before they can be used.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Function Syntax</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="n">argN</span><span class="p">):</span>
+    <span class="c1">#do stuff</span>
+    <span class="c1">#return stuff</span>
+    
+<span class="c1">#call the function</span>
+<span class="n">function_name</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="n">argN</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #1 Hello World! Part II. This Time It’s Personal!</strong></p>
+<p>We are going to pull out this old dog and teach it a new trick! Instead of saying hello to every human on the planet, most of whom are jerks, and don’t deserve a hello, we’re going to personalize our greeting by passing in an argument.</p>
+<p>The argument will be the name of a specific person. That string value will be assigned to the variable we use as a name of the argument in the function. That variable can be referenced in the function.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+
+<span class="n">hello_world</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello Bob!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #2 Passing In More Than One Argument</strong></p>
+<p>Passing in arguments to functions can get CRAZY in Python. You can do all kinds of things like set up default values, or assign arguments based on position or keyword.</p>
+<p>As a new Python engineer who is only just using the built-in functionality of Python, you will find this kind of flexibility to be useful when you are calling the native functions of Python or Python modules. It is less fun when you are the person that has to implement things that others will use.</p>
+<p>Before that happens, there are a thousand things that have to happen in order. We are on number eight. Developing modules is number six hundred and ninety-two so we’re going to keep it simple here.</p>
+<p>The example below has three arguments. You pass in the arguments based on their position in the function call. In other words, the first argument in the function all will get assigned to the first argument in the function definition and so on.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">viper</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">units</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">greeting</span> <span class="o">+</span> <span class="s1">&#39;The temperature is &#39;</span> <span class="o">+</span> <span class="n">temperature</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">units</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="n">viper</span><span class="p">(</span><span class="s1">&#39;Good morning gentlemen.&#39;</span><span class="p">,</span> <span class="s1">&#39;110&#39;</span><span class="p">,</span> <span class="s1">&#39;degrees&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Good morning gentlemen.The temperature is 110 degrees.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #3 Returning Values</strong></p>
+<p>Ok here is where I stop screwing around and grim up. Returning values is where functions start to earn their pay. While you can make a function do whatever, usually what you want done is the function to do some repetitive work on some arguments.</p>
+<p>Below is a trivial example. As we move through this tutorial, you will start to see the value of functions returning values.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">numerator</span><span class="p">,</span> <span class="n">denominator</span><span class="p">):</span>
+    <span class="n">quotient</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">quotient</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">

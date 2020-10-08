@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>release-history</title>
+<title>13-looping-with-for</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/python/">Tutorial Home</a></p>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/12-dictionaries.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/14-functions.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,43 +13125,380 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Release History</h1>
+<h1>Lesson 13. Looping With for</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>7Oct20<br></p>
-<p><ol>
-    <li>Fixed error in nav bar in lessons 10,11,12.</li>
-    <li>Rewrote lesson 11. </li>
-    <li>Rewrote lesson 3.</li>
-    <li>Published lesson 13,14,15, and 16.</li>
-</ol><br>
-6Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 10,11, and 12.</li>
-</ol><br>
-5Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 8 and 9.</li>
-    <li>Renamed tutorial to its official name.</li>
-</ol><br>
-27Sept20<br></p>
-<p><ol>
-    <li>Swapped the order of data types and variables lessons.</li>
-    <li>Created separate page specifically for release history.</li>
-    <li>Created Lesson 7.</li>
-</ol><br>
-26Sept20<br></p>
-<p><ol>
-    <li>First six lessons created.</li>
-    <li>Tutorial home page created.</li>
-</ol><br></p>
+<p>We're gonna loop back to talking about loops (see what I did there?).</p>
+<p>The reason for the step back is because there are objects in Python that work with for loops in ways that make iterating through complex objects really easy. List, tuples, and dictionaries are three of those objects. I had to introduce them first before I showed you how to loop through them with for.</p>
+<p>For loops are another basic concept in computer science and you will find the for construct in most programming languages. For is my preferred way of looping.</p>
+<p>Technically, the for loop construct in Python is not like the for found in other programming languages. In other languages, you usually define a condition that is checked against an incrementing value like we saw back when we were talking about while.</p>
+<p>In Python, the for loop is for iterating over sequences. Those sequences can be the three complex data types that we are already familiar with. Later, we will see that sequences can include things like file names which comes in handy when you need to do work on a bunch of files in a folder.</p>
+<p>Just like in while, for can be used with break and continue to control the flow of the execution.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>for Syntax</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="p">[</span><span class="n">variable_name</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">object</span><span class="p">]:</span>
+    <span class="c1">#do stuff</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #1 Looping Over A List</strong></p>
+<p>The variable that you use in your for loop can be referred to in the code block. It represents the current value of the object you are iterating through.</p>
+<p>You can define the variable yourself, however, in certain use cases, the variable needs to be a Python reserved word. We will take a look at that when we get to looking at looping over files in a directory.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fighters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Eagle&#39;</span><span class="p">,</span> <span class="s1">&#39;Falcon&#39;</span><span class="p">,</span> <span class="s1">&#39;Tomcat&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">birds</span> <span class="ow">in</span> <span class="n">fighters</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">birds</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Eagle
+Falcon
+Tomcat
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #2 Looping Over A Tuple</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat_long</span> <span class="o">=</span> <span class="p">(</span><span class="mf">38.9984961</span><span class="p">,</span><span class="o">-</span><span class="mf">104.8540895</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lat_long</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>38.9984961
+-104.8540895
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #3 Looping Over A Dictionary</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">paygrade_translation</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;O1&#39;</span><span class="p">:</span><span class="s1">&#39;2nd Lt&#39;</span><span class="p">,</span><span class="s1">&#39;O2&#39;</span><span class="p">:</span><span class="s1">&#39;1st Lt&#39;</span><span class="p">,</span><span class="s1">&#39;O3&#39;</span><span class="p">:</span><span class="s1">&#39;Capt&#39;</span><span class="p">}</span>
+
+<span class="c1">#Just the keys</span>
+<span class="k">for</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">paygrade_translation</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>O1
+O2
+O3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Just the values</span>
+<span class="k">for</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">paygrade_translation</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2nd Lt
+1st Lt
+Capt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#The full key value pair</span>
+<span class="c1">#Notice how we add a second variable that can be referenced in the loop?</span>
+
+<span class="k">for</span> <span class="n">paygrade</span><span class="p">,</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">paygrade_translation</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A paygrade of &#39;</span> <span class="o">+</span> <span class="n">paygrade</span> <span class="o">+</span> <span class="s1">&#39; is a &#39;</span> <span class="o">+</span> <span class="n">description</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>A paygrade of O1 is a 2nd Lt
+A paygrade of O2 is a 1st Lt
+A paygrade of O3 is a Capt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #4 Looping Over A Predefined Range</strong></p>
+<p>You can use for like you would in other languages using the range() method. The range method lets you define a range of values to loop over. The method has three parameters that define the range of values. The method can be called with one to three parameters.</p>
+<p>It is important to remember that the upward bound of the range is NOT inclusive. In other words, if you set an upward bound of 5, the stopping value will be 4.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Start at zero and you provide the maximum value.</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#You provide the minimum and maximum value.</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>15
+16
+17
+18
+19
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#You provide the minimum, maximum,and increment value.</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+3
+5
+7
+9
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">

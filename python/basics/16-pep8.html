@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>release-history</title>
+<title>16-pep8</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/python/">Tutorial Home</a></p>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/15-importing-modules.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/advanced/17-map.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,43 +13125,165 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Release History</h1>
+<h1>Lesson 16. Python Programming Standards</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>7Oct20<br></p>
-<p><ol>
-    <li>Fixed error in nav bar in lessons 10,11,12.</li>
-    <li>Rewrote lesson 11. </li>
-    <li>Rewrote lesson 3.</li>
-    <li>Published lesson 13,14,15, and 16.</li>
-</ol><br>
-6Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 10,11, and 12.</li>
-</ol><br>
-5Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 8 and 9.</li>
-    <li>Renamed tutorial to its official name.</li>
-</ol><br>
-27Sept20<br></p>
-<p><ol>
-    <li>Swapped the order of data types and variables lessons.</li>
-    <li>Created separate page specifically for release history.</li>
-    <li>Created Lesson 7.</li>
-</ol><br>
-26Sept20<br></p>
-<p><ol>
-    <li>First six lessons created.</li>
-    <li>Tutorial home page created.</li>
-</ol><br></p>
+<p><strong>Formatting Basics</strong></p>
+<p>I’m a pretty chill person. It’s hard to harsh my mellow. One thing that does send me into a blinding rage is poorly formatted hard to read code.</p>
+<p>Software engineers don’t just work in teams simultaneously. They also work as a relay team. Engineers come and go, but the code base of an organization may be around for decades.</p>
+<p>When an engineer moves on, somebody will be brought in to replace that person. That person is going to have to pick up where the last engineer left off. Once you start working as a software engineer, you will discover very quickly that trying to read other people’s code is a special kind of hell rivaled only by you trying to read your own code from a few days ago.</p>
+<p>Getting everybody on the same page in terms of how to write code helps with this problem. If you work at a large enough organization, they might have a coding style guide that you will be expected to adhere to. The style guide will tell you how to name things and how your code should look. It may seem trivial but having a document and code review processes that demand things like having x number of spaces between lines of code can be the difference between being appropriately productive and mad chaos.</p>
+<p>Corporate style guides are great, but they are specific to that organization. Python has a style guide built into its interpreter that ensures there is something of a universal standard in how your code looks.</p>
+<p>As a new person, the main things you need to be concerned about is spaces between code blocks and indenting.</p>
+<p>If you are using JuypterLab, space between code blocks will not be that big a deal. If you are using PyCharm to develop with, PyCharm will bark at you if you have more than 2 lines of white space between code blocks.</p>
+<p>Indenting is another matter. The number of lines of space between code isn’t a deal breaker. Improperly indented code will blow your script.</p>
+<p>Indenting is how the interpreter figures out what belongs to what. For example, take a look at this while code.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>See how line 2 and 3 are tabbed over? That tells the interpreter that line 2 and 3 belong to that while loop. Let’s look at an example of something that is nested for more clarity.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">upward_bound</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Here are all prime numbers between 2 and &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">upward_bound</span><span class="p">))</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">upward_bound</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1">#print(&#39;x = &#39; + str(x))</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is our old friend the prime number finder again. This is a good example that illustrates how indenting defines what executes when.</p>
+<p>Lines 7 – 22 all belong to the while loop defined at line 6.</p>
+<p>Lines 13 – 21 all belong to the else portion of the if else statement.</p>
+<p>Lines 14 – 21 are what get looped over defined by the while at line 13 while the else portion of the if else statement is executing.</p>
+<p>If you took line 22 and tabbed it over one more, it would break the script. It would still run, but it would not work properly because i would not get incremented when it was supposed to. Go ahead and move line 22 over one and run it to see what happens.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Universal Style Guide</strong></p>
+<p>The universal style guide for Python is this document called PEP8 which can be found <a href="https://www.python.org/dev/peps/pep-0008/">here</a></p>
+<p>PEP8 is basically the bible on how to write good Python code. You should spend a few hours studying this document so you can get the basic techniques memorized so you will not have to constantly reference it as you’re jamming out writing code. If you’re in the flow, you certainly don’t want to have to stop to look something up.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>On Being Pythonic</strong></p>
+<p>Python isn’t just a programming language. It’s a way of life bro. I’m not even going to TRY to explain what being Pythonic is all about. Imma just let my boy Tim Peters explain it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> <span class="kn">import</span> <span class="nn">this</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren&#39;t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you&#39;re Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it&#39;s a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let&#39;s do more of those!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
