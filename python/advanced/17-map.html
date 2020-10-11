@@ -1,23 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<!--FACEBOOK-->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hands-On Python Tutorial For Real-World Business Analytics Problems">
-<meta property="og:description" content="Python has killed R! Employers now demand that their data professionals know Python. Get the skills you need to land a job in the world of analytics!">
-<meta property="og:url" content="https://tutorials.massstreetuniversity.com/python/index.html">
-<meta property="og:image:type" content="image/jpg">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
-<meta property="og:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
 
-<!--TWITTER-->
-<meta name="twitter:title" content="Hands-On Python Tutorial For Real-World Business Analytics Problems">
-<meta name="twitter:description" content="Python has killed R! Employers now demand that their data professionals know Python. Get the skills you need to land a job in the world of analytics!">
-<meta name="twitter:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
-<title>Hands-On Python Tutorial For Real-World Business Analytics Problems</title>
+<title>17-map</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11117,10 +11102,10 @@ div.output_unrecognized a:hover {
   text-decoration: underline;
 }
 .rendered_html :link {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html :visited {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html h1 {
   font-size: 185.7%;
@@ -11258,14 +11243,13 @@ div.output_unrecognized a:hover {
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
   padding: 0.5em 0.5em;
   line-height: normal;
   white-space: normal;
   max-width: none;
   border: none;
-  font-size: 15px;
 }
 .rendered_html th {
   font-weight: bold;
@@ -13132,7 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a></p>
+<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/basics/16-pep8.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/advanced/18-generators.html">Next</a></p>
 
 </div>
 </div>
@@ -13140,7 +13125,29 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Hands-On Python Tutorial For Real-World Business Analytics Problems</h1><p><strong>Primary Author: Bob Wakefield</strong></p>
+<h1>Lesson 17. Functional Programing With map</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Functional Programming</strong></p>
+<p>Functional programming gives me migraines. I made a legit run at it and I could not wrap my brain around it. OO 4 lyfe yo!</p>
+<p>What am I talking about? Programming paradigms.</p>
+<p>In this tutorial, I am teaching you to write “scripts”. The word scripts usually refers to a set of instructions written in a non-compiled programming language that execute one after another. Scripts are usually relatively small programs that automate relatively simple and repetitive task. A good example is bash scripts or PowerShell scripts that are created to do things like move files around a network on a regular schedule. These scripts are usually kept in a single file.</p>
+<p>I will not be teaching you how to write full blow Python programs in this tutorial. Being able to write full blown programs requires more knowledge than I can drop in a medium this simple. Full blow programs are huge and require many files to work together properly. How you code these files is called a programming paradigm.</p>
+<p>There are a handful of paradigms. My OO comment earlier was a reference to object-oriented programming which is the dominant paradigm in modern software development. In recent years, functional programming has started to become more popular.</p>
+<p>Functional programming consists of writing software in such a manner that functions are first class citizens. Everything is a function. If you spend your life in OO, moving to functions is a real mind bender. However, it does come in handy sometimes.</p>
+<p>Sometimes you need to run the same operation over numerous data points. There are various ways to do that, but the most efficient way is to borrow some concepts from functional programing.</p>
+<p>Functional programming is supported in Python. If you move into data science or learn to use Apache Spark, you are going to need a function called map.</p>
+<p><strong>Lambda Functions</strong></p>
+<p>The functions that we wrote in lesson 14 all had names. There is another way to write functions and that is anonymously.</p>
+<p>Anonymous functions do not have names. The come in handy because they really reduce the code you have to write when the task is simple. You can fit an anonymous function on a single line.</p>
+<p>Anonymous functions are implanted by using the lambda construct instead of def like with named functions.</p>
+<p><strong>map</strong></p>
+<p>Now that I have given you all that exposition, I can finally talk about map.</p>
+<p>The map function lets you apply a function over an iterable object like a list. The map function takes a function as an argument and the iterable that the function is to be applied to.</p>
 
 </div>
 </div>
@@ -13148,115 +13155,133 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>This tutorial is currently an alpha release. New content is released frequently.</strong><br></p>
-<p><strong>Release Number: 6</strong><br></p>
-<p><a href="release-history.html"><strong>Release History</strong></a><br><br></p>
-<p>To report an issue with an example you can:</p>
-<ol>
-<li>Report the issue at <a href="mailto:Support@MassStreetUniversity.com">Support@MassStreetUniversity.com</a>.</li>
-<li>Get help from the community on the school Discord server which can be found <a href="https://discord.gg/enfDGUH">here</a>.</li>
-</ol>
-<hr>
+<h1>Examples</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Language Basics<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">1. <a href="basics/01-hello-world.html">Obligatory Hello World</a></td>
-      <td valign="top">2. <a href="basics/02-code-comments.html">Code Comments</a></td>
-    </tr>
-    <tr>
-       <td valign="top">3. <a href="basics/03-data-types.html">Data Types</a></td>
-      <td valign="top">4. <a href="basics/04-variables.html">Variables</a></td>
-    </tr>
-    <tr>
-      <td valign="top">5. <a href="basics/05-string-concatenation.html">String Concatenation</a></td>
-      <td valign="top">6. <a href="basics/06-arithmetic-operators.html">Arithmetic Operators</a></td>
-    </tr>
-     <tr>
-      <td valign="top">7. <a href="basics/07-making-decisions.html">Making Decisions</a></td>
-      <td valign="top">8. <a href="basics/08-control-flow-if-else.html">Control Flow With if-elif-else</a></td>
-    </tr>
-    <tr>
-      <td valign="top">9. <a href="basics/09-control-flow-while.html">Control Flow With While</a></td>
-      <td valign="top">10. <a href="basics/10-list.html">Data Structures Part I: List</a></td>
-    </tr>
-     <tr>
-      <td valign="top">11. <a href="basics/11-tuples.html">Data Structures Part II: Tuples</a></td>
-      <td valign="top">12. <a href="basics/12-dictionaries.html">Data Structures Part III: Dictionaries</a></td>
-    </tr>
-    <tr>
-      <td valign="top">13. <a href="basics/13-looping-with-for.html">Looping With for</a></td>
-      <td valign="top">14. <a href="basics/14-functions.html">Functions</a></td>
-    </tr>
-    <tr>
-      <td valign="top">15. <a href="basics/15-importing-modules.html">Importing Modules</a></td>
-      <td valign="top">16. <a href="basics/16-pep8.html">Python Programming Standards</a></td>
-    </tr>
-    </tbody>
-</table>
+<p><strong>Example #1 This Example Has No Name </strong></p>
+<p>Below is an example of an anonymous function. First, we review example 3 of lesson 14. Then we re-engineer it as an anonymous function. As you can see, the same thing can be achieved with much less code.</p>
+
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#original function</span>
+<span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">numerator</span><span class="p">,</span> <span class="n">denominator</span><span class="p">):</span>
+    <span class="n">quotient</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">quotient</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#SHAZAM!</span>
+<span class="n">divide</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Advanced Topics<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">17. <a href="advanced/17-map.html">Functional Programing With map</a></td>
-       <td valign="top">&nbsp;</td>
-      <!--<td valign="top">18. <a href="advanced/18-generators.html">Generators</a></td>-->
-    </tr>
-    <!--
-    <tr>
-      <td valign="top">19. <a href="advanced/19-comprehensions.html">Comprehensions</a></td>
-      <td valign="top">&nbsp;</td>
-    </tr>
-    -->
-    <!--
-    <tr>
-      <td valign="top"></td>
-      <td valign="top"></td>
-    </tr>
-    -->
-    </tbody>
-</table>
+<p><strong>Example #2 A Different Kind Of Loop</strong></p>
+<p>This example does not show the real power of map. We will not see that until we start using Python for data analysis. For now, here is a different way to iterate over a list of values.</p>
+<p>The map function simply returns an object so before we can print it to the screen, we have to turn it into a list.</p>
+
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Solutions To Real World Problems<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">29. <a href="solutions/29-download-a-zip-file.html">Download A Zip File Over HTTP</a></td>
-      <td valign="top">30. <a href="solutions/30-looping-over-files-in-a-directory.html">Looping Over Files In A Directory</a></td>
-    </tr>
-    <!--
-    <tr>
-      <td valign="top">19. <a href="advanced/19-comprehensions.html">Comprehensions</a></td>
-      <td valign="top">&nbsp;</td>
-    </tr>
-    -->
-    <!--
-    <tr>
-      <td valign="top"></td>
-      <td valign="top"></td>
-    </tr>
-    -->
-    </tbody>
-</table>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">newcount</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">newcount</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[2, 3, 4, 5, 6]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
