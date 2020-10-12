@@ -1,23 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<!--FACEBOOK-->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hands-On Python Tutorial For Real-World Business Analytics Problems">
-<meta property="og:description" content="Python has killed R! Employers now demand that their data professionals know Python. Get the skills you need to land a job in the world of analytics!">
-<meta property="og:url" content="https://tutorials.massstreetuniversity.com/python/index.html">
-<meta property="og:image:type" content="image/jpg">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
-<meta property="og:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
 
-<!--TWITTER-->
-<meta name="twitter:title" content="Hands-On Python Tutorial For Real-World Business Analytics Problems">
-<meta name="twitter:description" content="Python has killed R! Employers now demand that their data professionals know Python. Get the skills you need to land a job in the world of analytics!">
-<meta name="twitter:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
-<title>Hands-On Python Tutorial For Real-World Business Analytics Problems</title>
+<title>33-load-large-csvs-into-data-warehouse</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11117,10 +11102,10 @@ div.output_unrecognized a:hover {
   text-decoration: underline;
 }
 .rendered_html :link {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html :visited {
-  text-decoration: none;
+  text-decoration: underline;
 }
 .rendered_html h1 {
   font-size: 185.7%;
@@ -11258,14 +11243,13 @@ div.output_unrecognized a:hover {
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
   padding: 0.5em 0.5em;
   line-height: normal;
   white-space: normal;
   max-width: none;
   border: none;
-  font-size: 15px;
 }
 .rendered_html th {
   font-weight: bold;
@@ -13132,7 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a></p>
+<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/solutions/32-combine-csvs-into-one-file.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/solutions/34-efficient-disk-write.html">Next</a></p>
 
 </div>
 </div>
@@ -13140,7 +13125,16 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Hands-On Python Tutorial For Real-World Business Analytics Problems</h1><p><strong>Primary Author: Bob Wakefield</strong></p>
+<h1>Lesson 33. Load Large CSVs Into Data Warehouse Staging Tables</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>BULK INSERT is a nice SQL statement to load large amounts of data from a flat file into a database table. The problem with BULK INSERT is that the schema of the file and the schema of the table have to be the same. That is problematic when the table you are loading has audit columns.</p>
+<p>The solution is to create a view based on the table that only has the columns that you want to load. You name the view and the table the same. The table should be in a schema. The view should be in the dbo schema. That way, you can reference both with the same name, and SQL Server knows when you are referring to the view or the table.</p>
+<p>When you write your BULK INSERT statement, you reference the view. That will load the actual table.</p>
 
 </div>
 </div>
@@ -13148,123 +13142,128 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>This tutorial is currently an alpha release. New content is released frequently.</strong><br></p>
-<p><strong>Release Number: 7</strong><br></p>
-<p><a href="release-history.html"><strong>Release History</strong></a><br><br></p>
-<p>To report an issue with an example you can:</p>
-<ol>
-<li>Report the issue at <a href="mailto:Support@MassStreetUniversity.com">Support@MassStreetUniversity.com</a>.</li>
-<li>Get help from the community on the school Discord server which can be found <a href="https://discord.gg/enfDGUH">here</a>.</li>
-</ol>
-<hr>
+<h1>Examples</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Language Basics<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">1. <a href="basics/01-hello-world.html">Obligatory Hello World</a></td>
-      <td valign="top">2. <a href="basics/02-code-comments.html">Code Comments</a></td>
-    </tr>
-    <tr>
-       <td valign="top">3. <a href="basics/03-data-types.html">Data Types</a></td>
-      <td valign="top">4. <a href="basics/04-variables.html">Variables</a></td>
-    </tr>
-    <tr>
-      <td valign="top">5. <a href="basics/05-string-concatenation.html">String Concatenation</a></td>
-      <td valign="top">6. <a href="basics/06-arithmetic-operators.html">Arithmetic Operators</a></td>
-    </tr>
-     <tr>
-      <td valign="top">7. <a href="basics/07-making-decisions.html">Making Decisions</a></td>
-      <td valign="top">8. <a href="basics/08-control-flow-if-else.html">Control Flow With if-elif-else</a></td>
-    </tr>
-    <tr>
-      <td valign="top">9. <a href="basics/09-control-flow-while.html">Control Flow With While</a></td>
-      <td valign="top">10. <a href="basics/10-list.html">Data Structures Part I: List</a></td>
-    </tr>
-     <tr>
-      <td valign="top">11. <a href="basics/11-tuples.html">Data Structures Part II: Tuples</a></td>
-      <td valign="top">12. <a href="basics/12-dictionaries.html">Data Structures Part III: Dictionaries</a></td>
-    </tr>
-    <tr>
-      <td valign="top">13. <a href="basics/13-looping-with-for.html">Looping With for</a></td>
-      <td valign="top">14. <a href="basics/14-functions.html">Functions</a></td>
-    </tr>
-    <tr>
-      <td valign="top">15. <a href="basics/15-importing-modules.html">Importing Modules</a></td>
-      <td valign="top">16. <a href="basics/16-pep8.html">Python Programming Standards</a></td>
-    </tr>
-    </tbody>
-</table>
+<p><strong>Example #1: Load A Large CSV</strong></p>
+<p>In order to run this example, you will need to set up SQL Server by creating the staging table and the view.</p>
+<p>In the SQL directory of the source code directory SQL\33 Load Large CSVs Into Staging, you will find two files sequentially named. Open them in SSMS and run them in the order specified by their file name. First the table, then the view.</p>
+<p>Now that we are good to go. We are going to take the large Eurostat data that we compiled, and shoehorn it into a table.</p>
+<p>In this example, I am going to introduce some feedback mechanisms in the form of timestamps. You can use these to understand how long the processes is taking and where the process is in the execution.</p>
+<p>Indexes slow the load of database tables. For small amounts of data, that is no big deal. When loading large files, you need to drop any indexes first. Once the file is loaded, you then rebuild any indexes that you dropped.</p>
+<p>This, of course, is a long running process. However, it is much faster than other methods.</p>
+<p><strong>Script Performance</strong></p>
+<p>This is not a toy example and it is entirely possible you could choke your machine. On my box, the script took about 30 minutes to load the data. My machine specs are below.</p>
+<p>Processor: Intel® Core™ i5-4590 CPU @ 3.30GHz<br>
+RAM: 16.0 GB<br>
+System type: 64-bit Operating System, x64-based processor<br></p>
+<p>If your system has less RAM, expect the process to take longer. If your system performance is significantly less than what is stated above, do not attempt to run this script with the sample file. Instead, cope a file from the FileLoopExample folder and use that instead. Either rename the file or change the value of the file_name variable.</p>
+<p><strong>Troubleshooting</strong></p>
+<p>Before you run this example, you may want to review <a href="https://tutorials.massstreetuniversity.com/transact-sql/solutions/troubleshoot-queries.html">Lesson 56. Troubleshooting Long Running Queries</a> from the Practical T-SQL Pocket Guide For Beginners.</p>
+<p><strong>Viewing Results</strong></p>
+<p>When the process has completed, you can view the results by running the SQL queries found after the Python script.</p>
+
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Advanced Topics<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">17. <a href="advanced/17-map.html">Functional Programing With map</a></td>
-       <td valign="top">&nbsp;</td>
-      <!--<td valign="top">18. <a href="advanced/18-generators.html">Generators</a></td>-->
-    </tr>
-    <!--
-    <tr>
-      <td valign="top">19. <a href="advanced/19-comprehensions.html">Comprehensions</a></td>
-      <td valign="top">&nbsp;</td>
-    </tr>
-    -->
-    <!--
-    <tr>
-      <td valign="top"></td>
-      <td valign="top"></td>
-    </tr>
-    -->
-    </tbody>
-</table>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import what you need and set up your file variables.</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pyodbc</span> <span class="k">as</span> <span class="nn">db</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_directory</span> <span class="o">=</span> <span class="s1">&#39;data</span><span class="se">\\</span><span class="s1">&#39;</span>
+<span class="n">source_directory</span> <span class="o">=</span> <span class="s1">&#39;CombineCSVExample</span><span class="se">\\</span><span class="s1">&#39;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;EurostatDataCombined.csv&#39;</span>
+<span class="n">source_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span> <span class="n">data_directory</span><span class="p">,</span><span class="n">source_directory</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+
+<span class="c1">#Build SQL Statements</span>
+<span class="n">drop_index_sql</span> <span class="o">=</span> <span class="s1">&#39;ALTER TABLE [euro].[EurostatData] DROP CONSTRAINT [PK_EurostatData] WITH ( ONLINE = OFF )&#39;</span>
+
+<span class="n">add_index_sql</span> <span class="o">=</span> <span class="s1">&#39;ALTER TABLE [euro].[EurostatData] ADD  CONSTRAINT [PK_EurostatData] PRIMARY KEY CLUSTERED&#39;</span>
+<span class="n">add_index_sql</span> <span class="o">=</span> <span class="n">add_index_sql</span> <span class="o">+</span> <span class="s1">&#39;([ETLKey] ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,&#39;</span> 
+<span class="n">add_index_sql</span> <span class="o">=</span> <span class="n">add_index_sql</span> <span class="o">+</span> <span class="s1">&#39;SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON,&#39;</span>
+<span class="n">add_index_sql</span> <span class="o">=</span> <span class="n">add_index_sql</span> <span class="o">+</span> <span class="s1">&#39;ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]&#39;</span>
+
+<span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;BULK INSERT EurostatData FROM &#39;&quot;</span> <span class="o">+</span> <span class="n">source_path</span> <span class="o">+</span> <span class="s2">&quot;&#39; WITH (FIELDTERMINATOR = &#39;|&#39;, ROWTERMINATOR = &#39;0x0a&#39;, FIRSTROW = 2, TABLOCK, BATCHSIZE = 100000)&quot;</span>
+
+<span class="c1">#Set up the connection.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connecting to SQL Server database&#39;</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39; %H:%M:%S&#39;</span><span class="p">))</span>
+<span class="n">connection_string</span> <span class="o">=</span> <span class="s1">&#39;DSN=ETL;&#39;</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Preparing database for update&#39;</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39; %H:%M:%S&#39;</span><span class="p">))</span>
+<span class="n">csr</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+
+<span class="c1">#now let&#39;s load the file</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Begin processing </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39; %H:%M:%S&#39;</span><span class="p">))</span>
+<span class="n">csr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;TRUNCATE TABLE euro.EurostatData&#39;</span><span class="p">)</span>
+<span class="n">csr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">drop_index_sql</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Updating staging&#39;</span><span class="p">)</span>
+<span class="n">csr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+<span class="n">csr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">add_index_sql</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing file </span><span class="si">{}</span><span class="s1"> complete.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39; %H:%M:%S&#39;</span><span class="p">))</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">csr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Complete: Processing Data&#39;</span>  <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39; %H:%M:%S&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Solutions To Real World Problems<h1><br></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">29. <a href="solutions/29-download-a-zip-file.html">Download A Zip File Over HTTP</a></td>
-      <td valign="top">30. <a href="solutions/30-looping-over-files-in-a-directory.html">Looping Over Files In A Directory</a></td>
-    </tr>
-	 <tr>
-      <td valign="top">31. <a href="solutions/31-convert-file-to-pipe-delimited.html">Convert Comma Delmited Files To Pipe Delimited</a></td>
-      <td valign="top">32. <a href="solutions/32-combine-csvs-into-one-file.html">Combining Multiple CSVs Into One File</a></td>
-    </tr>
-    <tr>
-      <td valign="top">33. <a href="solutions/33-load-large-csvs-into-data-warehouse.html">Load Large CSVs Into Data Warehouse Staging Tables</a></td>
-      <td valign="top">&nbsp;</td>
-    </tr>  
-    <!--
-    <tr>
-      <td valign="top">19. <a href="advanced/19-comprehensions.html">Comprehensions</a></td>
-      <td valign="top">&nbsp;</td>
-    </tr>
-    -->
-    <!--
-    <tr>
-      <td valign="top"></td>
-      <td valign="top"></td>
-    </tr>
-    -->
-    </tbody>
-</table>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Connecting to SQL Server database 16:29:47
+Preparing database for update 16:29:47
+Begin processing EurostatDataCombined.csv. 16:29:47
+Updating staging
+Processing file EurostatDataCombined.csv complete. 17:01:56
+Complete: Processing Data 17:01:56
+</pre>
 </div>
 </div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">USE</span> <span class="n">ODS</span>
+
+<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">euro</span><span class="o">.</span><span class="n">EurostatData</span> <span class="o">--</span><span class="mi">31</span><span class="p">,</span><span class="mi">599</span><span class="p">,</span><span class="mi">999</span>
+
+<span class="n">SELECT</span> <span class="n">TOP</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">euro</span><span class="o">.</span><span class="n">EurostatData</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
