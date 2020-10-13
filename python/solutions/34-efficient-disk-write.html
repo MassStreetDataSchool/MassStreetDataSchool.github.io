@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>release-history</title>
+<title>34-efficient-disk-write</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/python/">Tutorial Home</a></p>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/solutions/33-load-large-csvs-into-data-warehouse.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/project/35-final-project.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,57 +13125,127 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Release History</h1>
+<h1>Lesson 34. Efficiently Write Large Database Query Results To Disk</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>13Oct20<br></p>
-<p><ol>
-    <li>Preface Completed</li>
-    <li>Published sections V, VI, VII.</li>
-    <li>Published lesson 34.</li>
-</ol><br>
-11Oct20<br></p>
-<p><ol>
-    <li>Published lesson 31, 32,and, 33.</li>
-</ol><br>
-10Oct20<br></p>
-<p><ol>
-    <li>Published lesson 17, 29,and, 30.</li>
-</ol><br>
-7Oct20<br></p>
-<p><ol>
-    <li>Fixed error in nav bar in lessons 10,11,12.</li>
-    <li>Rewrote lesson 11. </li>
-    <li>Rewrote lesson 3.</li>
-    <li>Published lesson 13,14,15, and 16.</li>
-</ol><br>
-6Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 10,11, and 12.</li>
-</ol><br>
-5Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 8 and 9.</li>
-    <li>Renamed tutorial to its official name.</li>
-</ol><br>
-27Sept20<br></p>
-<p><ol>
-    <li>Swapped the order of data types and variables lessons.</li>
-    <li>Created separate page specifically for release history.</li>
-    <li>Created Lesson 7.</li>
-</ol><br>
-26Sept20<br></p>
-<p><ol>
-    <li>First six lessons created.</li>
-    <li>Tutorial home page created.</li>
-</ol><br></p>
+<p><strong>What Gets Uploaded, Must Get Downloaded</strong></p>
+<p>Data in a database is pointless unless someone is dragging it back out to do analysis with. Most often, the dragging is simply a query to a screen or maybe a pull of physical data to a spreadsheet. The spreadsheet, of course, represents a tiny subset of the total historical data assets.</p>
+<p>However, sometimes, you exchange data with a third party, and you do that in the form of a physical file that has to be produced. If you are lucky, the file that has to be produced is some sort of daily file that only reports information from a 24-hour period.</p>
+<p>If you are not lucky, you might have to produce a huge file. It may even only be from a 24-hour period, but so much stuff happens in 24 hours that the file is a monster.</p>
+<p>Ok so now what? You know Pandas has limitations so you can pull the data into a data frame. Sure, you could mess around with the Chunksize parameter, but there is a better way.</p>
+<p>Instead of using Pandas, we are going to skip the data frame and write data directly to disk one line at a time.</p>
+<p><strong>Script Performance</strong></p>
+<p>Writing large amounts of data to disk in CSV format will eat some resources, but it is not near as bad as storing it in a database. When you store stuff in a database, there is all kinds of other information that gets written to disk at the same time. Here we are just dropping the pure 1s and 0s of the file with no logging, shuffling, or metadata.</p>
+<p>This script completed on my box in about 10 minutes. The really fun thing is, if you go look, the file we kicked out is much smaller than the file we imported in Lesson 33.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #1: Let’s Pack ‘Em Up And Move ‘Em Out!</strong></p>
+<p>We are going to drag back out the data that we just got through loading in the last lesson.</p>
+<p>Since the data is currently sitting in a stage table, we are going query the view. That way, we do not wind up with audit columns in our file.</p>
+<p>If this were a real world ETL process, we would have cleansed the data after we loaded it in lesson 33. As it turns out, the data got loaded with some hitch hikers. The carriage return line feed character got loaded along with the last column so that needs to be removed.</p>
+<p>Once that is done, we can proceed with creating the file.</p>
+<p>Most of the code here should be familiar. The new bits are working with the csv module. That module has functions that allows us to create CSVs files in the format that most the world expects when dealing with CSVs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="n">remove</span> <span class="n">carrage</span> <span class="k">return</span> <span class="ow">and</span> <span class="n">line</span> <span class="n">feed</span> <span class="n">characters</span>
+<span class="n">UPDATE</span> <span class="n">euro</span><span class="o">.</span><span class="n">EurostatData</span>
+<span class="n">SET</span> <span class="n">SUP_QUANTITY</span> <span class="o">=</span> <span class="n">REPLACE</span><span class="p">(</span><span class="n">REPLACE</span><span class="p">(</span><span class="n">SUP_QUANTITY</span><span class="p">,</span><span class="n">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span><span class="s1">&#39;&#39;</span><span class="p">),</span><span class="n">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AND</span> <span class="n">Cleansed</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AND</span> <span class="n">ErrorRecord</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AND</span> <span class="n">Processed</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pyodbc</span> <span class="k">as</span> <span class="nn">db</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">data_directory</span> <span class="o">=</span> <span class="s1">&#39;data</span><span class="se">\\</span><span class="s1">&#39;</span>
+<span class="n">example_directory</span> <span class="o">=</span> <span class="s1">&#39;WriteLargeFilesExample</span><span class="se">\\</span><span class="s1">&#39;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;EurostatDataOut.csv&#39;</span>
+<span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span><span class="n">data_directory</span><span class="p">,</span><span class="n">example_directory</span><span class="p">,</span><span class="n">file_name</span><span class="p">)</span>
+
+<span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM EurostatData&#39;</span>
+
+<span class="c1">#Set up the connection.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connecting to SQL Server database&#39;</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39; %H:%M:%S&#39;</span><span class="p">))</span>
+<span class="n">connection_string</span> <span class="o">=</span> <span class="s1">&#39;DSN=ETL;&#39;</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Preparing database for update&#39;</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39; %H:%M:%S&#39;</span><span class="p">))</span>
+<span class="n">csr</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">csr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="n">quoting</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">QUOTE_NONE</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">csr</span><span class="o">.</span><span class="n">description</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csr</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing file </span><span class="si">{}</span><span class="s1"> complete.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39; %H:%M:%S&#39;</span><span class="p">))</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">csr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Connecting to SQL Server database 22:27:25
+Preparing database for update 22:27:26
+Processing file EurostatDataOut.csv complete. 22:36:16
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
