@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>release-history</title>
+<title>29-download-a-zip-file</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13117,7 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="http://tutorials.massstreetuniversity.com/python/">Tutorial Home</a></p>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/advanced/28-bringing-it-all-together.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/solutions/30-looping-over-files-in-a-directory.html">Next</a></p>
 
 </div>
 </div>
@@ -13125,67 +13125,73 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Release History</h1>
+<h1>Lesson 29. Download A Zip File Over HTTP</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>20Oct20<br></p>
-<p><ol>
-    <li>Added more content to lesson 15.</li>
-    <li>Impoved sections IV, and X.</li>
-    <li>Published lessons 19, 24, 29.</li>
-</ol><br>
-14Oct20<br></p>
-<p><ol>
-    <li>Published sections VIII, IX, X, XI, XII.</li>
-</ol><br>
-13Oct20<br></p>
-<p><ol>
-    <li>Preface Completed</li>
-    <li>Published sections V, VI, VII.</li>
-    <li>Published lesson 34.</li>
-</ol><br>
-11Oct20<br></p>
-<p><ol>
-    <li>Published lesson 31, 32,and, 33.</li>
-</ol><br>
-10Oct20<br></p>
-<p><ol>
-    <li>Published lesson 17, 29,and, 30.</li>
-</ol><br>
-7Oct20<br></p>
-<p><ol>
-    <li>Fixed error in nav bar in lessons 10,11,12.</li>
-    <li>Rewrote lesson 11. </li>
-    <li>Rewrote lesson 3.</li>
-    <li>Published lesson 13,14,15, and 16.</li>
-</ol><br>
-6Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 10,11, and 12.</li>
-</ol><br>
-5Oct20<br></p>
-<p><ol>
-    <li>Published Lesson 8 and 9.</li>
-    <li>Renamed tutorial to its official name.</li>
-</ol><br>
-27Sept20<br></p>
-<p><ol>
-    <li>Swapped the order of data types and variables lessons.</li>
-    <li>Created separate page specifically for release history.</li>
-    <li>Created Lesson 7.</li>
-</ol><br>
-26Sept20<br></p>
-<p><ol>
-    <li>First six lessons created.</li>
-    <li>Tutorial home page created.</li>
-</ol><br></p>
+<p>The method read_csv is a workhorse in the data analytics world. Techncially, it has the capability to download zip files by itself. However there is some limitation with data.world where read_csv() will not work on zip files that are stored there. Since all of MSU's sample datasets reside in Data.World, we need to develop a workaround so you can work through the lessons in the solutions section.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Examples</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example #1: Download. Unzip. Clean Up.</strong></p>
+<p>There are some things in here that I am going to handwave for now. They will be explained in more relevant lessons.</p>
+<p>So we have to pull in three modules to make the magic happen two items of which we have not seen yet.</p>
+<ul>
+<li>urllib.request – This allows us to open up a pipe to file using a url.</li><br>
+<li>pyunpack – This lets us work with zip archive files.</li><br>
+</ul><p>The rest should be familiar from lesson 20. So the steps here are:</p>
+<ol>
+<li>Grab the file from the cloud and write it to disk</li><br>
+<li>Decompress the archive file</li><br>
+<li>Delete the archive file</li><br>
+</ol><p>This will take a while to run. When it is complete, check the ZipFileExample folder. You should find a new directory containing a csv.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pyunpack</span> <span class="k">import</span> <span class="n">Archive</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://query.data.world/s/vb53nuuux6umwmccbwlajvlzttmz3q&#39;</span>
+<span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;Eurostat.zip&#39;</span>
+<span class="n">data_directory</span> <span class="o">=</span> <span class="s1">&#39;data</span><span class="se">\\</span><span class="s1">&#39;</span>
+<span class="n">example_directory</span> <span class="o">=</span> <span class="s1">&#39;ZipFileExample</span><span class="se">\\</span><span class="s1">&#39;</span>
+<span class="n">abs_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span> <span class="n">data_directory</span><span class="p">,</span> <span class="n">example_directory</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+<span class="n">abs_directory_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span> <span class="n">data_directory</span><span class="p">,</span> <span class="n">example_directory</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">source_file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">abs_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">target_file</span><span class="p">:</span>
+        <span class="n">target_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">source_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">Archive</span><span class="p">(</span><span class="n">abs_file_path</span><span class="p">)</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">abs_directory_path</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">abs_file_path</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
