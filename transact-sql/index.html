@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
+<title>Practical T-SQL Pocket Guide For Beginners</title>
+<meta name="title" content="Practical T-SQL Pocket Guide For Beginners">
+<meta name="description" content="A straightforward guide that will teach you everything you need to know about T-SQL programming.">	
+	
 <!--FACEBOOK-->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Practical T-SQL Pocket Guide For Beginners">
-<meta property="og:description" content="A simple but comprehensive introduction to T-SQL for aspiring data analytics professionals.">
+<meta property="og:description" content="Learn Microsoft's proprietary implementation of SQL!">
 <meta property="og:url" content="https://tutorials.massstreetuniversity.com/transact-sql/index.html">
 <meta property="og:image:type" content="image/jpg">
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="1024">
-<meta property="og:image" content="https://tutorials.massstreetuniversity.com/images/sqltutorialbanner.jpg">
+<meta property="og:image" content="https://tutorials.massstreetuniversity.com/images/tsql/sqltutorialbanner.jpg">
 
 <!--TWITTER-->
 <meta name="twitter:title" content="Practical T-SQL Pocket Guide For Beginners">
-<meta name="twitter:description" content="A simple but comprehensive introduction to T-SQL for aspiring data analytics professionals.">
-<meta name="twitter:image" content="https://tutorials.massstreetuniversity.com/images/sqltutorialbanner.jpg">
+<meta name="twitter:description" content="Learn Microsoft's proprietary implementation of SQL!">
+<meta name="twitter:image" content="https://tutorials.massstreetuniversity.com/images/tsql/sqltutorialbanner.jpg">
 <meta name="twitter:card" content="summary_large_image">
-
 
 <title>Practical T-SQL Pocket Guide For Beginners</title>
 
@@ -11266,7 +11269,7 @@ div.output_unrecognized a:hover {
   white-space: normal;
   max-width: none;
   border: none;
-	font-size: 15px;
+  font-size: 15px;
 }
 .rendered_html th {
   font-weight: bold;
@@ -13141,7 +13144,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Practical T-SQL Pocket Guide For Beginners</h1><p><strong>Primary Author: Bob Wakefield</strong></p>
+<p><h1>Practical T-SQL Pocket Guide For Beginners</h1>
+<strong>A simple but comprehensive introduction to T-SQL for aspiring business analytics professionals.</strong><br><br></p>
+<p><strong>Author: Bob Wakefield</strong></p>
 
 </div>
 </div>
@@ -13149,33 +13154,23 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Transact SQL, often shortened to T-SQL, is Microsoft’s proprietary implementation of ANSI standard SQL. Transact SQL adds more power and programming functionality to ANSI SQL and is used exclusively with the SQL Server database management system.</p>
-<p>Basic T-SQL shares many elements with ANSI SQL and we do not make a distinction in this tutorial.</p>
-<p>One thing you need to understand is that SQL, especially Transact SQL, is a legit programming language. It is relatively simplistic compared to the likes of Python, but it is fairly powerful none the less, and you cannot afford to be a lazy programmer. Most of the concepts from computer science 101 will apply.</p>
-<p>This tutorial is organized in three parts.</p>
-<p><strong>Language Basics</strong></p>
-<p>This section takes you through foundational T-SQL and it is recommended that you go through the tutorial in the order of the lessons given.</p>
-<p><strong>Advanced Topics</strong></p>
-<p>This section takes you into the heavier programming aspects of T-SQL. Here you will start to dive into issues of writing high performance code. This section also should be done in order.</p>
-<p><strong>Solutions To Real World Problems</strong></p>
-<p>This is a highly opinionated section where I share my solutions to recurring problems that I have tackled over the past 20 years. Fortunately, all this stuff was kept in various forums, emails, and Stack Overflow in addition to the stuff I keep at the top of my head.</p>
-<p>If you are brand new to T-SQL and SQL Server, much of this section may go over your head. That is ok. File it away for later.</p>
-<p>This section is basically me uploading two decades of coding experience to the internet. I am not saying the way I do things is the correct way. I am saying that this is what I did and feel free to steal and adapt to your use case.</p>
-<p><strong>Running The Examples</strong></p>
-<p>All code examples have been run on SQL Server 2016 against the 2016 backup of the AdventureWorks database.</p>
-<p>You need five things to run these examples.</p>
-<ol>
-<li>A copy of SQL Server Developer Edition which can be downloaded for free from the Microsoft website.</li><br>
-<li>A copy of the 2016 version of the AdventureWorks database. Instructions on how to download and install the database files can be found <a href="https://github.com/MassStreetUniversity/sql-server-samples/tree/master/samples/databases/adventure-works">here</a>.</li><br>
-<li>Once you have the database installed, you need to create another database called "demo". This database will be used when we need to create things and we do not want to mess up AdventureWorks.</li><br>
-<li>The last thing you need is the code. You can cut and paste code right from the screen, or you can download it from the GitHub repo <a href="https://github.com/MassStreetUniversity/tutorial-transact-sql">here</a>.</li><br>
-<li>Some of the examples use example datasets. Those can be downloaded from the MSU website <a href="https://massstreetuniversity.com/practice-datasets/">here</a>.</li><br>
-</ol><p>To report an issue with an example you can:</p>
-<ol>
-<li>Report the issue at Support@MassStreetUniversity.com.</li>
-<li>Get help from the community on the school Discord server which can be found <a href="https://discord.gg/enfDGUH">here</a>.<hr></li>
-</ol>
-
+<p><h1>Preface<h1></p>
+<table width="100%" border="1" align="center">
+  <tbody>
+    <tr>
+      <td valign="top">I. <a href="preface/i-authors-note.html">A Note From The Author</a></td>
+      <td valign="top">II. <a href="preface/ii-tutorial-overview.html">Tutorial Overview</a></td>
+    </tr>
+    <tr>
+       <td valign="top">III. <a href="preface/iii-running-the-examples.html">Running The Examples</a></td>
+      <td valign="top">IV. <a href="preface/iv-how-to-report-an-issue.html">How To Report An Issue</a></td>
+    </tr>
+     <tr>
+       <td valign="top">V. <a href="preface/v-student-lounge.html">Join The MSU Community On Discord</a></td>
+      <td valign="top">VI. <a href="preface/iv-supplimentary-material.html">Supplimentery Material</a></td>
+    </tr>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
