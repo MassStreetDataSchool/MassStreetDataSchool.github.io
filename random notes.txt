@@ -1,0 +1,68 @@
+When I talk about how I went from zero to hero in the space of a week, this is the book that made that possible. It's a super easy read, and, for seven days, I only put it down to go to work. You can do things like that when you're single. N-E-WAY!
+
+plotly/altair/bokeh + plotly-dash/streamlit
+
+Create hyperperameter tuning lecture.
+
+https://discord.gg/enfDGUH
+
+
+DS Learning Path Bundle link: https://mymsu.thinkific.com/enroll/602437?price_id=637141
+
+
+
+Add more examples to making decisions
+Integrate coding challenges from code wars
+In lesson 20 example one, explain more about breaking down URIs. Actually make a whole example that is just that.cross platform code.
+In database set up, add instructions on creating the Proxy Account.
+Create database installation instructions. Create an adventure works DSN improve section VIII overall.
+Improve the code wars page in the preflight
+In lesson 15 give an example of how you would ahve to write somthign out without namespaces.
+Either rename lesson 9 or lesson 13 so they are consitant.
+Rename lesson 16 file name.
+Line numbers in lesson 16 don't show in html.
+Put colons in all examples
+In lesson 17, write an explanation of how to make an anamous function with lamba.
+move the banner images to their respective files and update the social share meta tags
+
+When you write code, you will notice that you are throwing a lot of errors espeically if you are new.
+In the prefight section, change anchor tags so they all open in a new tab.
+Add actual instructions to creating a DSN instead of links.
+
+Object Oriented Programming 101
+In data types talk about how everything is an object. Object = Data Type = Class
+
+update temporary tables to reflect the fact that temp tables are the key to high perfomrance ETL
+Add to SCD II load for temporal tables
+
+T-SQL launch check list.
+
+move the banner images to their respective files and update the social share meta tags
+
+
+
+Remove the word tutorial and replace with book
+
+
+Lower case words in titles are usually Python reserved words and not typos.
+Don't convert numbers to words if we're talking about math. You may not see an actual equation. 
+Watch for deliberate misspellings that might acutally be pop culture references. E.g. the phrase "for reasons".
+Also, I'm starting to use slang and local color quite a bit more.
+
+
+In both the TSQL and Python tutorial, create a supplimentary information section and link the SSIS blog post and why you need a framework.
+
+
+
+Do we need to get rid of CR LF when we load data with BULK INSERT?
+
+Working 90s hours a week literally doing the work of 5 people.
+
+Python test script in IAG instructions.
+
+How to make your own job
+1. The hard way - freelancing
+2. The easy way - have a job and demonstrate ability outside of your role.
+
+
+Generators are wild yo! This is another method to write functional code in Python. These are a bit much 
