@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>24-requesting-files-with-http-ftp</title>
+<title>26-saving-objects-with-pickle</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13078,7 +13078,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetuniversity.com/images/logo.png" alt="School Logo"></a><br><br><br>
-<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/advanced/23-json.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/advanced/25-databases.html">Next</a></p>
+<a href="https://tutorials.massstreetuniversity.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetuniversity.com/python/advanced/25-databases.html">Previous</a> | <a href="https://tutorials.massstreetuniversity.com/python/advanced/27-error-handling.html">Next</a></p>
 
 </div>
 </div>
@@ -13086,24 +13086,52 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Lesson 24. Making File Request Over HTTP And FTP</h1>
+<h1>Lesson 26. Saving Objects With Pickle</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So, all the cool data is in the cloud, right? The ubiquitous cloud? Is a third-party bank’s on prim file server part of the cloud? Whatever. The point is the data is not local so we gotta go out and get it.</p>
-<p>Up to this point, when we snag a file from the internet, we have been doing it with Pandas. That’s cool, but the problems is when you download a file with Pandas, it gets loaded into a data frame which is limited by your machine’s memory before it gets written to disk.</p>
-<p>Today, I am going to show you how to skip the data frame and just write a file straight to disk. We will be using a module called urllib to yank files off the internet using the same protocols used to retrieve webpages.</p>
-<p>I am also going to show you how to get files from an FTP server which can be kind of a goat rope.</p>
-<p>Sometimes you need to get data from an FTP server. However, the data is probably sensitive so you cannot transfer the file in clear text. Here is where secured FTP (SFTP) comes in.</p>
-<p>In order to run the SFTP example below you will need to do two things.</p>
-<p>Pip install <a href=" https://pypi.org/project/pysftp/" target="_blank"> pysftp </a>. This is the module that we are going to use to download our file stored on a secured server.</p>
-<p>We also need to install some sort of graphical FTP too. I use <a href=" https://winscp.net/eng/index.php" target="_blank">WinSCP</a>. We are going to need this tool to explore the FTP server so we can find out what we need to write our download script.</p>
+<p>Pickle is a Python module that helps you save and load python objects to permanent storage like hard disks. When needed you can restore these files back to objects. You can also share these files with other people who can convert them back to python objects using Pickle's load() function. When we are working with data on Jupyter notebooks or any other IDE, all information is stored in RAM which is volatile. All your data is lost when you close the notebook's kernel or shut your computer down. So saving processed information to disk is indispensable.</p>
+<p>Pickle converts objects into a byte stream, a process called serialization, which is sequential binary form of objects. When you pickle an object into a binary file, it could be later converted back to a python object (deserialization). This process comes in handy when you are performing complex processing on python objects like dictionaries, Numpy or Pandas arrays. Pickle module is commonly used for saving trained machine learning models' weights which could be restored for making predictions without resorting to training the model again and again.</p>
+<p>Pickling is not limited to single python objects. You can store multiple or nested python objects into a single output file. However, when you are dumping complex information, you should know the order in which you have stored it.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Basic Pickle Operations</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="c1">#Store objects</span>
+<span class="n">object_name</span> <span class="o">=</span> <span class="s2">&quot;some_object&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some_file_name.txt&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">object_name</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">filename</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1">#laod objects</span>
+<span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some_file_name.txt&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">inputFile</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+<span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">inputFile</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13115,42 +13143,76 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example #1: Where’s The Beef?!</strong></p>
-<p>Acquiring data from the internet is often not as straight forward as dropping a URL in a script. In some cases, in order to get the data that you want, you have to pass in URL variables. Below is a good example of this.</p>
-<p>We are going to download some beef data from the USDA website. We are going to pull down an XML file, but the file is not sitting static on the server. The file is built from a reports generating application on the USDA server.</p>
-<p>Normally users get their data by using the web application’s GUI. But we need to automate things. So, the strategy is to use the GUI once. When you do that, you take note of the query string that gets built in the URL. Then you make Python variables out of any URL parameters. Now you can bypass the GUI and automate the process of downloading the data.</p>
+<p><strong>Example #1: Saving A Dict</strong></p>
+<p>Let's save an employee's information into file using pickle. Run the code below then look in the example folder for the output.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">report_date</span> <span class="o">=</span> <span class="s1">&#39;09/01/2020&#39;</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;script_dir&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
     <span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    
 <span class="n">data_directory</span> <span class="o">=</span> <span class="s1">&#39;data</span><span class="se">\\</span><span class="s1">&#39;</span>
-<span class="n">example_directory</span> <span class="o">=</span> <span class="s1">&#39;HTTPAndFTPExample</span><span class="se">\\</span><span class="s1">&#39;</span>
-<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;BeefReport.xml&#39;</span>
+<span class="n">example_directory</span> <span class="o">=</span> <span class="s1">&#39;PickleExample</span><span class="se">\\</span><span class="s1">&#39;</span>
+<span class="n">target_file_name</span> <span class="o">=</span> <span class="s1">&#39;employee.txt&#39;</span>
 
-<span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span><span class="n">data_directory</span><span class="p">,</span><span class="n">example_directory</span><span class="p">,</span><span class="n">file_name</span><span class="p">)</span>
+<span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span> <span class="n">data_directory</span><span class="p">,</span> <span class="n">example_directory</span><span class="p">,</span> <span class="n">target_file_name</span><span class="p">)</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://mpr.datamart.ams.usda.gov/ws/report/v1/beef/LM_XB459?&#39;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;filter={</span><span class="si">%22f</span><span class="s1">ilters%22:[{</span><span class="si">%22f</span><span class="s1">ieldName%22:%22Report</span><span class="si">%20d</span><span class="s1">ate%22,&#39;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">%22o</span><span class="s1">peratorType%22:</span><span class="si">%22G</span><span class="s1">REATER%22,%22values%22:[%22&#39;</span> <span class="o">+</span> <span class="n">report_date</span> <span class="o">+</span> <span class="s1">&#39;%22]}]}&#39;</span>
+<span class="n">employee</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sam&quot;</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Height&quot;</span><span class="p">:</span> <span class="mi">177</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span> <span class="p">:</span> <span class="s2">&quot;Brazil&quot;</span><span class="p">}</span>
 
-<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">source_file</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">target_file</span><span class="p">:</span>
-        <span class="n">target_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">source_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">employee</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="n">filename</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Here is how you will unpickle a saved file.</span>
+<span class="n">inputFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">loaded_object</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
+<span class="n">inputFile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">loaded_object</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;Name&#39;: &#39;Sam&#39;, &#39;Age&#39;: 25, &#39;Height&#39;: 177, &#39;Country&#39;: &#39;Brazil&#39;}
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13158,52 +13220,64 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example #2: Download Files Like You’re CIA</strong></p>
-<p>We are going to use a test SFTP server called Rebex. The protocols for server access can be found at <a href="https://test.rebex.net/" target="_blank"> https://test.rebex.net</a>.</p>
-<p>If you go to that site and look at the SFTP protocol, you will find the following settings.</p>
-<p>host: test.rebex.net</p>
-<p>username: demo</p>
-<p>password: password</p>
-<p>port: 22</p>
-<p>Plug those settings into your FTP tool and log into the server. Navigate around and see if you can find an interesting file to download. For this example, we are going to keep is simple and just grab the readme.txt file from the root folder.</p>
-<p>This is a simplified example for clarity. Below you will see the line where we set cnopts.hostkeys = None. This actually leaves you open to something called a "man in the middle" attack. In a real scenario, you would have to use something called a host key. We will tackle that in the solutions section.</p>
+<p><strong>Example #2: Saving A List</strong></p>
+<p>Let's save a list into file using pickle.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pysftp</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">56</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="mi">65</span><span class="p">]</span>
 
-<span class="n">report_date</span> <span class="o">=</span> <span class="s1">&#39;09/01/2020&#39;</span>
+<span class="n">target_file_name</span> <span class="o">=</span> <span class="s1">&#39;grades.txt&#39;</span>
+<span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span> <span class="n">data_directory</span><span class="p">,</span> <span class="n">example_directory</span><span class="p">,</span> <span class="n">target_file_name</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;script_dir&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
-    <span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">data_directory</span> <span class="o">=</span> <span class="s1">&#39;data</span><span class="se">\\</span><span class="s1">&#39;</span>
-<span class="n">example_directory</span> <span class="o">=</span> <span class="s1">&#39;HTTPAndFTPExample</span><span class="se">\\</span><span class="s1">&#39;</span>
-<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;readme.txt&#39;</span>
-<span class="n">known_host</span> <span class="o">=</span> <span class="s1">&#39;known_host&#39;</span>
-
-<span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;test.rebex.net&#39;</span>
-<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;demo&#39;</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
-
-<span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span><span class="n">data_directory</span><span class="p">,</span><span class="n">example_directory</span><span class="p">,</span><span class="n">file_name</span><span class="p">)</span>
-<span class="n">known_host_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span><span class="n">data_directory</span><span class="p">,</span><span class="n">example_directory</span><span class="p">,</span><span class="n">known_host</span><span class="p">)</span>
-
-<span class="n">cnopts</span> <span class="o">=</span> <span class="n">pysftp</span><span class="o">.</span><span class="n">CnOpts</span><span class="p">()</span>
-<span class="n">cnopts</span><span class="o">.</span><span class="n">hostkeys</span> <span class="o">=</span> <span class="kc">None</span>  
-
-<span class="k">with</span> <span class="n">pysftp</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span><span class="p">,</span> <span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="n">password</span><span class="p">,</span> <span class="n">cnopts</span><span class="o">=</span><span class="n">cnopts</span><span class="p">)</span> <span class="k">as</span> <span class="n">sftp</span><span class="p">:</span>
-        <span class="n">sftp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grades</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">filename</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Here is how you will unpickle a saved file.</span>
+<span class="n">inputFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">loaded_object</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
+<span class="n">inputFile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">loaded_object</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[34, 53, 23, 56, 67, 74, 3, 33, 2, 6, 7, 8, 83, 34, 2, 34, 64, 65]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
