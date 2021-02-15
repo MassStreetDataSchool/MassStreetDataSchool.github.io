@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<!--FACEBOOK-->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hands-On Python Tutorial For Real-World Business Analytics Problems">
-<meta property="og:description" content="Python has killed R! Employers now demand that their data professionals know Python. Get the skills you need to land a job in the world of analytics!">
-<meta property="og:url" content="https://tutorials.massstreetuniversity.com/python/index.html">
-<meta property="og:image:type" content="image/jpg">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
-<meta property="og:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
 
-<!--TWITTER-->
-<meta name="twitter:title" content="Hands-On Python Tutorial For Real-World Business Analytics Problems">
-<meta name="twitter:description" content="Python has killed R! Employers now demand that their data professionals know Python. Get the skills you need to land a job in the world of analytics!">
-<meta name="twitter:image" content="https://tutorials.massstreetuniversity.com/images/python.jpg">
-<meta name="twitter:card" content="summary_large_image">
 <title>index</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151948427-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-151948427-1');
+</script>
 
 
 <style type="text/css">
@@ -11266,6 +11259,7 @@ div.output_unrecognized a:hover {
   border: none;
   font-size: 15px;
 }
+
 .rendered_html th {
   font-weight: bold;
 }
@@ -13032,45 +13026,6 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
-<style type="text/css">
-    
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-
-    </style>
 
 
 <style type="text/css">
@@ -13141,7 +13096,8 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Hands-On Python Tutorial For Real-World Business Analytics Problems</h1>
 <strong>Foundational skills for data science, data engineering, and data visualization.</strong><br><br></p>
-<p><strong>Author: Bob Wakefield</strong></p>
+<p><strong>Author: Bob Wakefield</strong><br>
+<strong>Co-Author: Rehman Gul</strong></p>
 <hr>
 </div>
 </div>
@@ -13149,10 +13105,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>This tutorial is currently an alpha release. New content is released frequently.</strong><br></p>
-<p><strong>Release Number: 10</strong><br></p>
-<p><a href="release-history.html"><strong>Release History</strong></a></p>
-<hr>
+<p><strong>This tutorial is currently in beta release. All lessons are complete with the exception of lesson 35 which is on hold for the moment. All code works. Some lessons may have typos.</strong></p>
+
 </div>
 </div>
 </div>
@@ -13178,7 +13132,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Preflight Checklist<h1>
+<p><h1>Preflight Checklist<h1></p>
 <table width="100%" border="1" align="center">
   <tbody>
     <tr>
@@ -13248,32 +13202,32 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Advanced Topics<h1>
+<p><h1>Advanced Topics<h1></p>
 <table width="100%" border="1" align="center">
   <tbody>
     <tr>
       <td valign="top">17. <a href="advanced/17-map.html">Functional Programing With map</a></td>
-      <td valign="top">18.	Generators</td>
+      <td valign="top">18. <a href="advanced/18-generators.html">Generators</a></td>
     </tr>
     <tr>
       <td valign="top">19. <a href="advanced/19-comprehensions.html">Comprehensions</a></td>
-      <td valign="top">20.	Basic File Operations</td>
+      <td valign="top">20. <a href="advanced/20-basic-file-operations.html">Basic File Operations</a></td>
     </tr>
     <tr>
-      <td valign="top">21.	Working With Data In NumPy</td>
-      <td valign="top">22.	Working With Data In Pandas</td>
+      <td valign="top">21. <a href="advanced/21-numpy.html">Working With Data In NumPy</a></td>
+      <td valign="top">22. <a href="advanced/22-pandas.html">Working With Data In Pandas</a></td>
     </tr>
     <tr>
-      <td valign="top">23.	Working With JSON</td>
+      <td valign="top">23. <a href="advanced/23-json.html">Working With JSON</a></td>
       <td valign="top">24. <a href="advanced/24-requesting-files-with-http-ftp.html">Making File Request Over HTTP And FTP</a></td>
     </tr>
     <tr>
-      <td valign="top">25.	Interacting With Databases</td>
-      <td valign="top">26.	Saving Objects With Pickle</td>
+      <td valign="top">25. <a href="advanced/25-databases.html">Interacting With Databases</a></td>
+      <td valign="top">26. <a href="advanced/26-saving-objects-with-pickle.html">Saving Objects With Pickle</a></td>
     </tr>
     <tr>
-      <td valign="top">27.	Error Handling</td>
-      <td valign="top">28.	Bringing It All Together</td>
+      <td valign="top">27. <a href="advanced/27-error-handling.html">Error Handling</a></td>
+      <td valign="top">28. <a href="advanced/28-bringing-it-all-together.html">Bringing It All Together</a></td>
     </tr>
     </tbody>
 </table>
@@ -13296,23 +13250,11 @@ div#notebook {
     </tr>
     <tr>
       <td valign="top">33. <a href="solutions/33-load-large-csvs-into-data-warehouse.html">Load Large CSVs Into Data Warehouse Staging Tables</a></td>
-      <td valign="top">34. <a href="solutions/34-efficient-disk-write.html">Efficiently Write Large Database Query Results To Disk</a>
-</td>
+      <td valign="top">34. <a href="solutions/34-efficient-disk-write.html">Efficiently Write Large Database Query Results To Disk</a></td>
     </tr>
-    </tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Final Project<h1></p>
-<table width="100%" border="1" align="center">
-  <tbody>
-    <tr>
-      <td valign="top">35. Final Project</td>
-      <td valign="top">36. Further Training</td>
+     <tr>
+      <td valign="top">35. Working With SFTP In The Real World</td>
+      <td valign="top">36. <a href="solutions/36-run-python-from-sql-server.html">Executing Python From SQL Server Agent</a></td>
     </tr>
     </tbody>
 </table>
