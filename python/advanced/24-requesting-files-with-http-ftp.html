@@ -6,14 +6,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151948427-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-151948427-1');
-</script>
 
 
 <style type="text/css">
@@ -13084,7 +13077,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://massstreetdataschool.com/"><img src="https://tutorials.massstreetdataschool.com/images/logo.png" alt="School Logo"></a><br><br><br>
+<p><a href="https://massstreetuniversity.com/"><img src="https://tutorials.massstreetdataschool.com/images/logo.png" alt="School Logo"></a><br><br><br>
 <a href="https://tutorials.massstreetdataschool.com/python/">Tutorial Home</a> | <a href="https://tutorials.massstreetdataschool.com/python/advanced/23-json.html">Previous</a> | <a href="https://tutorials.massstreetdataschool.com/python/advanced/25-databases.html">Next</a></p>
 
 </div>
@@ -13093,7 +13086,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Lesson 24. Making File Request Over HTTP And FTP</h1>
+<h1>Lesson 24. Making File Request Over HTTP And SFTP</h1>
 </div>
 </div>
 </div>
@@ -13132,7 +13125,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
@@ -13165,7 +13158,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example #2: Download Files Like You’re CIA</strong></p>
+<p><strong>Example #2: Download File From SFTP Server</strong></p>
 <p>We are going to use a test SFTP server called Rebex. The protocols for server access can be found at <a href="https://test.rebex.net/" target="_blank"> https://test.rebex.net</a>.</p>
 <p>If you go to that site and look at the SFTP protocol, you will find the following settings.</p>
 <p>host: test.rebex.net</p>
@@ -13180,28 +13173,24 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pysftp</span>
 
-<span class="n">report_date</span> <span class="o">=</span> <span class="s1">&#39;09/01/2020&#39;</span>
-
 <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;script_dir&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
     <span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 <span class="n">data_directory</span> <span class="o">=</span> <span class="s1">&#39;data</span><span class="se">\\</span><span class="s1">&#39;</span>
 <span class="n">example_directory</span> <span class="o">=</span> <span class="s1">&#39;HTTPAndFTPExample</span><span class="se">\\</span><span class="s1">&#39;</span>
 <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;readme.txt&#39;</span>
-<span class="n">known_host</span> <span class="o">=</span> <span class="s1">&#39;known_host&#39;</span>
 
 <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;test.rebex.net&#39;</span>
 <span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;demo&#39;</span>
 <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
 
 <span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span><span class="n">data_directory</span><span class="p">,</span><span class="n">example_directory</span><span class="p">,</span><span class="n">file_name</span><span class="p">)</span>
-<span class="n">known_host_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span><span class="n">data_directory</span><span class="p">,</span><span class="n">example_directory</span><span class="p">,</span><span class="n">known_host</span><span class="p">)</span>
 
 <span class="n">cnopts</span> <span class="o">=</span> <span class="n">pysftp</span><span class="o">.</span><span class="n">CnOpts</span><span class="p">()</span>
 <span class="n">cnopts</span><span class="o">.</span><span class="n">hostkeys</span> <span class="o">=</span> <span class="kc">None</span>  
